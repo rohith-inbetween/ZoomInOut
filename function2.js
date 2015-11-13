@@ -175,57 +175,32 @@ function createCollapsedTemplate(oContent) {
 
   }
   $header.append($tileView);
+  $template.append($header);
 
+
+  var $contentChildContainer = $('<div class="contentChildContainer"></div>');
+  _.forEach(oContent.contents, function (oVisualAttribute) {
+    $contentChildContainer.append(createCollapsedTemplate(oVisualAttribute));
+  });
 
   var $descriptionView = $('<div class="descriptionView" style="display: none;"></div>');
-  if(oContent.type == 'text-frame') {
-    $descriptionView.append('<div class="descriptionData"></div>');
-  } else if(oContent.type == 'image-frame'){
-    $descriptionView.append('<div class="descriptionData"><img class="describedImage" src=' + oContent.data + ' /></div>');
-
-  }
-
-  var $contentChildContainer = $('<div class="contentChildContainer"></div>');
-  _.forEach(oContent.contents, function (oVisualAttribute) {
-    $contentChildContainer.append(createCollapsedTemplate(oVisualAttribute));
-  });
-
-  $template.append($header);
   $template.append($descriptionView);
-  $template.append($contentChildContainer);
 
-
-  $template[0].customData = oContent;
-  return $template;
-}
-
-function createExpandedTemplate(oContent) {
-  var $template = $('<div class="templateContainer expanded"></div>');
-
-  var $header = $('<div class="templateHeader panel panel-default">' +
-    '<input class="templateTitle" value=' + oContent.title + '/>' +
-  '</div>');
-
-  var $bodyContainer = $('<div class="expandedBodyContainer"></div>');
-
-  var $descriptionView = $('<div class="descriptionView"></div>');
   if(oContent.type == 'text-frame') {
     $descriptionView.append('<div class="descriptionData"></div>');
+    $template.append($contentChildContainer)
   } else if(oContent.type == 'image-frame'){
     $descriptionView.append('<div class="descriptionData"><img class="describedImage" src=' + oContent.data + ' /></div>');
-
+    $template.append($contentChildContainer)
+  } else if(oContent.type == 'container') {
+    $descriptionView.append($contentChildContainer);
   }
 
-  var $contentChildContainer = $('<div class="contentChildContainer"></div>');
-  _.forEach(oContent.contents, function (oVisualAttribute) {
-    $contentChildContainer.append(createCollapsedTemplate(oVisualAttribute));
-  });
 
-  $template.append($header);
-  $bodyContainer.append($descriptionView);
-  $bodyContainer.append($contentChildContainer);
-  $template.append($bodyContainer);
+
+
 
   $template[0].customData = oContent;
   return $template;
 }
+
