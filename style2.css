@@ -1,0 +1,33 @@
+body * {
+    box-sizing: border-box;
+}
+
+.contentVisualAttributesEditorView{
+    height: 500px;
+}
+
+.visualAttributesList, .visualAttributesEditor{
+    height:100%;
+    border: 1px solid black;
+    float: left;
+}
+
+.visualAttributesList{
+    width: 20%;
+}
+
+.visualAttributesEditor{
+    width: 80%;
+}
+
+.editorDropZone{
+    width: 100%;
+    height: 100px;
+    background-color: lightgrey;
+}
+
+.visualAttributesListHeader, .visualAttributesEditorHeader{
+    height: 20px;
+    background-color: grey;
+    color: white;
+}

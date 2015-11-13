@@ -11,6 +11,25 @@ $(document).ready(function(){
   $VisAttrList.append(aElements);
 
   var $EditorDropZone = $('.editorDropZone');
+  setDropEvents($EditorDropZone);
+
+  $('.visualAttributeDragElement').on({
+    dragstart: function(oEvent){
+      oEvent.originalEvent.dataTransfer.setData('customData',JSON.stringify(oEvent.target.customData));
+    },
+    dragend: function(oEvent){
+    }
+  });
+
+  $('body').on('click', '.splitter', function (oEvent) {
+    var $target = $(oEvent.target);
+    console.log($target.attr('data-container'));
+    console.log($target.attr('data-value'));
+  });
+
+});
+
+function setDropEvents($EditorDropZone){
   $EditorDropZone.on({
     drop: handleVisAttrDrop,
     dragover: function(oEvent){
@@ -19,26 +38,18 @@ $(document).ready(function(){
     dragleave: function(oEvent){
     }
   });
+}
 
-  $('.visualAttributeDragElement').on({
-    dragstart: function(oEvent){
-      console.log("START");
+function setResizeEvent($frameContainer){
+  $frameContainer.on({
+    resize: function(oEvent){
+      console.log("Resize");
       console.log(oEvent);
-      oEvent.originalEvent.dataTransfer.setData('customData',JSON.stringify(oEvent.target.customData));
-    },
-    dragend: function(oEvent){
-      console.log("END");
-      console.log(oEvent);
+      console.log(oEvent.target);
     }
   });
 
-
-  $('body').on('click', '.splitter', function (oEvent) {
-    var $target = $(oEvent.target);
-    console.log($target.attr('data-container'));
-    console.log($target.attr('data-value'));
-  });
-});
+}
 
 function createContainer(){
   var oContainer = {
@@ -72,6 +83,8 @@ function createContainer(){
     '</div>' +
   '</div>');
   $Container[0].customData = oContainer;
+  setDropEvents($Container.find('.editorDropZone'));
+  setResizeEvent($Container.find('.visualAttributeContainerContent'));
   return {
     data: oContainer,
     uiElement: $Container
@@ -153,4 +166,6 @@ function handleVisAttrDrop(oEvent){
   }
   aVisualAttributes.push(oFrameData.data);
   $dropZone.before(oFrameData.uiElement);
+  $.event.trigger('resize',null,oFrameData.uiElement,false);
+  //$dropZone.parents('.visualAttributeContainer').trigger('resize');
 }
