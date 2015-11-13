@@ -32,6 +32,12 @@ $(document).ready(function(){
     }
   });
 
+
+  $('body').on('click', '.splitter', function (oEvent) {
+    var $target = $(oEvent.target);
+    console.log($target.attr('data-container'));
+    console.log($target.attr('data-value'));
+  });
 });
 
 function createContainer(){
@@ -49,10 +55,17 @@ function createContainer(){
     },
     "contents": []
   };
-  var $Container = $('<div class="visualAttributeContainer">' +
+  var sContainerId = oContainer.id;
+
+  var $Container = $('<div class="visualAttributeContainer" data-id=' + sContainerId + '>' +
     '<div class="visualAttributeContainerHeader">' +
       '<div class="containerTitle"><div class="titleInput">Container</div></div>' +
-      '<div class="containerTools"></div>' +
+      '<div class="containerTools">' +
+        '<div class="splitter" data-container=' + sContainerId + ' data-value="1">1</div>' +
+        '<div class="splitter" data-container=' + sContainerId + ' data-value="2">2</div>' +
+        '<div class="splitter" data-container=' + sContainerId + ' data-value="3">3</div>' +
+        '<div class="splitter" data-container=' + sContainerId + ' data-value="4">4</div>' +
+      '</div>' +
     '</div>' +
     '<div class="visualAttributeContainerContent">' +
       '<div class="editorDropZone"></div>' +

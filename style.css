@@ -40,10 +40,31 @@ body * {
 .visualAttributeContainerHeader, .visualAttributeFrameHeader {
     height: 20px;
     background-color: #eee;
-    padding: 3px;
+    /*padding: 3px;*/
     border-top: 1px solid #ddd;
     text-align: center;
     position: relative;
+    line-height: 15px;
+}
+
+.containerTitle {
+    width: calc(100% - 80px);
+    float: left;
+}
+
+.containerTools {
+    width: 80px;
+    float: right;
+}
+
+.splitter {
+    float: left;
+    height: 18px;
+    width: 18px;
+    border-radius: 100%;
+    border: 1px solid #ddd;
+    font-size: 11px;
+    font-weight: normal;
 }
 
 .titleInput {
@@ -57,8 +78,9 @@ body * {
     font-size: 11px;
     font-weight: normal;
     /* width: 32%; */
-    /* position: absolute; */
-    /* transform: translate(-50%, 0%); */
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
     /* text-align: center; */
 }
 
