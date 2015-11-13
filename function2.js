@@ -108,12 +108,15 @@ function handleVisAttrDrop(oEvent){
   var oDroppedData = JSON.parse(oEvent.originalEvent.dataTransfer.getData('customData'));
   var $dropZone = $(oEvent.target);
   var oFrameData = null;
+  var oContent = null;
   if(oDroppedData.id == 'text-frame'){
-    //oFrameData = createTextFrame();
+    oContent = _createTextFrameVisualAttribute();
+    oFrameData = createCollapsedTemplate(oContent);
   } else if(oDroppedData.id == 'image-frame'){
-    //oFrameData = createImageFrame();
+    oContent = _createImageFrameVisualAttribute();
+    oFrameData = createCollapsedTemplate(oContent);
   } else if(oDroppedData.id == 'container'){
-    var oContent = _createVisualAttributeContainer();
+    oContent = _createVisualAttributeContainer();
     oFrameData = createCollapsedTemplate(oContent);
   }
   if(oFrameData) {
@@ -127,8 +130,8 @@ function handleVisAttrDrop(oEvent){
 function createCollapsedTemplate(oContent) {
   var $template = $('<div class="templateContainer"></div>');
 
-  var $header = $('<div class="templateHeader">' +
-    '<div class="templateTitle panel panel-default">' + oContent.title + '</div>' +
+  var $header = $('<div class="templateHeader panel panel-default">' +
+    '<div class="templateTitle">' + oContent.title + '</div>' +
     '</div>' +
   '</div>');
 
