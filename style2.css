@@ -32,8 +32,12 @@ body * {
     color: white;
 }
 
-.templateContainer {
+.visualAttributesCanvas {
+    padding: 10px;
+}
 
+.templateContainer {
+    width: 430px
 }
 
 .templateHeader {
@@ -42,7 +46,8 @@ body * {
 }
 
 .templateTitle {
-
+    height: 45px;
+    padding: 10px;
 }
 
 .tileView {

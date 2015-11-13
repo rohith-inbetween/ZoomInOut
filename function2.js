@@ -128,7 +128,7 @@ function createCollapsedTemplate(oContent) {
   var $template = $('<div class="templateContainer"></div>');
 
   var $header = $('<div class="templateHeader">' +
-    '<div class="templateTitle">' + oContent.title + '</div>' +
+    '<div class="templateTitle panel panel-default">' + oContent.title + '</div>' +
     '</div>' +
   '</div>');
 
