@@ -31,3 +31,23 @@ function setDropEvents($EditorDropZone){
     }
   });
 }
+
+function handleVisAttrDrop(oEvent){
+  var oDroppedData = JSON.parse(oEvent.originalEvent.dataTransfer.getData('customData'));
+  var $dropZone = $(oEvent.target);
+  var oFrameData = null;
+  if(oDroppedData.id == 'text-frame'){
+    //oFrameData = createTextFrame();
+  } else if(oDroppedData.id == 'image-frame'){
+    //oFrameData = createImageFrame();
+  } else if(oDroppedData.id == 'container'){
+    //oFrameData = createContainer();
+  }
+  if(oFrameData) {
+    aVisualAttributes.push(oFrameData.data);
+    $dropZone.before(oFrameData.uiElement);
+    $.event.trigger('resize',null,oFrameData.uiElement,false);
+  }
+  //$dropZone.parents('.visualAttributeContainer').trigger('resize');
+}
+
