@@ -38,12 +38,15 @@ body {
     color: black;
 }
 
-.visualAttributeFrame {
-    height: 100px;
-    border: 1px solid #ddd;
+.visualAttributeContainerHeader, .visualAttributeFrameHeader {
+    height: 20px;
 }
 
-.visualAttributeContainer {
+.visualAttributeContainerContent, .visualAttributeFrameContent {
+    height: calc(100% - 20px);
+}
+
+.visualAttributeContainer, .visualAttributeFrame {
     height: 100px;
     border: 1px solid #ddd;
 }
