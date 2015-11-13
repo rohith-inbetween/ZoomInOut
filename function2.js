@@ -39,6 +39,7 @@ $(document).ready(function(){
     }
     handleFrameToggle($DOM);
 
+    oEvent.stopPropagation();
   });
 
 
@@ -52,10 +53,10 @@ $(document).ready(function(){
 function handleFrameToggle($DOM) {
   $DOM.toggleClass('expanded');
 
-  var $title = $DOM.find('.templateTitle');
+  var $title = $DOM.find('.templateTitle:first');
   $title.attr('contenteditable', $title.attr('contenteditable') === 'false');
 
-  var $descriptionView = $DOM.find('.descriptionView');
+  var $descriptionView = $DOM.find('.descriptionView:first');
   $descriptionView.slideToggle('slow');
 }
 
@@ -153,9 +154,15 @@ function handleVisAttrDrop(oEvent){
   }
   if(oFrameData) {
     aVisualAttributes.push(oContent);
-    $dropZone.before(oFrameData);
+    if($dropZone.hasClass('editorDropZone')){
+      $dropZone.before(oFrameData);
+    } else {
+      $dropZone.siblings('.contentChildContainer').append(oFrameData);
+    }
     //$.event.trigger('resize',null,oFrameData,false);
   }
+
+  oEvent.stopPropagation();
   //$dropZone.parents('.visualAttributeContainer').trigger('resize');
 }
 
@@ -188,17 +195,13 @@ function createCollapsedTemplate(oContent) {
 
   if(oContent.type == 'text-frame') {
     $descriptionView.append('<div class="descriptionData"></div>');
-    $template.append($contentChildContainer)
   } else if(oContent.type == 'image-frame'){
     $descriptionView.append('<div class="descriptionData"><img class="describedImage" src=' + oContent.data + ' /></div>');
-    $template.append($contentChildContainer)
   } else if(oContent.type == 'container') {
-    $descriptionView.append($contentChildContainer);
+    setDropEvents($descriptionView);
   }
 
-
-
-
+  $template.append($contentChildContainer);
 
   $template[0].customData = oContent;
   return $template;

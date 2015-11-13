@@ -46,14 +46,15 @@ body * {
 .templateContainer {
     width: 100%;
     margin-bottom: 10px;
+    transition: all 0.8s;
 }
 
-.expanded .templateHeader{
+.expanded>.templateHeader{
     width: 100%;
     text-align: center;
 }
 
-.expanded .templateTitle {
+.expanded>.templateHeader>.templateTitle {
     clear: both;
     position: relative;
     left: 50%;
@@ -85,7 +86,7 @@ body * {
     -moz-transition: all 0.8s;
 }
 
-.expanded .tileView {
+.expanded>.templateHeader>.tileView {
     opacity: 0;
 }
 
@@ -94,9 +95,9 @@ body * {
     width: 42px;
 }
 
-.contentChildContainer {
+/*.contentChildContainer {
     margin-left: 200px;
-}
+}*/
 
 .visualAttributeDragElement{
     margin: 4px;
@@ -106,12 +107,6 @@ body * {
 
 .visualAttributeDragElement .panel-body{
     padding:6px;
-}
-
-.expandedBodyContainer {
-    height: 300px;
-    min-width: 300px;
-    border: 1px solid #ddd;
 }
 
 .descriptionView {
@@ -142,4 +137,17 @@ body * {
 
 .sectionMoreIcon:hover{
     background-image: url('More-24_grey.png');
+}
+
+.contentChildContainer .expanded.templateContainer {
+    margin-left: 0px;
+}
+
+.contentChildContainer .templateContainer {
+    margin-left: 30px;
+    width: auto;
+}
+
+.expanded>.descriptionView>.templateContainer {
+    margin-left: 200px;
 }
