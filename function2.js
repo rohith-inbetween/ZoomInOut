@@ -132,7 +132,7 @@ function createCollapsedTemplate(oContent) {
 
   var $header = $('<div class="templateHeader panel panel-default">' +
     '<div class="templateTitle">' + oContent.title + '</div>' +
-    '</div>' +
+    '<div class="sectionMoreIcon"></div>' +
   '</div>');
 
   var $tileView = $('<div class="tileView"></div>');
@@ -151,6 +151,7 @@ function createCollapsedTemplate(oContent) {
 
   $template.append($header);
   $template.append($contentChildContainer);
+
 
   return $template;
 }
