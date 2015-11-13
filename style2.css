@@ -8,7 +8,7 @@ body * {
 
 .visualAttributesList, .visualAttributesEditor{
     height:100%;
-    border: 1px solid black;
+    border: 1px solid darkgray;
     float: left;
 }
 
@@ -27,13 +27,20 @@ body * {
 }
 
 .visualAttributesListHeader, .visualAttributesEditorHeader{
-    height: 20px;
-    background-color: grey;
-    color: white;
+    height: 24px;
+    background-color: #C7C7C7;
+    color: black;
+    font-weight: bold;
+    padding-left: 11px;
 }
 
-.visualAttributesCanvas {
+.visualAttributesCanvas, .visualAttributesListData{
+    height: calc(100% - 24px);
+}
+
+.visualAttributesCanvas{
     padding: 10px;
+    background-color: #EFEFEF;
 }
 
 .templateContainer {
@@ -93,9 +100,11 @@ body * {
 
 .visualAttributeDragElement{
     margin: 4px;
+    border-radius: 0px;
+    box-shadow: 2px 2px 2px #eee;
 }
 
-.panel-body{
+.visualAttributeDragElement .panel-body{
     padding:6px;
 }
 
@@ -116,4 +125,21 @@ body * {
 .descriptionData {
     min-width: 100%;
     height: 100%;
+}
+
+.visualAttributeDragElement .panel-body:hover {
+    background-color: #E1EDFF;
+}
+
+.sectionMoreIcon{
+    background-image: url('More-24_blue.png');
+    height: 20px;
+    width: 30px;
+    background-repeat: no-repeat;
+    float: right;
+    margin: 8px;
+}
+
+.sectionMoreIcon:hover{
+    background-image: url('More-24_grey.png');
 }

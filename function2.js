@@ -183,6 +183,7 @@ function createCollapsedTemplate(oContent) {
 
   var $header = $('<div class="templateHeader panel panel-default">' +
     '<div class="templateTitle" contenteditable="false">' + oContent.title + '</div>' +
+    '<div class="sectionMoreIcon"></div>' +
   '</div>');
 
   var $tileView = $('<div class="tileView"></div>');
@@ -211,6 +212,7 @@ function createCollapsedTemplate(oContent) {
   $template.append($header);
   $template.append($descriptionView);
   $template.append($contentChildContainer);
+
 
   $template[0].customData = oContent;
   return $template;
