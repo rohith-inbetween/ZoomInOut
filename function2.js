@@ -35,17 +35,7 @@ function setDropEvents($EditorDropZone){
   });
 }
 
-function handleVisAttrDrop(oEvent){
-  var oDroppedData = JSON.parse(oEvent.originalEvent.dataTransfer.getData('customData'));
-  if(oDroppedData.id == 'text-frame'){
 
-  } else if(oDroppedData.id == 'image-frame'){
-
-  } else if(oDroppedData.id == 'container'){
-
-  }
-
-}
 function handleVisAttrDrop(oEvent){
   var oDroppedData = JSON.parse(oEvent.originalEvent.dataTransfer.getData('customData'));
   var $dropZone = $(oEvent.target);
