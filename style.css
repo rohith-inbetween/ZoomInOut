@@ -1,4 +1,4 @@
-body {
+body * {
     box-sizing: border-box;
 }
 
@@ -10,7 +10,6 @@ body {
     height:100%;
     border: 1px solid black;
     float: left;
-    box-sizing: border-box;
 }
 
 .visualAttributesList{
@@ -67,9 +66,14 @@ body {
     height: calc(100% - 20px);
 }
 
+.visualAttributeContainerContent .editorDropZone{
+    height:100%;
+}
+
 .visualAttributeContainer, .visualAttributeFrame {
     height: 100px;
     border: 1px solid #ddd;
+    margin: 2px;
 }
 
 

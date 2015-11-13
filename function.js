@@ -51,10 +51,12 @@ function createContainer(){
   };
   var $Container = $('<div class="visualAttributeContainer">' +
     '<div class="visualAttributeContainerHeader">' +
-      '<div class="containerTitle"><div class="titleInput">Container</div>' +
+      '<div class="containerTitle"><div class="titleInput">Container</div></div>' +
       '<div class="containerTools"></div>' +
     '</div>' +
-    '<div class="visualAttributeContainerContent"></div>' +
+    '<div class="visualAttributeContainerContent">' +
+      '<div class="editorDropZone"></div>' +
+    '</div>' +
   '</div>');
   $Container[0].customData = oContainer;
   return {
@@ -77,7 +79,7 @@ function createImageFrame(){
     "contents" : []
   };
   var $Container = $('<div class="visualAttributeFrame">' +
-    '<div class="visualAttributeFrameHeader"><div class="titleInput">Image Frame</div>' +
+    '<div class="visualAttributeFrameHeader"><div class="titleInput">Image Frame</div></div>' +
     '<div class="visualAttributeFrameContent"></div>' +
   '</div>');
   $Container[0].customData = oImageFrame;
@@ -101,7 +103,7 @@ function createTextFrame(){
     "contents" : []
   };
   var $Container = $('<div class="visualAttributeFrame">' +
-  '<div class="visualAttributeFrameHeader"><div class="titleInput">Text Frame</div>' +
+  '<div class="visualAttributeFrameHeader"><div class="titleInput">Text Frame</div></div>' +
   '<div class="visualAttributeFrameContent"></div>' +
   '</div>');
   $Container[0].customData = oTextFrame;
