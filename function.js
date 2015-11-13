@@ -50,7 +50,10 @@ function createContainer(){
     "contents": []
   };
   var $Container = $('<div class="visualAttributeContainer">' +
-    '<div class="visualAttributeContainerHeader"></div>' +
+    '<div class="visualAttributeContainerHeader">' +
+      '<div class="containerTitle"><input type="text" class="titleInput" value="Container"/></div>' +
+      '<div class="containerTools"></div>' +
+    '</div>' +
     '<div class="visualAttributeContainerContent"></div>' +
   '</div>');
   $Container[0].customData = oContainer;
