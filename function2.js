@@ -2,7 +2,10 @@ $(document).ready(function(){
 
   var $VisAttrList = $('.visualAttributesListData');
   var aElements =_.map(aFrames, function(oVal){
-    var $oElement = $('<div draggable="true" class="visualAttributeDragElement" data-id="oVal.id">'+oVal.name+'</div>');
+    //var $oElement = $('<li draggable="true" class="visualAttributeDragElement active" data-id="oVal.id"><a>'+oVal.name+'</a></li>');
+    var $oElement = $('<div draggable="true" class="panel panel-default visualAttributeDragElement">' +
+      '<div class="panel-body">'+oVal.name+'</div>' +
+    '</div>');
     $oElement[0].customData = oVal;
     return $oElement;
   });
@@ -32,6 +35,17 @@ function setDropEvents($EditorDropZone){
   });
 }
 
+function handleVisAttrDrop(oEvent){
+  var oDroppedData = JSON.parse(oEvent.originalEvent.dataTransfer.getData('customData'));
+  if(oDroppedData.id == 'text-frame'){
+
+  } else if(oDroppedData.id == 'image-frame'){
+
+  } else if(oDroppedData.id == 'container'){
+
+  }
+
+}
 function handleVisAttrDrop(oEvent){
   var oDroppedData = JSON.parse(oEvent.originalEvent.dataTransfer.getData('customData'));
   var $dropZone = $(oEvent.target);

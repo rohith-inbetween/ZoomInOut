@@ -31,3 +31,11 @@ body * {
     background-color: grey;
     color: white;
 }
+
+.visualAttributeDragElement{
+    margin: 4px;
+}
+
+.panel-body{
+    padding:6px;
+}
