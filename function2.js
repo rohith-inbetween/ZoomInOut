@@ -25,51 +25,22 @@ $(document).ready(function(){
   });
 
   $('body').on('click', '.templateContainer .templateHeader', function (oEvent) {
+
     var oDom = oEvent.currentTarget;
+
+
     var $DOM = $(oDom).closest('.templateContainer');
     if($(oEvent.target).hasClass('.templateTitle')) {
       return;
     }
+    var $previousExpanded = $('.expanded');
+    if($previousExpanded[0] != $DOM[0]){
+      handleFrameToggle($previousExpanded);
+    }
+    handleFrameToggle($DOM);
 
-    $('.expanded').removeClass('expanded');
-
-    var $title = $DOM.find('.templateTitle');
-    $title.attr('contenteditable', $title.attr('contenteditable') === 'false');
-
-    var $descriptionView = $DOM.find('.descriptionView');
-    $descriptionView.slideToggle('slow');
-
-   /* var oVisualAttribute = oDom.customData;
-    var $expandedDOM = createExpandedTemplate(oVisualAttribute);
-    $expandedDOM.hide();
-    $(oDom).before($expandedDOM);
-    *//*$(oDom).fadeOut("slow", function(){
-      //$(this).replaceWith($expandedDOM);
-      //$(oDom).fadeIn("slow");
-    });*//*
-    $(oDom).toggle("slow",function(){
-      $(this).remove();
-    });
-    $expandedDOM.toggle("slow");*/
   });
 
-  /*$('body').on('click', '.expanded', function (oEvent) {
-    var oDom = oEvent.currentTarget;
-    if($(oEvent.target).hasClass('.templateTitle')) {
-      return;
-    }
-    var $DOM = $(oDom);
-
-    var $descriptionView = $DOM.find('.descriptionView');
-    $descriptionView.slideToggle('slow');
-    *//*var oVisualAttribute = oDom.customData;
-    var $collapsedDOM = createCollapsedTemplate(oVisualAttribute);
-
-    $(oDom).fadeOut("slow", function(){
-      $(this).replaceWith($collapsedDOM);
-      $(oDom).fadeIn("slow");
-    });*//*
-  });*/
 
   $('body').on('click', '.expanded .templateTitle', function (oEvent) {
     oEvent.stopPropagation();
@@ -77,6 +48,16 @@ $(document).ready(function(){
 
 });
 
+
+function handleFrameToggle($DOM) {
+  $DOM.toggleClass('expanded');
+
+  var $title = $DOM.find('.templateTitle');
+  $title.attr('contenteditable', $title.attr('contenteditable') === 'false');
+
+  var $descriptionView = $DOM.find('.descriptionView');
+  $descriptionView.slideToggle('slow');
+}
 
 function generateUUID() {
   var iCurrentTimeStamp = new Date().getTime();
