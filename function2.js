@@ -24,6 +24,57 @@ $(document).ready(function(){
     }
   });
 
+  $('body').on('click', '.templateContainer .templateHeader', function (oEvent) {
+    var oDom = oEvent.currentTarget;
+    var $DOM = $(oDom).closest('.templateContainer');
+    if($(oEvent.target).hasClass('.templateTitle')) {
+      return;
+    }
+
+    $('.expanded').removeClass('expanded');
+
+    var $title = $DOM.find('.templateTitle');
+    $title.attr('contenteditable', $title.attr('contenteditable') === 'false');
+
+    var $descriptionView = $DOM.find('.descriptionView');
+    $descriptionView.slideToggle('slow');
+
+   /* var oVisualAttribute = oDom.customData;
+    var $expandedDOM = createExpandedTemplate(oVisualAttribute);
+    $expandedDOM.hide();
+    $(oDom).before($expandedDOM);
+    *//*$(oDom).fadeOut("slow", function(){
+      //$(this).replaceWith($expandedDOM);
+      //$(oDom).fadeIn("slow");
+    });*//*
+    $(oDom).toggle("slow",function(){
+      $(this).remove();
+    });
+    $expandedDOM.toggle("slow");*/
+  });
+
+  /*$('body').on('click', '.expanded', function (oEvent) {
+    var oDom = oEvent.currentTarget;
+    if($(oEvent.target).hasClass('.templateTitle')) {
+      return;
+    }
+    var $DOM = $(oDom);
+
+    var $descriptionView = $DOM.find('.descriptionView');
+    $descriptionView.slideToggle('slow');
+    *//*var oVisualAttribute = oDom.customData;
+    var $collapsedDOM = createCollapsedTemplate(oVisualAttribute);
+
+    $(oDom).fadeOut("slow", function(){
+      $(this).replaceWith($collapsedDOM);
+      $(oDom).fadeIn("slow");
+    });*//*
+  });*/
+
+  $('body').on('click', '.expanded .templateTitle', function (oEvent) {
+    oEvent.stopPropagation();
+  });
+
 });
 
 
@@ -131,8 +182,7 @@ function createCollapsedTemplate(oContent) {
   var $template = $('<div class="templateContainer"></div>');
 
   var $header = $('<div class="templateHeader panel panel-default">' +
-    '<div class="templateTitle">' + oContent.title + '</div>' +
-    '</div>' +
+    '<div class="templateTitle" contenteditable="false">' + oContent.title + '</div>' +
   '</div>');
 
   var $tileView = $('<div class="tileView"></div>');
@@ -144,13 +194,55 @@ function createCollapsedTemplate(oContent) {
   }
   $header.append($tileView);
 
+
+  var $descriptionView = $('<div class="descriptionView" style="display: none;"></div>');
+  if(oContent.type == 'text-frame') {
+    $descriptionView.append('<div class="descriptionData"></div>');
+  } else if(oContent.type == 'image-frame'){
+    $descriptionView.append('<div class="descriptionData"><img class="describedImage" src=' + oContent.data + ' /></div>');
+
+  }
+
   var $contentChildContainer = $('<div class="contentChildContainer"></div>');
   _.forEach(oContent.contents, function (oVisualAttribute) {
     $contentChildContainer.append(createCollapsedTemplate(oVisualAttribute));
   });
 
   $template.append($header);
+  $template.append($descriptionView);
   $template.append($contentChildContainer);
 
+  $template[0].customData = oContent;
+  return $template;
+}
+
+function createExpandedTemplate(oContent) {
+  var $template = $('<div class="templateContainer expanded"></div>');
+
+  var $header = $('<div class="templateHeader panel panel-default">' +
+    '<input class="templateTitle" value=' + oContent.title + '/>' +
+  '</div>');
+
+  var $bodyContainer = $('<div class="expandedBodyContainer"></div>');
+
+  var $descriptionView = $('<div class="descriptionView"></div>');
+  if(oContent.type == 'text-frame') {
+    $descriptionView.append('<div class="descriptionData"></div>');
+  } else if(oContent.type == 'image-frame'){
+    $descriptionView.append('<div class="descriptionData"><img class="describedImage" src=' + oContent.data + ' /></div>');
+
+  }
+
+  var $contentChildContainer = $('<div class="contentChildContainer"></div>');
+  _.forEach(oContent.contents, function (oVisualAttribute) {
+    $contentChildContainer.append(createCollapsedTemplate(oVisualAttribute));
+  });
+
+  $template.append($header);
+  $bodyContainer.append($descriptionView);
+  $bodyContainer.append($contentChildContainer);
+  $template.append($bodyContainer);
+
+  $template[0].customData = oContent;
   return $template;
 }

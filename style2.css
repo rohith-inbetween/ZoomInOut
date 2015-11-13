@@ -38,13 +38,31 @@ body * {
 
 .templateContainer {
     width: 100%;
+    margin-bottom: 10px;
+}
+
+.expanded .templateHeader{
+    width: 100%;
+    text-align: center;
+}
+
+.expanded .templateTitle {
+    clear: both;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    border: none;
 }
 
 .templateHeader {
     background-color: white;
     box-shadow: 0 1px 2px 2px #eee;
     height: 45px;
-    width: 430px
+    width: 430px;
+    margin-bottom: 0;
+    transition: all 0.8s;
+    -webkit-transition: all 0.8s;
+    -moz-transition: all 0.8s;
 }
 
 .templateTitle {
@@ -55,6 +73,13 @@ body * {
 .tileView {
     float: left;
     margin-left: 20px;
+    transition: all 0.8s;
+    -webkit-transition: all 0.8s;
+    -moz-transition: all 0.8s;
+}
+
+.expanded .tileView {
+    opacity: 0;
 }
 
 .tileImage {
@@ -72,4 +97,23 @@ body * {
 
 .panel-body{
     padding:6px;
+}
+
+.expandedBodyContainer {
+    height: 300px;
+    min-width: 300px;
+    border: 1px solid #ddd;
+}
+
+.descriptionView {
+    /*min-height: 300px;*/
+    /*min-width: 100%;*/
+    height:300px;
+    border: 1px solid #ddd;
+    background-color: #555555;
+}
+
+.descriptionData {
+    min-width: 100%;
+    height: 100%;
 }
