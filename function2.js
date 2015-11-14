@@ -1,7 +1,7 @@
 var aVisualAttributes = [];
 
 $(document).ready(function(){
-
+  $('#sample').editable();
   var $VisAttrList = $('.visualAttributesListData');
   var aElements =_.map(aFrames, function(oVal){
     //var $oElement = $('<li draggable="true" class="visualAttributeDragElement active" data-id="oVal.id"><a>'+oVal.name+'</a></li>');
@@ -178,8 +178,7 @@ function createCollapsedTemplate(oContent) {
   if(oContent.type == 'text-frame') {
     $tileView.append('<div class="tileData">' + oContent.data + '</div>');
   } else if(oContent.type == 'image-frame'){
-    $tileView.append('<div class="tileData"><img class="tileImage" src=' + oContent.data + ' /></div>');
-
+    $tileView.append('<div class="tileData"><img class="tileImage"/></div>');
   }
   $header.append($tileView);
   $template.append($header);
@@ -194,9 +193,23 @@ function createCollapsedTemplate(oContent) {
   $template.append($descriptionView);
 
   if(oContent.type == 'text-frame') {
-    $descriptionView.append('<div class="descriptionData"></div>');
+    var $descriptionData = $('<div class="descriptionData">' + oContent.data + '</div>');
+    $descriptionView.append($descriptionData);
+    $descriptionData.editable();
+    $descriptionData.on('editable.contentChanged',setFroalaContent);
   } else if(oContent.type == 'image-frame'){
-    $descriptionView.append('<div class="descriptionData"><img class="describedImage" src=' + oContent.data + ' /></div>');
+    $descriptionView.append('<div class="descriptionData">' +
+      '<div class="addImageOption">' +
+        '<input class="fileUpload" type="file" accept="image/*" style="display: none">' +
+        '<div class="insert-image-button" title="Add Image"></div>' +
+        '<div class="insert-image-label">Click to add image</div>' +
+      '</div>' +
+      '<img class="describedImage" style="display: none">' +
+    '</div>');
+    $descriptionView.find('.insert-image-button').on('click',function(oEvent){
+      $(oEvent.target).siblings('.fileUpload').click();
+    });
+    $descriptionView.find('.fileUpload').on('change',setImage);
   } else if(oContent.type == 'container') {
     setDropEvents($descriptionView);
   }
@@ -207,3 +220,33 @@ function createCollapsedTemplate(oContent) {
   return $template;
 }
 
+function setFroalaContent(e, editor){
+  var $descriptionData = $(this);
+  $descriptionData.closest('.templateContainer')[0].customData.data = $descriptionData.editable('getHTML');
+  $descriptionData.closest('.templateContainer').find('.tileData:first').html($descriptionData.editable('getHTML'));
+}
+
+function setImage(oEvent){
+  console.log(oEvent);
+  var $addImageOption = $(oEvent.target).closest('.addImageOption');
+  $addImageOption.hide();
+  var $imageDiv = $addImageOption.siblings('.describedImage');
+  $imageDiv.show();
+  var $tileImage = $addImageOption.closest('.descriptionView').siblings('.templateHeader').find('.tileImage');
+
+  var oImageFiles = oEvent.target.files; // FileList object
+
+  var oImageFile = oImageFiles[0];
+  var oFileReader = new FileReader();
+
+  oFileReader.onload = (function (file) {
+    return function (e) {
+      if (file.type.indexOf('image') != -1) {
+        $imageDiv.attr('src', e.target.result);
+        $tileImage.attr('src', e.target.result)
+      }
+    }
+  })(oImageFile);
+
+  oFileReader.readAsDataURL(oImageFile);
+}
