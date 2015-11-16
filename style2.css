@@ -189,3 +189,7 @@ body * {
 .describedImage{
     max-width: 100%;
 }
+
+.descriptionData .fr-toolbar {
+    border-top: 6px solid #9BC2D2;
+}

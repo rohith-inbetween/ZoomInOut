@@ -1,7 +1,6 @@
 var aVisualAttributes = [];
 
 $(document).ready(function(){
-  $('#sample').editable();
   var $VisAttrList = $('.visualAttributesListData');
   var aElements =_.map(aFrames, function(oVal){
     //var $oElement = $('<li draggable="true" class="visualAttributeDragElement active" data-id="oVal.id"><a>'+oVal.name+'</a></li>');
@@ -195,7 +194,7 @@ function createCollapsedTemplate(oContent) {
   if(oContent.type == 'text-frame') {
     var $descriptionData = $('<div class="descriptionData">' + oContent.data + '</div>');
     $descriptionView.append($descriptionData);
-    $descriptionData.editable();
+    $descriptionData.froalaEditor();
     $descriptionData.on('editable.contentChanged',setFroalaContent);
   } else if(oContent.type == 'image-frame'){
     $descriptionView.append('<div class="descriptionData">' +
@@ -222,8 +221,8 @@ function createCollapsedTemplate(oContent) {
 
 function setFroalaContent(e, editor){
   var $descriptionData = $(this);
-  $descriptionData.closest('.templateContainer')[0].customData.data = $descriptionData.editable('getHTML');
-  $descriptionData.closest('.templateContainer').find('.tileData:first').html($descriptionData.editable('getHTML'));
+  $descriptionData.closest('.templateContainer')[0].customData.data = $descriptionData.froalaEditor('html.get', true);
+  $descriptionData.closest('.templateContainer').find('.tileData:first').html($descriptionData.froalaEditor('html.get', true));
 }
 
 function setImage(oEvent){
