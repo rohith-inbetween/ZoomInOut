@@ -3,5 +3,6 @@
  */
 var React = require('react');
 var AppController = require('./app-controller.jsx');
+var mockData = require("./mockData");
 
-React.render(<AppController />, document.querySelector('body'));
+React.render(<AppController data={mockData} />, document.querySelector('body'));
