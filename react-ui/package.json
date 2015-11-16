@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "material-ui": "^0.13.2",
+    "react": "*",
+    "reactify": "*"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "reactify",
+        {
+          "es6": true
+        }
+      ]
+    ]
+  }
+}
