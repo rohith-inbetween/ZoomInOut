@@ -26,7 +26,10 @@ var store = {
           index: i
         };
       } else{
-        this.findTextFrame(parentArray[i].contents, frameID);
+        var frameData = this.findTextFrame(parentArray[i].contents, frameID);
+        if(frameData){
+          return frameData;
+        }
       }
     }
   },
@@ -60,7 +63,17 @@ var store = {
 
     this._triggerChange();
   }
+  },
 
+  makeParentContainerAndAddToParent: function(frameId){
+    var frameData = this.getTextFrame(frameId);
+    var parentArray = frameData.parentArray;
+    var frame = parentArray.splice(frameData.index,1);
+    var newParent = parentArray[parentArray.length - 1];
+    newParent.type = 'container';
+    newParent.contents.push(frame[0]);
+    this._triggerChange();
+  }
 
 };
 
