@@ -8,10 +8,18 @@ var AppView =  React.createClass({
   },
 
   keyDown: function(e){
+    var frameID;
     if(e.keyCode == 13){
       e.preventDefault();
-      var frameID = this.props.frameData.id;
+      frameID = this.props.frameData.id;
       myStore.createNewFrame(e.target.textContent, frameID);
+    }
+    else if(e.keyCode == 8){
+      e.preventDefault();
+      frameID = this.props.frameData.id;
+    }
+    else if(e.keyCode == 9){
+
     }
   },
 
