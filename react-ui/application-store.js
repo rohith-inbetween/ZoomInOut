@@ -7,14 +7,20 @@ var store = {
 
   data: mockData,
 
-  _triggerChange: function(){
+  focusedFrameId: null,
+
+  oCaretPosition: {
+    focusId: '',
+    indexToFocus: 0
+  },
+
+  triggerChange: function(){
     return store.trigger('change');
   },
 
 
   getTextFrame: function(frameID){
-    var frameData = this.findTextFrame(this.data, frameID);
-    return frameData;
+    return this.findTextFrame(this.data, frameID);
   },
 
   findTextFrame: function(parentArray, frameID){
@@ -34,14 +40,25 @@ var store = {
     }
   },
 
- createNewFrame: function (newTitle, frameID){
+  createNewFrame: function (newTitle, frameID) {
 
-   var frameData = this.getTextFrame(frameID);
-   frameData.frame.title = newTitle;
-   frameData.parentArray.push(this.createTextFrame());
+    var frameData = this.getTextFrame(frameID);
+    frameData.frame.title = newTitle;
+    var newFrame = this.createTextFrame();
+    frameData.parentArray.push(newFrame);
 
-   this._triggerChange();
- },
+    this.setFocusedFrameId(newFrame.id);
+
+    this.triggerChange();
+  },
+
+  setFocusedFrameId: function(frameDOMid){
+    this.focusedFrameId = frameDOMid;
+  },
+
+  getFocusedFrameId: function(){
+    return this.focusedFrameId;
+  },
 
   createTextFrame: function(){
     return{
@@ -59,10 +76,13 @@ var store = {
 
   removeFrame: function(frameID){
     var frameData = this.getTextFrame(frameID);
+    this.oCaretPosition.focusId = frameData.parentArray[frameData.index-1].id;
+    this.oCaretPosition.indexToFocus = frameData.parentArray[frameData.index-1].title.length;
+
     frameData.parentArray.splice(frameData.index);
 
-    this._triggerChange();
-  }
+    this.triggerChange();
+
   },
 
   makeParentContainerAndAddToParent: function(frameId){
@@ -72,7 +92,7 @@ var store = {
     var newParent = parentArray[parentArray.length - 1];
     newParent.type = 'container';
     newParent.contents.push(frame[0]);
-    this._triggerChange();
+    this.triggerChange();
   }
 
 };

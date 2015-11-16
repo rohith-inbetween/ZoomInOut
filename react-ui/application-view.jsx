@@ -27,6 +27,23 @@ var AppView =  React.createClass({
     }
   },
 
+  componentDidUpdate: function(){
+    this.setFocusOnFocussedElement();
+  },
+
+  setFocusOnFocussedElement: function(){
+    var focussedId = myStore.getFocusedFrameId();
+    if(focussedId && this.props.frameData.id == focussedId){
+      var oTitleDOM = this.refs.editableTitleDiv;
+      oTitleDOM.focus();
+      myStore.setFocusedFrameId(null);
+    }
+  },
+
+  componentDidMount: function(){
+    this.setFocusOnFocussedElement();
+  },
+
   render: function(){
     var oFrameData = this.props.frameData;
     var aContainerContents = [];
@@ -38,7 +55,7 @@ var AppView =  React.createClass({
     }
     return(
       <div className="frameElement">
-        <div className="titleDiv" contentEditable={true} onKeyDown={this.keyDown}>{oFrameData.title}</div>
+        <div className="titleDiv" ref="editableTitleDiv" data-uuid={oFrameData.id} contentEditable={true} onKeyDown={this.keyDown}>{oFrameData.title}</div>
         <div className="containerContents">
           {aContainerContents}
         </div>
