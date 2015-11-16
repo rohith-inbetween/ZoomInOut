@@ -15,8 +15,12 @@ var AppView =  React.createClass({
       myStore.createNewFrame(e.target.textContent, frameID);
     }
     else if(e.keyCode == 8){
-      e.preventDefault();
-      frameID = this.props.frameData.id;
+      if(e.target.textContent.length == 0){
+        e.preventDefault();
+        frameID = this.props.frameData.id;
+        myStore.removeFrame(frameID);
+      }
+
     }
     else if(e.keyCode == 9){
 

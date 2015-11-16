@@ -52,6 +52,13 @@ var store = {
 
   getFrameData: function(){
     return this.data;
+  },
+
+  removeFrame: function(frameID){
+    var frameData = this.getTextFrame(frameID);
+    frameData.parentArray.splice(frameData.index);
+
+    this._triggerChange();
   }
 
 
