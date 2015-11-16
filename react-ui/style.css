@@ -1,3 +1,7 @@
-.frameElement{
-    border: 1px solid black;
+.titleDiv{
+    border: 1px solid #e3e3e3;
+}
+
+.containerContents{
+    margin-left: 10px;
 }
