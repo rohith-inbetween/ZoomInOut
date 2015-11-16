@@ -55,7 +55,7 @@ var AppView =  React.createClass({
     }
     return(
       <div className="frameElement">
-        <div className="titleDiv" ref="editableTitleDiv" data-uuid={oFrameData.id} contentEditable={true} onKeyDown={this.keyDown}>{oFrameData.title}</div>
+        <div id={oFrameData.id} className="titleDiv" ref="editableTitleDiv" data-uuid={oFrameData.id} contentEditable={true} onKeyDown={this.keyDown}>{oFrameData.title}</div>
         <div className="containerContents">
           {aContainerContents}
         </div>

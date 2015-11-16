@@ -76,8 +76,8 @@ var store = {
 
   removeFrame: function(frameID){
     var frameData = this.getTextFrame(frameID);
-    this.oCaretPosition.focusId = frameData.parentArray[frameData.index-1].id;
-    this.oCaretPosition.indexToFocus = frameData.parentArray[frameData.index-1].title.length;
+    var frameDOMID= frameData.parentArray[frameData.index-1].id;
+    this.setFocusedFrameId(frameDOMID);
 
     frameData.parentArray.splice(frameData.index);
 
