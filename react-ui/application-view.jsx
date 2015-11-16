@@ -32,12 +32,30 @@ var AppView =  React.createClass({
   },
 
   setFocusOnFocussedElement: function(){
-    var focussedId = myStore.getFocusedFrameId();
+    var oCaretPosition =myStore.oCaretPosition;
+    var fIndex = oCaretPosition.indexToFocus;
+    var focussedId = oCaretPosition.focusId; /*myStore.getFocusedFrameId();*/
     if(focussedId && this.props.frameData.id == focussedId){
       var oTitleDOM = this.refs.editableTitleDiv;
-      oTitleDOM.focus();
+
+      /*oTitleDOM.focus();
       myStore.setFocusedFrameId(null);
     }
+
+    {*/
+
+      /*if(!fIndex){
+        fIndex = oTitleDOM.textContent.length;
+      }*/
+
+      var oRange = document.createRange();
+      oRange.setStart(oTitleDOM, fIndex);
+      oRange.setEnd(oTitleDOM, fIndex);
+      var oSelection = window.getSelection();
+      oSelection.removeAllRanges();
+      oSelection.addRange(oRange);
+    }
+
   },
 
   componentDidMount: function(){

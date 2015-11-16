@@ -47,7 +47,11 @@ var store = {
     var newFrame = this.createTextFrame();
     frameData.parentArray.push(newFrame);
 
-    this.setFocusedFrameId(newFrame.id);
+    this.oCaretPosition.focusId = newFrame.id;
+    this.oCaretPosition.indexToFocus = 0;
+
+
+    //this.setFocusedFrameId(newFrame.id);
 
     this.triggerChange();
   },
@@ -78,6 +82,9 @@ var store = {
     var frameData = this.getTextFrame(frameID);
     var frameDOMID= frameData.parentArray[frameData.index-1].id;
     this.setFocusedFrameId(frameDOMID);
+
+    this.oCaretPosition.focusId = frameDOMID;
+
 
     frameData.parentArray.splice(frameData.index);
 
