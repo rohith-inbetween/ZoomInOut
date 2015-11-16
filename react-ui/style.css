@@ -1,5 +1,7 @@
 .titleDiv{
     border: 1px solid #e3e3e3;
+    margin: 0 auto;
+    padding: 10px;
 }
 
 .containerContents{
