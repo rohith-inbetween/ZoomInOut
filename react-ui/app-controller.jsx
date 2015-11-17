@@ -13,16 +13,13 @@ var AppController = React.createClass({
   //@UnBind: store with state
   componentWillUnmount: function () {
     myStore.unbind('change', this.storyStateChanged);
-    //this.props.storyAction.deRegisterEvent();
   },
 
   //@Bind: Store with state
   componentDidMount: function () {
     myStore.bind('change', this.storyStateChanged);
-    //this.props.storyAction.registerEvent();
-
+    myStore.initialize();
   },
-
 
   storyStateChanged: function () {
     this.setState({
@@ -30,9 +27,7 @@ var AppController = React.createClass({
     });
   },
 
-
   render: function () {
-    console.log("HEKLLOOO!@#!@#");
     var aFrameData = this.props.data;
     var aFrameElements = [];
     for(var i = 0 ; i < aFrameData.length ; i++){

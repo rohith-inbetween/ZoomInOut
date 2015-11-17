@@ -19,11 +19,14 @@ var AppView =  React.createClass({
         frameID = this.props.frameData.id;
         myStore.removeFrame(frameID);
       }
-
     }
     else if(e.keyCode == 9){
       e.preventDefault();
-      myStore.makeParentContainerAndAddToParent(frameID);
+      if(e.shiftKey){
+        myStore.makeParentAndAddSiblingsToChildren(e.target.textContent, frameID);
+      } else {
+        myStore.changeParentToContainerAndAddToParent(e.target.textContent, frameID);
+      }
     }
   },
 

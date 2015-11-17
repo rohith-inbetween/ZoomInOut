@@ -7,6 +7,8 @@ var store = {
 
   data: mockData,
 
+  flatStructure: {},
+
   focusedFrameId: null,
 
   oCaretPosition: {
@@ -18,11 +20,6 @@ var store = {
     return store.trigger('change');
   },
 
-
-  getTextFrame: function(frameID){
-    return this.findTextFrame(this.data, frameID);
-  },
-
   findTextFrame: function(parentArray, frameID){
     for(var i=0; i<parentArray.length ;i++){
       if(parentArray[i].id == frameID){
@@ -31,28 +28,25 @@ var store = {
           parentArray: parentArray,
           index: i
         };
-      } else{
-        var frameData = this.findTextFrame(parentArray[i].contents, frameID);
-        if(frameData){
-          return frameData;
-        }
       }
     }
   },
 
   createNewFrame: function (newTitle, frameID) {
 
-    var frameData = this.getTextFrame(frameID);
-    frameData.frame.title = newTitle;
-    var newFrame = this.createTextFrame();
-    frameData.parentArray.push(newFrame);
-
+    var oFrame = this.getFrameObject(frameID);
+    oFrame.title = newTitle;
+    var newFrame = this.createTextFrame(oFrame.parentId);
+    var aParentArray = this.data;
+    if(oFrame.parentId){
+      var oParentFrame = this.getFrameObject(oFrame.parentId);
+      aParentArray = oParentFrame.contents;
+    }
+    var oFrameData = this.findTextFrame(aParentArray, frameID);
+    aParentArray.splice(oFrameData.index + 1, 0, newFrame);
+    //this.setFocusedFrameId(newFrame.id);
     this.oCaretPosition.focusId = newFrame.id;
     this.oCaretPosition.indexToFocus = 0;
-
-
-    //this.setFocusedFrameId(newFrame.id);
-
     this.triggerChange();
   },
 
@@ -64,44 +58,115 @@ var store = {
     return this.focusedFrameId;
   },
 
-  createTextFrame: function(){
-    return{
+  createTextFrame: function(parentId){
+    var newTextFrame = {
       "id" : uuid.generateUUID(),
-        "type" : "textFrame",
-        "title": "",
-        "contents" : []
+      "type" : "textFrame",
+      "title": "",
+      "contents" : [],
+      "parentId": parentId
     };
-
+    this.setFlatStructure(newTextFrame);
+    return newTextFrame
   },
 
   getFrameData: function(){
     return this.data;
   },
 
-  removeFrame: function(frameID){
-    var frameData = this.getTextFrame(frameID);
-    if(frameData.parentArray.length == 1 ){
-      frameData.parentArray.splice(0);
+  changeParentToContainerAndAddToParent: function(newData, frameId){
+    var oFrame = this.getFrameObject(frameId);
+    var parentArray = this.data;
+    if(oFrame.parentId){
+      var oParentFrame = this.getFrameObject(oFrame.parentId);
+      parentArray = oParentFrame.contents;
     }
-    else{
-      var frameDOMID= frameData.parentArray[frameData.index-1].id;
-      this.setFocusedFrameId(frameDOMID);
-      this.oCaretPosition.focusId = frameDOMID;
-      this.oCaretPosition.indexToFocus = 99;
-      frameData.parentArray.splice(frameData.index);
+    var oFrameData = this.findTextFrame(parentArray, frameId)
+    var newParent = parentArray[oFrameData.index - 1];
+    if(newParent == null){
+      return;
     }
+    parentArray.splice(oFrameData.index,1);
+    oFrame.title = newData;
+    newParent.type = 'container';
+    newParent.contents.push(oFrame);
+    oFrame.parentId = newParent.id;
+    this.setFocusedFrameId(oFrame.id);
 
     this.triggerChange();
   },
 
-  makeParentContainerAndAddToParent: function(frameId){
-    var frameData = this.getTextFrame(frameId);
-    var parentArray = frameData.parentArray;
-    var frame = parentArray.splice(frameData.index,1);
-    var newParent = parentArray[parentArray.length - 1];
-    newParent.type = 'container';
-    newParent.contents.push(frame[0]);
+  makeParentAndAddSiblingsToChildren: function(newData, frameId){
+    var oFrame = this.getFrameObject(frameId);
+    var parentArray = this.data;
+    if(oFrame.parentId){
+      var oParentFrame = this.getFrameObject(oFrame.parentId);
+      parentArray = oParentFrame.contents;
+    } else {
+      return;
+    }
+    var oFrameData = this.findTextFrame(parentArray, frameId)
+
+    //Get New Children
+    var oCurrentSibling = parentArray[oFrameData.index - 1] || parentArray[oFrameData.index + 1];
+    var aNewChildren = parentArray.splice(oFrameData.index + 1, parentArray.length - oFrameData.index + 1);
+    oFrame.contents = aNewChildren;
+
+    //Get New Parent
+    var oCurrentParent = this.getFrameObject(oCurrentSibling.parentId);
+    var oNewParent = this.getFrameObject(oCurrentParent.parentId);
+    var newParentArray = this.data;
+    if(oNewParent){
+      newParentArray = oNewParent.contents;
+    }
+    var oCurrentParentData = this.findTextFrame(oNewParent.contents, oCurrentParent.id);
+    //remove from previous parent
+    parentArray.splice(oFrameData.index,1);
+
+    oFrame.title = newData;
+
+    oNewParent.contents.splice(oCurrentParentData.index + 1, 0, oFrame);
+    oFrame.parentId = oNewParent.id;
+
+    this.setFocusedFrameId(oFrame.id);
+
     this.triggerChange();
+  },
+
+  setFlatStructure: function(oFrameObject){
+    this.flatStructure[oFrameObject.id] = oFrameObject;
+  },
+
+  getFrameObject: function(sFrameId){
+    return this.flatStructure[sFrameId];
+  },
+
+  removeFrame: function(sFrameId){
+    var oFrameObject = this.flatStructure[sFrameId];
+    delete this.flatStructure[sFrameId];
+    var sParentId = oFrameObject.parentId;
+    var parentArray = this.data;
+    if(sParentId){
+      var parentFrame = this.flatStructure[sParentId];
+      parentArray = parentFrame.contents;
+    }
+    var oFrameData = this.findTextFrame(parentArray, sFrameId);
+    parentArray.splice(oFrameData.index, 1);
+    this.setFocusedFrameId(parentArray[oFrameData.index-1]);
+
+    this.triggerChange();
+  },
+
+  initialize: function(){
+    this.initializeFlatStructure(this.data)
+  },
+
+  initializeFlatStructure: function(aParentArray){
+    for(var i = 0 ; i < aParentArray.length ; i++){
+      var oFrame = this.data[i];
+      this.setFlatStructure(oFrame);
+      this.initializeFlatStructure(oFrame.contents);
+    }
   }
 
 };
