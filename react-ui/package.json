@@ -2,7 +2,8 @@
   "dependencies": {
     "material-ui": "^0.13.2",
     "react": "*",
-    "reactify": "*"
+    "reactify": "*",
+    "lodash":"*"
   },
   "browserify": {
     "transform": [
