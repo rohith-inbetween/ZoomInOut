@@ -34,16 +34,9 @@ var AppView =  React.createClass({
   setFocusOnFocussedElement: function(){
     var oCaretPosition =myStore.oCaretPosition;
     var fIndex = oCaretPosition.indexToFocus;
-    var focussedId = oCaretPosition.focusId; /*myStore.getFocusedFrameId();*/
+    var focussedId = oCaretPosition.focusId;
     if(focussedId && this.props.frameData.id == focussedId){
       var oTitleDOM = this.refs.editableTitleDiv;
-
-      /*oTitleDOM.focus();
-      myStore.setFocusedFrameId(null);
-    }
-
-    {*/
-
       var oRange = document.createRange();
       if(fIndex == 99){
         fIndex = oTitleDOM.textContent.length;

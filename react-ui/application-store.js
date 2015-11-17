@@ -80,13 +80,16 @@ var store = {
 
   removeFrame: function(frameID){
     var frameData = this.getTextFrame(frameID);
-    var frameDOMID= frameData.parentArray[frameData.index-1].id;
-    this.setFocusedFrameId(frameDOMID);
-
-    this.oCaretPosition.focusId = frameDOMID;
-    this.oCaretPosition.indexToFocus = 99;
-
-    frameData.parentArray.splice(frameData.index);
+    if(frameData.parentArray.length == 1 ){
+      frameData.parentArray.splice(0);
+    }
+    else{
+      var frameDOMID= frameData.parentArray[frameData.index-1].id;
+      this.setFocusedFrameId(frameDOMID);
+      this.oCaretPosition.focusId = frameDOMID;
+      this.oCaretPosition.indexToFocus = 99;
+      frameData.parentArray.splice(frameData.index);
+    }
 
     this.triggerChange();
   },
