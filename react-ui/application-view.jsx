@@ -7,6 +7,11 @@ var AppView =  React.createClass({
     frameData:React.PropTypes.object
   },
 
+  blur: function(e){
+    var frameID = this.props.frameData.id;
+    myStore.modifyTitle(frameID,e.target.textContent);
+  },
+
   keyDown: function(e){
     var frameID = this.props.frameData.id;
     if(e.keyCode == 13){
@@ -71,7 +76,15 @@ var AppView =  React.createClass({
     }
     return(
       <div className="frameElement">
-        <div id={oFrameData.id} className="titleDiv" ref="editableTitleDiv" data-uuid={oFrameData.id} contentEditable={true} onKeyDown={this.keyDown}>{oFrameData.title}</div>
+        <div id={oFrameData.id}
+          className="titleDiv"
+          ref="editableTitleDiv"
+          data-uuid={oFrameData.id}
+          contentEditable={true}
+          onKeyDown={this.keyDown}
+          onBlur={this.blur}>
+            {oFrameData.title}
+        </div>
         <div className="containerContents">
           {aContainerContents}
         </div>

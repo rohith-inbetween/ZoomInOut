@@ -110,7 +110,7 @@ var store = {
 
     //Get New Children
     var aNewChildren = parentArray.splice(oFrameData.index + 1, parentArray.length - oFrameData.index + 1);
-    oFrame.contents = aNewChildren;
+    oFrame.contents = oFrame.contents.concat(aNewChildren);
     _.each(oFrame.contents, function(oData, key){
       oData.parentId = oFrame.id;
     });
@@ -128,8 +128,8 @@ var store = {
 
     oFrame.title = newData;
 
-    oNewParent.contents.splice(oCurrentParentData.index + 1, 0, oFrame);
-    oFrame.parentId = oNewParent.id;
+    newParentArray.splice(oCurrentParentData.index + 1, 0, oFrame);
+    oFrame.parentId = oNewParent ? oNewParent.id : null;
 
     this.setFocusedFrameId(oFrame.id);
 
@@ -170,6 +170,13 @@ var store = {
       this.setFlatStructure(oFrame);
       this.initializeFlatStructure(oFrame.contents);
     }
+  },
+
+  modifyTitle: function(frameId, textContent){
+    var oFrame = this.getFrameObject(frameId);
+    oFrame.title = textContent;
+
+    //this.triggerChange();
   }
 
 };
