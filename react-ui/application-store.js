@@ -1,6 +1,7 @@
 var uuid = require("./uuid");
 var mockData = require("./mockData");
 var MicroEvent = require("./microEvent/MicroEvent");
+var _ = require('lodash');
 
 
 var store = {
@@ -108,18 +109,20 @@ var store = {
     var oFrameData = this.findTextFrame(parentArray, frameId)
 
     //Get New Children
-    var oCurrentSibling = parentArray[oFrameData.index - 1] || parentArray[oFrameData.index + 1];
     var aNewChildren = parentArray.splice(oFrameData.index + 1, parentArray.length - oFrameData.index + 1);
     oFrame.contents = aNewChildren;
+    _.each(oFrame.contents, function(oData, key){
+      oData.parentId = oFrame.id;
+    });
 
     //Get New Parent
-    var oCurrentParent = this.getFrameObject(oCurrentSibling.parentId);
+    var oCurrentParent = this.getFrameObject(oFrame.parentId);
     var oNewParent = this.getFrameObject(oCurrentParent.parentId);
     var newParentArray = this.data;
     if(oNewParent){
       newParentArray = oNewParent.contents;
     }
-    var oCurrentParentData = this.findTextFrame(oNewParent.contents, oCurrentParent.id);
+    var oCurrentParentData = this.findTextFrame(newParentArray, oCurrentParent.id);
     //remove from previous parent
     parentArray.splice(oFrameData.index,1);
 
