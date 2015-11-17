@@ -14,6 +14,7 @@ var EditableDeignView = React.createClass({
 
   mouseLeave: function(oEvent){
     oEvent.target.classList.remove('hovered');
+    oEvent.stopPropagation();
   },
 
   handleOnClick: function(oEvent){
@@ -45,7 +46,9 @@ var EditableDeignView = React.createClass({
 
     return (
         <div className="design-element"
-          onClick={this.handleOnClick}>
+          onClick={this.handleOnClick}
+          onMouseEnter={this.mouseEnter}
+          onMouseLeave={this.mouseLeave}>
           <div id={oFrameData.id}
             className="design-element-title"
             ref="designTitleDiv"
