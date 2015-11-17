@@ -1,4 +1,5 @@
 var React = require('react');
+var myStore = require('./application-store');
 
 var EditableDeignView = React.createClass({
 
@@ -15,6 +16,22 @@ var EditableDeignView = React.createClass({
     oEvent.target.classList.remove('hovered');
   },
 
+  handleOnClick: function(oEvent){
+    var frameID = this.props.frameData.id;
+    myStore.setClass(frameID);
+    oEvent.stopPropagation();
+  },
+
+  componentDidUpdate: function(){
+    var oFrame = this.props.frameData;
+    var oDesignElementDOM = this.getDOMNode();
+    if(oFrame.id == myStore.getZoomedInFrameId()){
+      oDesignElementDOM.classList.add('zoomed-in');
+    } else {
+      oDesignElementDOM.classList.remove('zoomed-in');
+    }
+  },
+
   render : function(){
 
     var oFrameData = this.props.frameData;
@@ -28,8 +45,7 @@ var EditableDeignView = React.createClass({
 
     return (
         <div className="design-element"
-          onMouseEnter={this.mouseEnter}
-          onMouseLeave={this.mouseLeave}>
+          onClick={this.handleOnClick}>
           <div id={oFrameData.id}
             className="design-element-title"
             ref="designTitleDiv"
@@ -39,7 +55,6 @@ var EditableDeignView = React.createClass({
             {aContainerContents}
             </div>
           </div>
-
         </div>
     );
 

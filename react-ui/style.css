@@ -68,6 +68,11 @@ body *{
     box-shadow: 0 2px 5px 1px #D0D0D0;
     padding: 10px;
     margin: 10px;
+    transition: all 0.5s;
+}
+
+.design-element.zoomed-in{
+    min-height: 500px;
 }
 
 .design-element.hovered{

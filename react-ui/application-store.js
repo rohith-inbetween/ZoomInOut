@@ -12,6 +12,8 @@ var store = {
 
   focusedFrameId: null,
 
+  zoomedInFrameId: null,
+
   oCaretPosition: {
     focusId: '',
     indexToFocus: 99
@@ -24,6 +26,17 @@ var store = {
 
   triggerChange: function(){
     return store.trigger('change');
+  },
+
+  setClass : function(frameID){
+
+    this.zoomedInFrameId = frameID;
+    this.triggerChange();
+  },
+
+  getZoomedInFrameId : function(){
+
+    return this.zoomedInFrameId;
   },
 
   findTextFrame: function(parentArray, frameID){
