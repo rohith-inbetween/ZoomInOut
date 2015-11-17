@@ -1,6 +1,7 @@
 var uuid = require('./uuid');
 
-var visualAttr = [{
+var visualAttr = [
+  {
   "id" : uuid.generateUUID(),
   "type" : "textFrame",
   "title": "",
