@@ -1,9 +1,52 @@
-.titleDiv{
+html{
+    height: 97%;
+    width: 99%;
+}
+
+body, .editor{
+    height: 100%;
+    width: 100%;
+}
+
+body *{
+    box-sizing: border-box;
+}
+
+.structural-view{
+
+}
+
+.structural-view, .designer-view{
+    float: left;
+    height: 100%;
+    width: 47%;
+}
+
+.designer-view{
+    border-left: 1px solid #eee;
+    /*margin-left: 10px;*/
+}
+
+.structural-view .paper-element .editable-text-div{
     box-shadow: 0px 2px 2px 0 #D0D0D0;
     margin: 0 auto;
     padding: 10px;
 }
 
-.containerContents{
+.structural-view-elements{
+    padding: 10px;
+    overflow: auto;
+    height: calc(100% - 20px);
+}
+
+.paper-element .container-children{
     margin-left: 30px;
 }
+
+.editor-header{
+    color: #a2a2a2;
+    margin: 5px;
+    box-shadow: 0 1px 4px -1px #EAEAEA;
+    height: 20px;
+}
+

@@ -1,7 +1,7 @@
 var myStore = require("./application-store");
 var React = require('react');
 
-var AppView =  React.createClass({
+var EditablePaperElementView =  React.createClass({
 
   propTypes:{
     frameData:React.PropTypes.object
@@ -79,13 +79,13 @@ var AppView =  React.createClass({
     for(var i = 0 ; i < oFrameData.contents.length ; i++){
       var oChildFrameData = oFrameData.contents[i];
       aContainerContents.push(
-          <AppView frameData={oChildFrameData}/>
+          <EditablePaperElementView frameData={oChildFrameData}/>
       );
     }
     return(
-      <div className="frameElement">
+      <div className="paper-element">
         <div id={oFrameData.id}
-          className="titleDiv"
+          className="editable-text-div"
           ref="editableTitleDiv"
           data-uuid={oFrameData.id}
           contentEditable={true}
@@ -93,7 +93,7 @@ var AppView =  React.createClass({
           onBlur={this.blur}>
             {oFrameData.title}
         </div>
-        <div className="containerContents">
+        <div className="container-children">
           {aContainerContents}
         </div>
       </div>
@@ -101,4 +101,4 @@ var AppView =  React.createClass({
   }
 });
 
-module.exports = AppView;
+module.exports = EditablePaperElementView;

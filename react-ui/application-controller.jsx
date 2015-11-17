@@ -1,14 +1,10 @@
-/**
- * Created by DEV on 16-11-2015.
- */
-
-var AppView = require("./application-view.jsx");
+var StructuralView = require("./structural-view.jsx");
+var DesignerView = require("./designer-view.jsx");
 var myStore = require("./application-store");
 
 var React = require('react');
 
-var AppController = React.createClass({
-
+var ApplicationController = React.createClass({
 
   //@UnBind: store with state
   componentWillUnmount: function () {
@@ -28,19 +24,14 @@ var AppController = React.createClass({
   },
 
   render: function () {
-    var aFrameData = this.props.data;
-    var aFrameElements = [];
-    for(var i = 0 ; i < aFrameData.length ; i++){
-      aFrameElements.push(
-          <AppView frameData={aFrameData[i]}/>
-      );
-    }
+    var aFrames = this.props.data;
     return (
-        <div className="appController">
-          {aFrameElements}
+        <div className="editor">
+          <StructuralView frameData={aFrames}/>
+          <DesignerView frameData={aFrames}/>
         </div>
     )
   }
 });
 
-module.exports = AppController;
+module.exports = ApplicationController;
