@@ -34,6 +34,10 @@ var AppView =  React.createClass({
     this.setFocusOnFocussedElement();
   },
 
+  componentDidMount: function(){
+    this.setFocusOnFocussedElement();
+  },
+
   setFocusOnFocussedElement: function(){
     var oCaretPosition =myStore.oCaretPosition;
     var fIndex = oCaretPosition.indexToFocus;
@@ -41,23 +45,27 @@ var AppView =  React.createClass({
     if(focussedId && this.props.frameData.id == focussedId){
       var oTitleDOM = this.refs.editableTitleDiv;
       var oRange = document.createRange();
-      if(fIndex == 99){
+      if(fIndex == 99 && oTitleDOM.textContent.length > 0){
         fIndex = oTitleDOM.textContent.length;
         oRange.setStart(oTitleDOM.firstChild, fIndex);
         oRange.setEnd(oTitleDOM.firstChild, fIndex);
+      }else if(fIndex == 99 && oTitleDOM.textContent.length == 0){
+        oTitleDOM.focus();
+        var breakFlag = true;
       }else{
         oRange.setStart(oTitleDOM, fIndex);
         oRange.setEnd(oTitleDOM, fIndex);
       }
-      var oSelection = window.getSelection();
-      oSelection.removeAllRanges();
-      oSelection.addRange(oRange);
+
+      if(!breakFlag){
+        var oSelection = window.getSelection();
+        oSelection.removeAllRanges();
+        oSelection.addRange(oRange);
+      }
+      myStore.setCaretPositionObjtoNull();
+
     }
 
-  },
-
-  componentDidMount: function(){
-    this.setFocusOnFocussedElement();
   },
 
   render: function(){

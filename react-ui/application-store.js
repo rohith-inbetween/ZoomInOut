@@ -16,6 +16,11 @@ var store = {
     indexToFocus: 99
   },
 
+  setCaretPositionObjtoNull: function(){
+    this.oCaretPosition.focusId = '';
+    this.oCaretPosition.indexToFocus = 99;
+  },
+
   triggerChange: function(){
     return store.trigger('change');
   },
@@ -47,6 +52,7 @@ var store = {
     //this.setFocusedFrameId(newFrame.id);
     this.oCaretPosition.focusId = newFrame.id;
     this.oCaretPosition.indexToFocus = 0;
+
     this.triggerChange();
   },
 
@@ -81,7 +87,7 @@ var store = {
       var oParentFrame = this.getFrameObject(oFrame.parentId);
       parentArray = oParentFrame.contents;
     }
-    var oFrameData = this.findTextFrame(parentArray, frameId)
+    var oFrameData = this.findTextFrame(parentArray, frameId);
     var newParent = parentArray[oFrameData.index - 1];
     if(newParent == null){
       return;
@@ -92,6 +98,8 @@ var store = {
     newParent.contents.push(oFrame);
     oFrame.parentId = newParent.id;
     this.setFocusedFrameId(oFrame.id);
+    this.oCaretPosition.focusId = oFrame.id;
+    this.oCaretPosition.indexToFocus = 0;
 
     this.triggerChange();
   },
@@ -129,6 +137,8 @@ var store = {
     oFrame.parentId = oNewParent.id;
 
     this.setFocusedFrameId(oFrame.id);
+    this.oCaretPosition.focusId = oFrame.id;
+    this.oCaretPosition.indexToFocus = 0;
 
     this.triggerChange();
   },
@@ -152,8 +162,14 @@ var store = {
     }
     var oFrameData = this.findTextFrame(parentArray, sFrameId);
     parentArray.splice(oFrameData.index, 1);
-    this.setFocusedFrameId(parentArray[oFrameData.index-1]);
-
+    if(parentArray[oFrameData.index-1]){
+      this.setFocusedFrameId(parentArray[oFrameData.index-1].id);
+      this.oCaretPosition.focusId = parentArray[oFrameData.index-1].id;
+    }else{
+      this.setFocusedFrameId(parentFrame.id);
+      this.oCaretPosition.focusId = parentFrame.id;
+    }
+    this.oCaretPosition.indexToFocus = 99;
     this.triggerChange();
   },
 
