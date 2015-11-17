@@ -33,6 +33,15 @@ body *{
     padding: 10px;
 }
 
+.structural-view .paper-element .editable-text-div:hover {
+    box-shadow: 0px 2px 2px 0 #6BB1DA;
+}
+
+.structural-view .paper-element .editable-text-div:focus {
+    outline: none;
+    box-shadow: 0px 2px 2px 0 #007598;
+}
+
 .structural-view-elements{
     padding: 10px;
     overflow: auto;
