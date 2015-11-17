@@ -44,13 +44,15 @@ var AppView =  React.createClass({
 
     {*/
 
-      /*if(!fIndex){
-        fIndex = oTitleDOM.textContent.length;
-      }*/
-
       var oRange = document.createRange();
-      oRange.setStart(oTitleDOM, fIndex);
-      oRange.setEnd(oTitleDOM, fIndex);
+      if(fIndex == 99){
+        fIndex = oTitleDOM.textContent.length;
+        oRange.setStart(oTitleDOM.firstChild, fIndex);
+        oRange.setEnd(oTitleDOM.firstChild, fIndex);
+      }else{
+        oRange.setStart(oTitleDOM, fIndex);
+        oRange.setEnd(oTitleDOM, fIndex);
+      }
       var oSelection = window.getSelection();
       oSelection.removeAllRanges();
       oSelection.addRange(oRange);

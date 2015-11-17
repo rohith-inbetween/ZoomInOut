@@ -11,7 +11,7 @@ var store = {
 
   oCaretPosition: {
     focusId: '',
-    indexToFocus: 0
+    indexToFocus: 99
   },
 
   triggerChange: function(){
@@ -84,12 +84,11 @@ var store = {
     this.setFocusedFrameId(frameDOMID);
 
     this.oCaretPosition.focusId = frameDOMID;
-
+    this.oCaretPosition.indexToFocus = 99;
 
     frameData.parentArray.splice(frameData.index);
 
     this.triggerChange();
-
   },
 
   makeParentContainerAndAddToParent: function(frameId){
