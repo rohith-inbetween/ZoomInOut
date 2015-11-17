@@ -192,7 +192,7 @@ var store = {
     var oFrame = this.getFrameObject(frameId);
     oFrame.title = textContent;
 
-    //this.triggerChange();
+    this.triggerChange();
   }
 
 };

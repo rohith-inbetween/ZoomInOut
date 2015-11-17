@@ -13,24 +13,24 @@ body *{
 }
 
 .structural-view{
-
+    width: 35%;
 }
 
 .structural-view, .designer-view{
     float: left;
     height: 100%;
-    width: 47%;
 }
 
 .designer-view{
     border-left: 1px solid #eee;
     /*margin-left: 10px;*/
+    width: 65%;
 }
 
 .structural-view .paper-element .editable-text-div{
     box-shadow: 0 1px 1px 0 #D0D0D0;
-    margin: 0 auto;
     padding: 10px;
+    color: #9CA7AD;
 }
 
 .structural-view .paper-element .editable-text-div:hover {
@@ -64,8 +64,25 @@ body *{
 }
 
 .design-element{
-    min-height: 50px;
-    border: 1px solid black;
+    min-height: 150px;
+    box-shadow: 0 2px 5px 1px #D0D0D0;
+    padding: 10px;
+    margin: 10px;
+}
+
+.design-element.hovered{
+    box-shadow: 0 2px 5px 1px #6BB1DA;
+}
+
+.design-element.focused{
+    box-shadow: 0 2px 5px 1px #007598;
+}
+
+
+.design-element-title span{
+    font-size: 14px;
+    color: #B1C5C7;;
+    box-shadow: 0 1px 0px 0px #F5F5F5;
 }
 
 
