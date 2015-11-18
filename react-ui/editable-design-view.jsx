@@ -41,17 +41,13 @@ var EditableDeignView = React.createClass({
 
     var oFrameData = this.props.frameData;
     var aContainerContents = [];
+    var sClasses = "design-element";
     for(var i = 0 ; i < oFrameData.contents.length ; i++){
       var oChildFrameData = oFrameData.contents[i];
       aContainerContents.push(
           <EditableDeignView frameData={oChildFrameData}/>
       );
     }
-    var sClasses = "design-element";
-    /*if(oFrameData.id == myStore.getZoomedInFrameId()){
-      sClasses += ' zoomed-in';
-    }*/
-
     if(myStore.isFrameExpanded(oFrameData.id)){
       sClasses += " expanded zoomed-in";
     } else if(myStore.isParentExpanded(oFrameData.id)){
@@ -73,11 +69,9 @@ var EditableDeignView = React.createClass({
             data-uuid={oFrameData.id}>
               {oFrameData.title}
           </div>
-          <div className="container-children">
-            <ReactCSSTransitionGroup transitionName="design-element-anim" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
-                {aContainerContents}
-            </ReactCSSTransitionGroup>
-          </div>
+          <ReactCSSTransitionGroup component="div" className="container-children" transitionName="design-element-anim" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+              {aContainerContents}
+          </ReactCSSTransitionGroup>
         </div>
     );
 
