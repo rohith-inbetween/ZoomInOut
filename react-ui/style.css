@@ -67,8 +67,11 @@ body *{
     min-height: 150px;
     box-shadow: 0 2px 5px 1px #D0D0D0;
     padding: 10px;
-    margin: 10px;
-    transition: min-height 1s, height 1s;
+    /*margin: 10px;*/
+    transition: min-height 1s, height 1s, width 1s, padding 1s, margin 1s;
+    overflow: hidden;
+    margin-top: 5px;
+    background-color: rgba(255, 255, 255, 0.52);
 }
 
 .design-element.zoomed-in{
@@ -88,6 +91,7 @@ body *{
     font-size: 14px;
     color: #B1C5C7;;
     box-shadow: 0 1px 0px 0px #F5F5F5;
+    margin: 5px;
 }
 
 .design-element-anim-enter {
@@ -109,10 +113,22 @@ body *{
 }
 
 .design-element.childExpanded{
-    width:100%;
+    width: 100%;
     padding: 0;
+    margin: 2px;
 }
 
 .design-element.expanded{
-    width:100%;
+    width: 100%;
+    margin: 2px;
+    padding: 10px;
+    /*background-color: #E3E7EF;*/
+    background: rgba(235,247,250,1);
+    background: -moz-linear-gradient(left, rgba(235,247,250,1) 0%, rgba(235,247,250,1) 33%, rgba(199,222,245,1) 86%, rgba(199,222,245,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(235,247,250,1)), color-stop(33%, rgba(235,247,250,1)), color-stop(86%, rgba(199,222,245,1)), color-stop(100%, rgba(199,222,245,1)));
+    background: -webkit-linear-gradient(left, rgba(235,247,250,1) 0%, rgba(235,247,250,1) 33%, rgba(199,222,245,1) 86%, rgba(199,222,245,1) 100%);
+    background: -o-linear-gradient(left, rgba(235,247,250,1) 0%, rgba(235,247,250,1) 33%, rgba(199,222,245,1) 86%, rgba(199,222,245,1) 100%);
+    background: -ms-linear-gradient(left, rgba(235,247,250,1) 0%, rgba(235,247,250,1) 33%, rgba(199,222,245,1) 86%, rgba(199,222,245,1) 100%);
+    background: linear-gradient(to right, rgba(235,247,250,1) 0%, rgba(235,247,250,1) 33%, rgba(199,222,245,1) 86%, rgba(199,222,245,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf7fa', endColorstr='#c7def5', GradientType=1 );
 }
