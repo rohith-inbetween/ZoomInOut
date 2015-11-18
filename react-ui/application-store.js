@@ -12,6 +12,8 @@ var store = {
 
   focusedFrameId: null,
 
+  offsetTopFrameID : null,
+
   expandedFrames : {
     frame :null,
     parentFrames :{}
@@ -34,6 +36,13 @@ var store = {
     return store.trigger('change');
   },
 
+
+  /*handleScroll : function(frameID){
+
+    var containerDOM = document.getElementsByClassName("design-view-elements");
+
+  },*/
+
   setClass : function(frameID){
     var oFrame = this.getFrameObject(frameID);
     this.expandedFrames.parentFrames = {};
@@ -42,10 +51,15 @@ var store = {
     } else {
       var oParentFrame = this.getFrameObject(oFrame.parentId);
       this.expandedFrames.frame = frameID;
+
+
+
       if(oParentFrame){
         this.setParentExpanded(oParentFrame);
       }
     }
+
+    //this.handleScroll(frameID);
 
     /*if(oFrame.isExpanded){
       oFrame.isExpanded = false;
@@ -171,7 +185,7 @@ var store = {
     } else {
       return;
     }
-    var oFrameData = this.findTextFrame(parentArray, frameId)
+    var oFrameData = this.findTextFrame(parentArray, frameId);
 
     //Get New Children
     var aNewChildren = parentArray.splice(oFrameData.index + 1, parentArray.length - oFrameData.index + 1);

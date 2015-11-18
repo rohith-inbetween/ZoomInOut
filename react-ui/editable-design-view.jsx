@@ -25,13 +25,16 @@ var EditableDeignView = React.createClass({
   },
 
   componentDidUpdate: function(){
-    var oFrame = this.props.frameData;
-    var oDesignElementDOM = this.getDOMNode();
-    /*if(oFrame.id == myStore.getZoomedInFrameId()){
-      oDesignElementDOM.classList.add('zoomed-in');
-    } else {
-      oDesignElementDOM.classList.remove('zoomed-in');
-    }*/
+    if(myStore.expandedFrames.frame == this.props.frameData.id){
+      this.handleScroll();
+    }
+  },
+
+
+  handleScroll : function(){
+    var containerDOM = document.getElementsByClassName("design-view-elements");
+    var oCurrentDom = this.getDOMNode();
+    containerDOM.scrollTop = oCurrentDom.offsetTop;
   },
 
   render : function(){
@@ -54,6 +57,10 @@ var EditableDeignView = React.createClass({
     } else if(myStore.isParentExpanded(oFrameData.id)){
       sClasses += " childExpanded";
     }
+
+
+
+
     return (
         <div key={oFrameData.id}
           className={sClasses}
