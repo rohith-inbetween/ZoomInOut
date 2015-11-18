@@ -1,5 +1,6 @@
 var React = require('react');
 var myStore = require('./application-store');
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 var EditableDeignView = React.createClass({
 
@@ -26,11 +27,11 @@ var EditableDeignView = React.createClass({
   componentDidUpdate: function(){
     var oFrame = this.props.frameData;
     var oDesignElementDOM = this.getDOMNode();
-    if(oFrame.id == myStore.getZoomedInFrameId()){
+    /*if(oFrame.id == myStore.getZoomedInFrameId()){
       oDesignElementDOM.classList.add('zoomed-in');
     } else {
       oDesignElementDOM.classList.remove('zoomed-in');
-    }
+    }*/
   },
 
   render : function(){
@@ -43,9 +44,18 @@ var EditableDeignView = React.createClass({
           <EditableDeignView frameData={oChildFrameData}/>
       );
     }
-
+    var sClasses = "design-element";
+    if(oFrameData.id == myStore.getZoomedInFrameId()){
+      sClasses += ' zoomed-in';
+    }
+    /*if(oFrameData.isExpanded){
+      sClasses += " expanded zoomed-in";
+    } else if(oFrameData.isChildFrameExpanded){
+      sClasses += " childExpanded";
+    }*/
     return (
-        <div className="design-element"
+        <div key={oFrameData.id}
+          className={sClasses}
           onClick={this.handleOnClick}
           onMouseEnter={this.mouseEnter}
           onMouseLeave={this.mouseLeave}>
@@ -54,9 +64,11 @@ var EditableDeignView = React.createClass({
             ref="designTitleDiv"
             data-uuid={oFrameData.id}>
               {oFrameData.title}
-            <div className="container-children">
-            {aContainerContents}
-            </div>
+          </div>
+          <div className="container-children">
+            <ReactCSSTransitionGroup transitionName="design-element-anim" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+                {aContainerContents}
+            </ReactCSSTransitionGroup>
           </div>
         </div>
     );

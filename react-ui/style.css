@@ -68,7 +68,7 @@ body *{
     box-shadow: 0 2px 5px 1px #D0D0D0;
     padding: 10px;
     margin: 10px;
-    transition: all 0.5s;
+    transition: min-height 1s, height 1s;
 }
 
 .design-element.zoomed-in{
@@ -84,10 +84,35 @@ body *{
 }
 
 
-.design-element-title span{
+.design-element-title{
     font-size: 14px;
     color: #B1C5C7;;
     box-shadow: 0 1px 0px 0px #F5F5F5;
 }
 
+.design-element-anim-enter {
+    opacity: 0.01;
+}
 
+.design-element-anim-enter.design-element-anim-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+}
+
+.design-element-anim-leave {
+    opacity: 1;
+}
+
+.design-element-anim-leave.design-element-anim-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+}
+
+.design-element.childExpanded{
+    width:100%;
+    padding: 0;
+}
+
+.design-element.expanded{
+    width:100%;
+}

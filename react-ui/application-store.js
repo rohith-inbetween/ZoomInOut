@@ -29,9 +29,31 @@ var store = {
   },
 
   setClass : function(frameID){
+    /*var oFrame = this.getFrameObject(frameID);
+    var oParentFrame = this.getFrameObject(oFrame.parentId);
+    if(oFrame.isExpanded){
+      oFrame.isExpanded = false;
+    } else {
+      oFrame.isExpanded = true;
+    }
+    if(oParentFrame){
+      this.setParentExpanded(oParentFrame, oFrame.isExpanded);
+    }*/
 
-    this.zoomedInFrameId = frameID;
+    if(this.zoomedInFrameId == frameID){
+      this.zoomedInFrameId = null
+    } else {
+      this.zoomedInFrameId = frameID;
+    }
     this.triggerChange();
+  },
+
+  setParentExpanded : function(oFrame, bState){
+    oFrame.isChildFrameExpanded = bState;
+    var oParentFrame = this.getFrameObject(oFrame.parentId);
+    if(oParentFrame){
+      this.setParentExpanded(oParentFrame, bState);
+    }
   },
 
   getZoomedInFrameId : function(){
@@ -84,7 +106,9 @@ var store = {
       "type" : "textFrame",
       "title": "",
       "contents" : [],
-      "parentId": parentId
+      "parentId": parentId,
+      "isFrameExpanded": false,
+      "isChildFrameExpanded": false
     };
     this.setFlatStructure(newTextFrame);
     return newTextFrame
