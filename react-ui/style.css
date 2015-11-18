@@ -64,6 +64,7 @@ body *{
 }
 
 .design-element{
+    height: auto;
     min-height: 150px;
     box-shadow: 0 2px 5px 1px #D0D0D0;
     padding: 10px;
@@ -76,6 +77,7 @@ body *{
 
 .design-element.zoomed-in{
     min-height: 500px;
+    height: 500px;
 }
 
 .design-element.hovered{
@@ -121,4 +123,18 @@ body *{
     box-shadow: 0 2px 5px 1px #009d6b;
 }
 
+.text-editor{
+    height: 100%;
+}
 
+.text-editor .fr-wrapper{
+    height: 80%;
+}
+
+.text-editor .fr-wrapper .fr-element.fr-view{
+    height: 100%;
+}
+
+.design-element .container-children{
+    height: calc(100% - 16px);
+}

@@ -2,6 +2,7 @@ var React = require('react');
 var myStore = require('./application-store');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 var $ = require('jquery');
+require('froala-editor/js/froala_editor.min.js')();
 
 var EditableDeignView = React.createClass({
 
@@ -26,7 +27,11 @@ var EditableDeignView = React.createClass({
   },
 
   componentDidUpdate: function(){
-
+    var oDOM  =this.getDOMNode();
+    var jqDom =$(oDOM).find('.text-editor');
+    if (  jqDom .data('froala.editor')) {
+      jqDom .froalaEditor('destroy');
+    }
   },
 
   componentDidMount: function(){
@@ -39,14 +44,27 @@ var EditableDeignView = React.createClass({
 
 
   handleScroll : function(){
-    if(myStore.expandedFrames.frame == this.props.frameData.id){
+    var fID = this.props.frameData.id;
+    if(myStore.expandedFrames.frame == fID ){
       //alert("handleScroll");
       var containerDOM = document.getElementById("design-view-element-container");
       var oCurrentDom = this.getDOMNode();
       //containerDOM.scrollTop = oCurrentDom.offsetTop - containerDOM.offsetTop;
-      $(containerDOM).animate({
-        scrollTop: oCurrentDom.offsetTop - containerDOM.offsetTop - 20
-      }, 300);
+      $(containerDOM).animate(
+          {scrollTop: oCurrentDom.offsetTop - containerDOM.offsetTop - 20},
+          100,
+          function(){
+            var $dom = $(oCurrentDom).find('.text-editor');
+            $dom.froalaEditor();
+            $dom.on('froalaEditor.contentChanged', function (e, editor) {
+              var oInnerHTML = $dom.froalaEditor('html.get', true);
+              console.log(oInnerHTML);
+              myStore.setHtmlEditorData(fID,oInnerHTML);
+            });
+
+          }
+      );
+
     }
   },
 
@@ -55,6 +73,7 @@ var EditableDeignView = React.createClass({
     var oFrameData = this.props.frameData;
     var aContainerContents = [];
     var sClasses = "design-element";
+    var oDiv = null;
     for(var i = 0 ; i < oFrameData.contents.length ; i++){
       var oChildFrameData = oFrameData.contents[i];
       aContainerContents.push(
@@ -63,9 +82,23 @@ var EditableDeignView = React.createClass({
     }
     if(myStore.isFrameExpanded(oFrameData.id)){
       sClasses += " expanded zoomed-in";
+      if(!oFrameData.contents.length){
+        var oDangerousHTML = {__html: oFrameData.data};
+        var oTextEditor = (<div className="text-editor" onClick={function(oEvent){oEvent.stopPropagation()}} dangerouslySetInnerHTML={oDangerousHTML}></div>);
+        aContainerContents.push(oTextEditor);
+      }
+
     } else if(myStore.isParentExpanded(oFrameData.id)){
       sClasses += " childExpanded";
     }
+    else{
+      var oDangerousHTML = {__html: oFrameData.data};
+      oDiv = (<div className="frame-data" dangerouslySetInnerHTML={oDangerousHTML}></div>);
+    }
+
+
+
+
     return (
         <div key={oFrameData.id}
           className={sClasses}
@@ -78,6 +111,7 @@ var EditableDeignView = React.createClass({
             data-uuid={oFrameData.id}>
               {oFrameData.title}
           </div>
+          {oDiv}
           <ReactCSSTransitionGroup component="div" className="container-children" transitionName="design-element-anim" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
               {aContainerContents}
           </ReactCSSTransitionGroup>

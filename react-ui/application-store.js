@@ -128,6 +128,11 @@ var store = {
     this.triggerChange();
   },
 
+  setHtmlEditorData: function(fID, data){
+    var oFrame = this.getFrameObject(fID);
+    oFrame.data = data;
+  },
+
   setFocusedFrameId: function(frameDOMid){
     this.focusedFrameId = frameDOMid;
   },
@@ -141,6 +146,7 @@ var store = {
       "id" : uuid.generateUUID(),
       "type" : "textFrame",
       "title": "",
+      "data":"",
       "contents" : [],
       "parentId": parentId
     };

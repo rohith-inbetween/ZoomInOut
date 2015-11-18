@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "font-awesome": "^4.4.0",
+    "froala-editor": "^2.0.1",
     "jquery": "^2.1.4",
     "lodash": "*",
     "material-ui": "^0.13.2",
