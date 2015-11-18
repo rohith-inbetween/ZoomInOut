@@ -1,6 +1,7 @@
 var React = require('react');
 var myStore = require('./application-store');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+var $ = require('jquery');
 
 var EditableDeignView = React.createClass({
 
@@ -25,16 +26,28 @@ var EditableDeignView = React.createClass({
   },
 
   componentDidUpdate: function(){
-    if(myStore.expandedFrames.frame == this.props.frameData.id){
-      this.handleScroll();
-    }
+
+  },
+
+  componentDidMount: function(){
+    this.getDOMNode().addEventListener("transitionend", this.handleScroll.bind(this));
+  },
+
+  componentWillUnmount: function(){
+    this.getDOMNode().removeEventListener("transitionend", this.handleScroll.bind(this));
   },
 
 
   handleScroll : function(){
-    var containerDOM = document.getElementsByClassName("design-view-elements");
-    var oCurrentDom = this.getDOMNode();
-    containerDOM.scrollTop = oCurrentDom.offsetTop;
+    if(myStore.expandedFrames.frame == this.props.frameData.id){
+      //alert("handleScroll");
+      var containerDOM = document.getElementById("design-view-element-container");
+      var oCurrentDom = this.getDOMNode();
+      //containerDOM.scrollTop = oCurrentDom.offsetTop - containerDOM.offsetTop;
+      $(containerDOM).animate({
+        scrollTop: oCurrentDom.offsetTop - containerDOM.offsetTop - 20
+      }, 300);
+    }
   },
 
   render : function(){
@@ -53,10 +66,6 @@ var EditableDeignView = React.createClass({
     } else if(myStore.isParentExpanded(oFrameData.id)){
       sClasses += " childExpanded";
     }
-
-
-
-
     return (
         <div key={oFrameData.id}
           className={sClasses}

@@ -68,7 +68,7 @@ body *{
     box-shadow: 0 2px 5px 1px #D0D0D0;
     padding: 10px;
     /*margin: 10px;*/
-    transition: min-height 1s, height 1s, width 1s, padding 1s, margin 1s;
+    transition: min-height 0.3s, height 0.3s, width 0.3s, padding 0.3s, margin 0.3s;
     overflow: hidden;
     margin-top: 5px;
     background-color: rgba(255, 255, 255, 0.52);
@@ -96,7 +96,7 @@ body *{
 
 .design-element-anim-enter.design-element-anim-enter-active {
     opacity: 1;
-    transition: opacity 500ms ease-in;
+    transition: opacity 200ms ease-in;
 }
 
 .design-element-anim-leave {
@@ -105,7 +105,7 @@ body *{
 
 .design-element-anim-leave.design-element-anim-leave-active {
     opacity: 0.01;
-    transition: opacity 300ms ease-in;
+    transition: opacity 200ms ease-in;
 }
 
 .design-element.childExpanded{
