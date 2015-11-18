@@ -14,7 +14,7 @@ var DesignerView = React.createClass({
     }
 
     return (
-        <div className="designer-view">
+        <div className="designer-view ">
           <div className="editor-header">Designer</div>
           <div className="design-view-elements">
             <ReactCSSTransitionGroup transitionName="design-element-anim" transitionEnterTimeout={500} transitionLeaveTimeout={300}>

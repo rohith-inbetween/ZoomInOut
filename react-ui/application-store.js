@@ -12,6 +12,12 @@ var store = {
 
   focusedFrameId: null,
 
+  expandedFrames : {
+    frame :null,
+    parentFrames :{}
+  },
+
+
   zoomedInFrameId: null,
 
   oCaretPosition: {
@@ -29,35 +35,51 @@ var store = {
   },
 
   setClass : function(frameID){
-    /*var oFrame = this.getFrameObject(frameID);
-    var oParentFrame = this.getFrameObject(oFrame.parentId);
-    if(oFrame.isExpanded){
+    var oFrame = this.getFrameObject(frameID);
+    this.expandedFrames.parentFrames = {};
+    if(this.expandedFrames.frame == frameID ){
+      this.expandedFrames.frame = null;
+    } else {
+      var oParentFrame = this.getFrameObject(oFrame.parentId);
+      this.expandedFrames.frame = frameID;
+      if(oParentFrame){
+        this.setParentExpanded(oParentFrame);
+      }
+    }
+
+    /*if(oFrame.isExpanded){
       oFrame.isExpanded = false;
     } else {
       oFrame.isExpanded = true;
-    }
-    if(oParentFrame){
-      this.setParentExpanded(oParentFrame, oFrame.isExpanded);
     }*/
 
+/*
     if(this.zoomedInFrameId == frameID){
       this.zoomedInFrameId = null
     } else {
       this.zoomedInFrameId = frameID;
     }
+*/
     this.triggerChange();
   },
 
-  setParentExpanded : function(oFrame, bState){
-    oFrame.isChildFrameExpanded = bState;
+  isFrameExpanded : function(frameID){
+     return this.expandedFrames.frame == frameID;
+  },
+
+  isParentExpanded : function(frameID){
+    return this.expandedFrames.parentFrames[frameID] == true;
+  },
+
+  setParentExpanded : function(oFrame){
+    this.expandedFrames.parentFrames[oFrame.id] = true;
     var oParentFrame = this.getFrameObject(oFrame.parentId);
     if(oParentFrame){
-      this.setParentExpanded(oParentFrame, bState);
+      this.setParentExpanded(oParentFrame);
     }
   },
 
   getZoomedInFrameId : function(){
-
     return this.zoomedInFrameId;
   },
 
@@ -106,9 +128,7 @@ var store = {
       "type" : "textFrame",
       "title": "",
       "contents" : [],
-      "parentId": parentId,
-      "isFrameExpanded": false,
-      "isChildFrameExpanded": false
+      "parentId": parentId
     };
     this.setFlatStructure(newTextFrame);
     return newTextFrame

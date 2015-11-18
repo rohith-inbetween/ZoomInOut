@@ -45,14 +45,15 @@ var EditableDeignView = React.createClass({
       );
     }
     var sClasses = "design-element";
-    if(oFrameData.id == myStore.getZoomedInFrameId()){
+    /*if(oFrameData.id == myStore.getZoomedInFrameId()){
       sClasses += ' zoomed-in';
-    }
-    /*if(oFrameData.isExpanded){
-      sClasses += " expanded zoomed-in";
-    } else if(oFrameData.isChildFrameExpanded){
-      sClasses += " childExpanded";
     }*/
+
+    if(myStore.isFrameExpanded(oFrameData.id)){
+      sClasses += " expanded zoomed-in";
+    } else if(myStore.isParentExpanded(oFrameData.id)){
+      sClasses += " childExpanded";
+    }
     return (
         <div key={oFrameData.id}
           className={sClasses}
@@ -74,10 +75,6 @@ var EditableDeignView = React.createClass({
     );
 
   }
-
-
-
-
 
 });
 
