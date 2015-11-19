@@ -81,7 +81,6 @@ var EditablePaperElementView =  React.createClass({
     //else{
       myStore.setClickedFrame(this.props.frameData);
     //}
-
   },
 
   render: function(){
