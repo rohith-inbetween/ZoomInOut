@@ -23,7 +23,6 @@ body *{
 
 .designer-view{
     border-left: 1px solid #eee;
-    /*margin-left: 10px;*/
     width: 65%;
 }
 
@@ -48,12 +47,17 @@ body *{
     height: calc(100% - 20px);
 }
 
+.design-view-elements{
+    background-color: #F6F7F7;;
+}
+
 .paper-element .container-children{
     margin-left: 30px;
 }
 
 .paper-element{
     margin-top: 3px;
+    background-color: white;
 }
 
 .editor-header{
@@ -72,12 +76,7 @@ body *{
     transition: min-height 0.3s, height 0.3s, width 0.3s, padding 0.3s, margin 0.3s;
     overflow: hidden;
     margin-top: 5px;
-    background-color: rgba(255, 255, 255, 0.52);
-}
-
-.design-element.zoomed-in{
-    min-height: 500px;
-    height: 500px;
+    background-color: white;
 }
 
 .design-element.hovered{
@@ -85,11 +84,7 @@ body *{
 }
 
 .design-element-title{
-    font-size: 14px;
-    color: #B1C5C7;;
-    box-shadow: 0 1px 0px 0px #F5F5F5;
     margin: 5px;
-    height: 16px;
 }
 
 .design-element-anim-enter {
@@ -110,6 +105,10 @@ body *{
     transition: opacity 200ms ease-in;
 }
 
+.design-element .container-children{
+    height: calc(100% - 16px);
+}
+
 .design-element.childExpanded{
     width: 100%;
     padding: 0;
@@ -120,21 +119,61 @@ body *{
     width: 100%;
     margin: 2px;
     padding: 10px;
-    box-shadow: 0 2px 5px 1px #009d6b;
+    box-shadow: 0 2px 5px 1px #00799D;
+    /*min-height: 500px;*/
+    /*height: 500px;*/
+    background-color: #F7FCFF;
 }
 
-.text-editor{
+.design-element.expanded .container-children{
+    overflow: auto;
+    margin: 10px;
+}
+
+.design-element .text-editor {
+    margin: 10px;
+    overflow: hidden;
+}
+
+.design-element.expanded .text-editor{
+    margin: 10px;
+    overflow: hidden;
+    height:  calc(100% - 30px);
+}
+
+
+.design-element.expanded .text-editor .fr-toolbar{
+    border-top: 2px solid #EFF3F9;
+    box-shadow: none;
+}
+
+.design-element.expanded .text-editor.fr-box.fr-basic.fr-top .fr-wrapper{
+    height: calc(100% - 55px);
+    box-shadow: none;
+    box-shadow: none;
+}
+
+.design-element.expanded .text-editor .fr-wrapper .fr-element.fr-view{
     height: 100%;
 }
 
-.text-editor .fr-wrapper{
-    height: 80%;
+.design-element.expanded .text-editor .fr-wrapper .fr-placeholder{
+    color: #D2D7E2;
 }
 
-.text-editor .fr-wrapper .fr-element.fr-view{
-    height: 100%;
+.design-element-title>div{
+    height: 40px !important;
+    width:100% !important;
 }
 
-.design-element .container-children{
-    height: calc(100% - 16px);
+.design-element-title label{
+    top: 19px !important;
+}
+
+.design-element-title input{
+    margin-top: 7px !important;
+}
+
+.design-element-title hr{
+    bottom: 2px !important;
 }
