@@ -177,3 +177,46 @@ body *{
 .design-element-title hr{
     bottom: 2px !important;
 }
+
+.toolbar-container{
+    box-shadow: 0 1px 1px 1px #D2D7E2;
+    height: auto;
+    width: auto;
+    margin: 5px;
+}
+
+.toolbar-content{
+    display: inline-block;
+    margin: 5px;
+    padding: inherit;
+    box-shadow: 0 2px 2px 1px #9CA7AD;
+    font-size: small;
+    color: rgba(122, 143, 198, 0.80);
+}
+
+/*
+.createFrame{#90A7E8
+    background-image: url('./images/PlusFilled-32.png');
+    height: 32px;
+    width: 32px;
+}
+
+.removeChild{
+    background-image: url('./images/Delete%20Filled-32.png');
+    height: 32px;
+    width: 32px;
+}
+
+.indentLeft{
+    background-image: url('./images/Left2-25.png');
+    height: 32px;
+    width: 32px;
+}
+
+.indentRight{
+
+}
+
+.makeChild {
+
+}*/

@@ -1,8 +1,9 @@
+var React = require('react');
+
 var StructuralView = require("./structural-view.jsx");
 var DesignerView = require("./designer-view.jsx");
 var myStore = require("./application-store");
 
-var React = require('react');
 
 var ApplicationController = React.createClass({
 
@@ -27,6 +28,7 @@ var ApplicationController = React.createClass({
     var aFrames = this.props.data;
     return (
         <div className="editor">
+
           <StructuralView frameData={aFrames}/>
           <DesignerView frameData={aFrames}/>
         </div>

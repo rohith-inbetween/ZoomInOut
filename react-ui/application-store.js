@@ -14,6 +14,12 @@ var store = {
 
   offsetTopFrameID : null,
 
+  clickedFrameId : null,
+
+  clickedFrame: null,
+
+  newFrame: null,
+
   expandedFrames : {
     frame :null,
     parentFrames :{}
@@ -27,6 +33,8 @@ var store = {
     indexToFocus: 99
   },
 
+  aClickedFrames:[],
+
   setCaretPositionObjtoNull: function(){
     this.oCaretPosition.focusId = '';
     this.oCaretPosition.indexToFocus = 99;
@@ -34,6 +42,22 @@ var store = {
 
   triggerChange: function(){
     return store.trigger('change');
+  },
+
+  setClickedFrame: function(frame){
+    this.clickedFrame = frame;
+  },
+
+  getClickedFrame: function(){
+    return this.clickedFrame;
+  },
+
+  setClickedFrameArray :function(frame){
+    this.aClickedFrames.push(frame);
+  },
+
+  getClickedFrameArray: function(){
+    return this.aClickedFrames;
   },
 
 
@@ -124,9 +148,19 @@ var store = {
     //this.setFocusedFrameId(newFrame.id);
     this.oCaretPosition.focusId = newFrame.id;
     this.oCaretPosition.indexToFocus = 0;
-
+    this.setClickedFrame(newFrame);
+    this.setNewFrame(newFrame);
     this.triggerChange();
   },
+
+  setNewFrame: function(frame){
+    this.newFrame = frame ;
+  },
+
+  getNewFrame: function(){
+    return this.newFrame;
+  },
+
 
   setHtmlEditorData: function(fID, data){
     var oFrame = this.getFrameObject(fID);
@@ -151,7 +185,7 @@ var store = {
       "parentId": parentId
     };
     this.setFlatStructure(newTextFrame);
-    return newTextFrame
+    return newTextFrame;
   },
 
   getFrameData: function(){
@@ -178,6 +212,7 @@ var store = {
     this.setFocusedFrameId(oFrame.id);
     this.oCaretPosition.focusId = oFrame.id;
     this.oCaretPosition.indexToFocus = 0;
+    this.setClickedFrame(oFrame);
 
     this.triggerChange();
   },
@@ -219,6 +254,7 @@ var store = {
     this.setFocusedFrameId(oFrame.id);
     this.oCaretPosition.focusId = oFrame.id;
     this.oCaretPosition.indexToFocus = 0;
+    this.setClickedFrame(oFrame);
 
     this.triggerChange();
   },
@@ -245,9 +281,11 @@ var store = {
     if(parentArray[oFrameData.index-1]){
       this.setFocusedFrameId(parentArray[oFrameData.index-1].id);
       this.oCaretPosition.focusId = parentArray[oFrameData.index-1].id;
+      this.setClickedFrame(parentArray[oFrameData.index-1]);
     }else{
       this.setFocusedFrameId(parentFrame.id);
       this.oCaretPosition.focusId = parentFrame.id;
+      this.setClickedFrame(parentFrame);
     }
     this.oCaretPosition.indexToFocus = 99;
     this.triggerChange();

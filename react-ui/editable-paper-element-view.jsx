@@ -73,6 +73,17 @@ var EditablePaperElementView =  React.createClass({
 
   },
 
+
+  handleClick: function(e){
+    //if(e.ctrlKey){
+    //  myStore.setClickedFrameArray(this.props.frameData);
+    //}
+    //else{
+      myStore.setClickedFrame(this.props.frameData);
+    //}
+
+  },
+
   render: function(){
     var oFrameData = this.props.frameData;
     var aContainerContents = [];
@@ -90,6 +101,7 @@ var EditablePaperElementView =  React.createClass({
           data-uuid={oFrameData.id}
           contentEditable={true}
           onKeyDown={this.keyDown}
+          onClick = {this.handleClick}
           onBlur={this.blur}>
             {oFrameData.title}
         </div>

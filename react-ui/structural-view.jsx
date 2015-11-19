@@ -1,4 +1,5 @@
 var EditablePaperElementView = require("./editable-paper-element-view.jsx");
+var ToolbarView = require("./toolbar-view.jsx");
 
 var React = require('react');
 
@@ -15,6 +16,7 @@ var StructuralView = React.createClass({
     return (
         <div className="structural-view">
           <div className="editor-header">Structural Editor</div>
+          <ToolbarView frameData={aFrameData} />
           <div className="structural-view-elements">
             {aFrameElements}
           </div>
