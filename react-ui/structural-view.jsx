@@ -7,9 +7,9 @@ var React = require('react');
 
 var StructuralView = React.createClass({
 
-  componentDidMount: function () {
+ /* componentDidMount: function () {
     this.attachEventAfterUpdate();
-  },
+  },*/
 
   componentDidUpdate: function () {
     this.attachEventAfterUpdate();
@@ -18,11 +18,15 @@ var StructuralView = React.createClass({
   handleDocumentClick: function (oEvent) {
     var that = this;
     if (!(_.includes(oEvent.target.classList, 'removeChild')) && !oEvent.ctrlKey) {
-      console.log("You clicked");
+
+      var aClickedFrameDOM = document.getElementsByClassName("ctrl-clickedFrame");
+      for(var i=0; i<aClickedFrameDOM.length;i++){
+        aClickedFrameDOM[i].classList.remove("ctrl-clickedFrame");
+      }
+      document.removeEventListener("click", that.handleDocumentClick);
+
       myStore.enableAllClickAndMakeClickFrameArrayNull();
-      //document.removeEventListener("click", that.handleDocumentClick);
     }
-    //
 
   },
 

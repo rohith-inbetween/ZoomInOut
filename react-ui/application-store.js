@@ -283,22 +283,19 @@ var store = {
       }
       var oFrameData = this.findTextFrame(parentArray, sFrameId);
       parentArray.splice(oFrameData.index, 1);
-      if(parentArray[oFrameData.index-1]){
-        this.setFocusedFrameId(parentArray[oFrameData.index-1].id);
-        this.oCaretPosition.focusId = parentArray[oFrameData.index-1].id;
-        this.setClickedFrame(parentArray[oFrameData.index-1]);
-      }else{
-        this.setFocusedFrameId(parentFrame.id);
-        this.oCaretPosition.focusId = parentFrame.id;
-        this.setClickedFrame(parentFrame);
-      }
-      this.oCaretPosition.indexToFocus = 99;
-
-      if(!isFromArray){
+      if(!isFromArray ){
+        if(parentArray[oFrameData.index-1]){
+          this.setFocusedFrameId(parentArray[oFrameData.index-1].id);
+          this.oCaretPosition.focusId = parentArray[oFrameData.index-1].id;
+          this.setClickedFrame(parentArray[oFrameData.index-1]);
+        }else{
+          this.setFocusedFrameId(parentFrame.id);
+          this.oCaretPosition.focusId = parentFrame.id;
+          this.setClickedFrame(parentFrame);
+        }
+        this.oCaretPosition.indexToFocus = 99;
         this.triggerChange();
       }
-
-
     }
   },
 
@@ -315,7 +312,6 @@ var store = {
     else{
       sFrameId = param;
       this.removeIndividualFrame(sFrameId );
-
     }
 
   },
