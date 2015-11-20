@@ -205,6 +205,11 @@ body *{
     color: #9CA7AD;
 }
 
+.multiSearchInputBox{
+    width: 50%;
+}
+}
+
 
 .content-edit-element{
     height: auto;

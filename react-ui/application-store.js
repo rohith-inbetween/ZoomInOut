@@ -1,5 +1,5 @@
 var uuid = require("./uuid");
-var mockData = require("./mockData");
+var mockData = require("./mockData").visualAttr;
 var MicroEvent = require("./microEvent/MicroEvent");
 var _ = require('lodash');
 
@@ -276,17 +276,21 @@ var store = {
   removeIndividualFrame: function(sFrameId , isFromArray){
     var keyList = Object.keys(this.flatStructure);
     if(keyList.length > 1 && keyList.indexOf(sFrameId) > -1){
-
       var oFrameObject = this.flatStructure[sFrameId];
-      delete this.flatStructure[sFrameId];
       var sParentId = oFrameObject.parentId;
       var parentArray = this.data;
-      if(sParentId){
+      if (sParentId) {
         var parentFrame = this.flatStructure[sParentId];
         parentArray = parentFrame.contents;
       }
       var oFrameData = this.findTextFrame(parentArray, sFrameId);
-      parentArray.splice(oFrameData.index, 1);
+      if (!sParentId) {
+        if (oFrameData.index == 0) {
+          return;
+        }
+      }
+      delete this.flatStructure[sFrameId];
+      parentArray.splice(oFrameData.index,1);
       if(!isFromArray ){
         if(parentArray[oFrameData.index-1]){
           this.setFocusedFrameId(parentArray[oFrameData.index-1].id);
@@ -304,18 +308,18 @@ var store = {
   },
 
 
-  removeFrame: function(param, isArray){
+  removeFrame: function(param, isArray) {
     var sFrameId;
-    if(isArray){
-      for(var i=0;i<param.length; i++){
+    if (isArray) {
+      for (var i = 0; i < param.length; i++) {
         sFrameId = param[i].id;
-        this.removeIndividualFrame(sFrameId , true);
+        this.removeIndividualFrame(sFrameId, true);
       }
       this.enableAllClickAndMakeClickFrameArrayNull();
     }
     else{
       sFrameId = param;
-      this.removeIndividualFrame(sFrameId );
+      this.removeIndividualFrame(sFrameId);
     }
 
   },
