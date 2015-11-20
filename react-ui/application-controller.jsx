@@ -26,6 +26,9 @@ var ApplicationController = React.createClass({
 
   render: function () {
     var aFrames = this.props.data;
+
+    //myStore.checkDocumentClick();
+
     return (
         <div className="editor">
 

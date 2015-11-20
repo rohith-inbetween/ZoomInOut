@@ -17,8 +17,11 @@ var Toolbar = React.createClass({
 
   handleRemoveChild: function(){
     var clickedFrame = myStore.getClickedFrame();
-    if(clickedFrame){
+    var clickedFrameArray = myStore.getClickedFrameArray();
+    if(clickedFrame && clickedFrameArray.length==0){
       myStore.removeFrame(clickedFrame.id);
+    }else if(clickedFrameArray){
+      myStore.removeFrame(clickedFrameArray, true);
     }else{
       alert("Please focus a frame");
     }
@@ -54,14 +57,28 @@ var Toolbar = React.createClass({
   },
 
   render:function(){
+    var aClickedFrames = myStore.getClickedFrameArray();
+    var createFrame = "createFrame toolbar-content";
+    var removeChild = "removeChild toolbar-content";
+    var indentRight = "indentRight toolbar-content";
+    var indentLeft = "indentLeft toolbar-content";
+    var makeChild = "makeChild toolbar-content";
+
+    if(aClickedFrames && aClickedFrames.length>0){
+      createFrame += ' disable-click';
+      indentRight += ' disable-click';
+      indentLeft += ' disable-click';
+      makeChild += ' disable-click';
+
+    }
+
     return (
         <div className="toolbar-container" >
-            <div className="createFrame toolbar-content" onClick={this.handleCreate} >Create</div>
-            <div className="removeChild toolbar-content" onClick={this.handleRemoveChild}>Remove</div>
-            <div className="indentRight toolbar-content" onClick={this.handleIndentRight}>IndentRight</div>
-            <div className="indentLeft toolbar-content" onClick={this.handleIndentLeft}>IndentLeft</div>
-            <div className="makeChild toolbar-content" onClick={this.handleMakeChild}>CreateChild</div>
-
+            <div className={createFrame} onClick={this.handleCreate} >Create</div>
+            <div className={removeChild} onClick={this.handleRemoveChild}>Remove</div>
+            <div className={indentRight} onClick={this.handleIndentRight}>IndentRight</div>
+            <div className={indentLeft}  onClick={this.handleIndentLeft}>IndentLeft</div>
+            <div className={makeChild} onClick={this.handleMakeChild}>CreateChild</div>
         </div>
     );
 

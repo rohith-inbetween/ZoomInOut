@@ -75,12 +75,13 @@ var EditablePaperElementView =  React.createClass({
 
 
   handleClick: function(e){
-    //if(e.ctrlKey){
-    //  myStore.setClickedFrameArray(this.props.frameData);
-    //}
-    //else{
+    if(e.ctrlKey){
+      myStore.setClickedFrameArray(this.props.frameData);
+    }
+    else{
       myStore.setClickedFrame(this.props.frameData);
-    //}
+      //myStore.setClickedFrameArray(null);
+    }
   },
 
   render: function(){

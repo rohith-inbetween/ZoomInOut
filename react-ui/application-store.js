@@ -35,6 +35,7 @@ var store = {
 
   aClickedFrames:[],
 
+
   setCaretPositionObjtoNull: function(){
     this.oCaretPosition.focusId = '';
     this.oCaretPosition.indexToFocus = 99;
@@ -54,6 +55,7 @@ var store = {
 
   setClickedFrameArray :function(frame){
     this.aClickedFrames.push(frame);
+    this.triggerChange();
   },
 
   getClickedFrameArray: function(){
@@ -267,27 +269,64 @@ var store = {
     return this.flatStructure[sFrameId];
   },
 
-  removeFrame: function(sFrameId){
-    var oFrameObject = this.flatStructure[sFrameId];
-    delete this.flatStructure[sFrameId];
-    var sParentId = oFrameObject.parentId;
-    var parentArray = this.data;
-    if(sParentId){
-      var parentFrame = this.flatStructure[sParentId];
-      parentArray = parentFrame.contents;
+  removeIndividualFrame: function(sFrameId , isFromArray){
+    var keyList = Object.keys(this.flatStructure);
+    if(keyList.length > 1 && keyList.indexOf(sFrameId) > -1){
+
+      var oFrameObject = this.flatStructure[sFrameId];
+      delete this.flatStructure[sFrameId];
+      var sParentId = oFrameObject.parentId;
+      var parentArray = this.data;
+      if(sParentId){
+        var parentFrame = this.flatStructure[sParentId];
+        parentArray = parentFrame.contents;
+      }
+      var oFrameData = this.findTextFrame(parentArray, sFrameId);
+      parentArray.splice(oFrameData.index, 1);
+      if(parentArray[oFrameData.index-1]){
+        this.setFocusedFrameId(parentArray[oFrameData.index-1].id);
+        this.oCaretPosition.focusId = parentArray[oFrameData.index-1].id;
+        this.setClickedFrame(parentArray[oFrameData.index-1]);
+      }else{
+        this.setFocusedFrameId(parentFrame.id);
+        this.oCaretPosition.focusId = parentFrame.id;
+        this.setClickedFrame(parentFrame);
+      }
+      this.oCaretPosition.indexToFocus = 99;
+
+      if(!isFromArray){
+        this.triggerChange();
+      }
+
+
     }
-    var oFrameData = this.findTextFrame(parentArray, sFrameId);
-    parentArray.splice(oFrameData.index, 1);
-    if(parentArray[oFrameData.index-1]){
-      this.setFocusedFrameId(parentArray[oFrameData.index-1].id);
-      this.oCaretPosition.focusId = parentArray[oFrameData.index-1].id;
-      this.setClickedFrame(parentArray[oFrameData.index-1]);
-    }else{
-      this.setFocusedFrameId(parentFrame.id);
-      this.oCaretPosition.focusId = parentFrame.id;
-      this.setClickedFrame(parentFrame);
+  },
+
+
+  removeFrame: function(param, isArray){
+    var sFrameId;
+    if(isArray){
+      for(var i=0;i<param.length; i++){
+        sFrameId = param[i].id;
+        this.removeIndividualFrame(sFrameId , true);
+      }
+      this.enableAllClickAndMakeClickFrameArrayNull();
     }
-    this.oCaretPosition.indexToFocus = 99;
+    else{
+      sFrameId = param;
+      this.removeIndividualFrame(sFrameId );
+
+    }
+
+  },
+
+  makeClickedFrameNull : function(){
+    this.clickedFrame = null;
+    this.triggerChange();
+  },
+
+  enableAllClickAndMakeClickFrameArrayNull: function(){
+    this.aClickedFrames = [];
     this.triggerChange();
   },
 

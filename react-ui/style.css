@@ -194,29 +194,13 @@ body *{
     color: rgba(122, 143, 198, 0.80);
 }
 
-/*
-.createFrame{#90A7E8
-    background-image: url('./images/PlusFilled-32.png');
-    height: 32px;
-    width: 32px;
+.disable-click{
+    pointer-events: none ;
+    background-color: rgba(68, 81, 113, 0.80);
 }
 
-.removeChild{
-    background-image: url('./images/Delete%20Filled-32.png');
-    height: 32px;
-    width: 32px;
+.clickedFrame{
+    box-shadow: 0 1px 1px 0 #D0D0D0;
+    padding: 10px;
+    color: #9CA7AD;
 }
-
-.indentLeft{
-    background-image: url('./images/Left2-25.png');
-    height: 32px;
-    width: 32px;
-}
-
-.indentRight{
-
-}
-
-.makeChild {
-
-}*/
