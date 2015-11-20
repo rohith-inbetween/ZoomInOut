@@ -112,7 +112,7 @@ body *{
 .design-element.childExpanded{
     width: 100%;
     padding: 0;
-    margin: 2px;
+    /*margin: 2px;*/                               /*//////////*/
 }
 
 .design-element.expanded{
@@ -204,3 +204,19 @@ body *{
     box-shadow: 0 3px 3px 0 green;
     color: #9CA7AD;
 }
+
+
+.content-edit-element{
+    height: auto;
+    min-height: 100px;
+    box-shadow: 0 2px 5px 1px #D0D0D0;
+    transition: min-height 0.3s, height 0.3s, width 0.3s, padding 0.3s, margin 0.3s;
+    overflow: hidden;
+    background-color: white;
+}
+
+.content-element-title{
+    border-bottom: 1px solid black;
+}
+
+

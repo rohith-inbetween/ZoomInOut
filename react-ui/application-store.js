@@ -265,6 +265,10 @@ var store = {
     this.flatStructure[oFrameObject.id] = oFrameObject;
   },
 
+  getFlatStructure: function(){
+    return this.flatStructure;
+  },
+
   getFrameObject: function(sFrameId){
     return this.flatStructure[sFrameId];
   },

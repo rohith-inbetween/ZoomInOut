@@ -1,5 +1,5 @@
 var React  = require('react');
-var myStore = require('./application-store');
+var myStore = require('./../application-store');
 
 
 var Toolbar = React.createClass({

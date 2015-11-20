@@ -1,4 +1,4 @@
-var myStore = require("./application-store");
+var myStore = require("./../application-store");
 var React = require('react');
 
 var EditablePaperElementView =  React.createClass({

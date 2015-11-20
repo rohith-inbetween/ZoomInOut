@@ -1,5 +1,5 @@
 var React = require('react');
-var myStore = require('./application-store');
+var myStore = require('./../application-store');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 var TextField = require('material-ui').TextField;
 var ThemeManager = require('material-ui/lib/styles/theme-manager');

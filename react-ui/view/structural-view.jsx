@@ -1,7 +1,7 @@
 var EditablePaperElementView = require("./editable-paper-element-view.jsx");
 var ToolbarView = require("./toolbar-view.jsx");
 var _ = require('lodash');
-var myStore = require('./application-store');
+var myStore = require('./../application-store');
 
 var React = require('react');
 
