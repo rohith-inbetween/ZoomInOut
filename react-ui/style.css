@@ -204,3 +204,7 @@ body *{
     box-shadow: 0 3px 3px 0 green;
     color: #9CA7AD;
 }
+
+.multiSearchInputBox{
+    width: 50%;
+}

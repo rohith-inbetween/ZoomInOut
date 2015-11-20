@@ -1,0 +1,32 @@
+.dropDownListView {
+
+  &.dropDownItemHidden {
+    display: none;
+  }
+
+  position: absolute;
+  width: calc(100% - 2px);
+  color: #333;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border: 1px solid #ccc;
+  cursor: default;
+  font-size: 13px;
+  margin-top: -1px;
+  outline: none;
+  padding: 6px 0;
+  margin-left: 1px;
+  z-index: 10;
+  overflow: auto;
+
+  .dropDownNodeContainer {
+    height: auto;
+    line-height: normal;
+    color: #333;
+    padding: 5px;
+    &:hover {
+      background-color: #eee;
+    }
+  }
+}
+
