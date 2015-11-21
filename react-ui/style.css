@@ -307,6 +307,7 @@ body *{
 }*/
 
 
+/*
 .content-edit-element .content-element-data>div:not(.text-editor){
     height: 40px !important;
     width:100% !important;
@@ -316,10 +317,15 @@ body *{
     top: 19px !important;
 }
 
-.content-edit-element .content-element-data input{
+.content-edit-element .content-element-data input,
+.content-edit-element .content-element-data textarea{
     margin-top: 7px !important;
 }
 
 .content-edit-element .content-element-data hr{
     bottom: 2px !important;
+}*/
+
+.content-edit-element .content-element-data textarea{
+   color:white !important;
 }
