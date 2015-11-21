@@ -170,6 +170,7 @@ var ContentEditView = React.createClass({
       );
 */
 
+
       aDataDivs.push(<div className="text-editor" onClick = {this.handleOnClick}
           dangerouslySetInnerHTML={oDangerousHTML}>
           </div>);
