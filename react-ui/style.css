@@ -197,6 +197,7 @@ body *{
     /* margin: 5px; */
     background-color: #F0F3F5;
     height: 25px;
+    padding: 0 0 0 5px;
 }
 
 .toolbar-content{
@@ -207,6 +208,29 @@ body *{
     font-size: small;
     color: rgba(122, 143, 198, 0.80);
     cursor: pointer;
+    height: 22px;
+    width: 22px;
+    background-size: 22px;
+}
+
+.toolbar-content.createFrame{
+    background-image: url('images/Plus-32%20(1).png');
+}
+
+.toolbar-content.removeChild{
+    background-image: url('images/Minus-32.png');
+}
+
+.toolbar-content.indentRight{
+    background-image: url('images/Double%20Right-32.png');
+}
+
+.toolbar-content.indentLeft{
+    background-image: url('images/Double%20Left-32.png');
+}
+
+.toolbar-content.makeChild{
+    background-image: url('images/Down%20Right-32%20(1).png');
 }
 
 .disable-click{

@@ -64,11 +64,11 @@ var Toolbar = React.createClass({
 
     return (
         <div className="toolbar-container" >
-            <div className={createFrame} onClick={this.handleCreate} >Create</div>
-            <div className={removeChild} onClick={this.handleRemoveChild}>Remove</div>
-            <div className={indentRight} onClick={this.handleIndentRight}>IndentRight</div>
-            <div className={indentLeft}  onClick={this.handleIndentLeft}>IndentLeft</div>
-            <div className={makeChild} onClick={this.handleMakeChild}>CreateChild</div>
+            <div className={createFrame} onClick={this.handleCreate} ></div>
+            <div className={removeChild} onClick={this.handleRemoveChild}></div>
+            <div className={indentRight} onClick={this.handleIndentRight}></div>
+            <div className={indentLeft}  onClick={this.handleIndentLeft}></div>
+            <div className={makeChild} onClick={this.handleMakeChild}></div>
         </div>
     );
 
