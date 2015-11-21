@@ -16,6 +16,10 @@ body *{
     box-sizing: border-box;
 }
 
+.searchBarView{
+    background-color: white;
+}
+
 .structural-view{
     width: 35%;
 }
@@ -48,11 +52,16 @@ body *{
 .structural-view-elements, .design-view-elements{
     padding: 10px;
     overflow: auto;
-    height: calc(100% - 20px);
+    background-color: #F0F3F5;
+}
+
+.structural-view-elements{
+    height: calc(100% - 45px);
 }
 
 .design-view-elements{
     background-color: #F0F3F5;
+    height: calc(100% - 20px);
 }
 
 .paper-element .container-children{
@@ -61,7 +70,7 @@ body *{
 
 .paper-element{
     margin-top: 3px;
-    background-color: white;
+    background-color: #F0F3F5;
 }
 
 .editor-header{
@@ -183,19 +192,21 @@ body *{
 }
 
 .toolbar-container{
-    box-shadow: 0 1px 1px 1px #D2D7E2;
-    height: auto;
-    width: auto;
-    margin: 5px;
+    /* box-shadow: 0 1px 1px 1px #D2D7E2; */
+    width: 100%;
+    /* margin: 5px; */
+    background-color: #F0F3F5;
+    height: 25px;
 }
 
 .toolbar-content{
     display: inline-block;
     margin: 5px;
     padding: inherit;
-    box-shadow: 0 2px 2px 1px #9CA7AD;
+    /*box-shadow: 0 2px 2px 1px #9CA7AD;*/
     font-size: small;
     color: rgba(122, 143, 198, 0.80);
+    cursor: pointer;
 }
 
 .disable-click{
@@ -223,6 +234,7 @@ body *{
     font-size: 13px;
     /* padding: 10px; */
     color:white;
+    box-shadow: 0 2px 5px 1px #B9D5E6;
 }
 
 .content-edit-element.level2{
