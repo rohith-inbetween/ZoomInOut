@@ -61,16 +61,16 @@ var Toolbar = React.createClass({
       makeChild += ' disable-click';
 
     }
-
     return (
         <div className="toolbar-container" >
-            <div className={createFrame} onClick={this.handleCreate} ></div>
-            <div className={removeChild} onClick={this.handleRemoveChild}></div>
-            <div className={indentRight} onClick={this.handleIndentRight}></div>
-            <div className={indentLeft}  onClick={this.handleIndentLeft}></div>
-            <div className={makeChild} onClick={this.handleMakeChild}></div>
+          <div className={createFrame} title="Create New" onClick={this.handleCreate} ></div>
+          <div className={removeChild} title="Remove" onClick={this.handleRemoveChild}></div>
+          <div className={makeChild} title="Create Child" onClick={this.handleMakeChild}></div>
+          <div className={indentRight} title="Indent Right" onClick={this.handleIndentRight}></div>
+          <div className={indentLeft} title="Indent Left" onClick={this.handleIndentLeft}></div>
         </div>
     );
+
 
   }
 
