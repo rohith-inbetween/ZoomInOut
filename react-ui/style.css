@@ -258,6 +258,10 @@ body *{
     margin: 10px
 }
 
+.compress{
+    display: none;
+}
+
 
 
 /*

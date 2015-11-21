@@ -363,7 +363,7 @@ var store = {
     var aData = this.data;
 
     var oFrame = this.findIntheData(iId, aData);
-    oFrame[sElementRef] = sData;
+    oFrame.attributes[sElementRef] = sData;
     this.triggerChange();
   },
 

@@ -9,8 +9,6 @@ var Toolbar = React.createClass({
     var clickedFrame = myStore.getClickedFrame();
     if(clickedFrame){
       myStore.createNewFrame(clickedFrame.title , clickedFrame.id);
-    }else{
-      alert("Please focus a frame");
     }
 
   },
@@ -22,8 +20,6 @@ var Toolbar = React.createClass({
       myStore.removeFrame(clickedFrame.id);
     }else if(clickedFrameArray){
       myStore.removeFrame(clickedFrameArray, true);
-    }else{
-      alert("Please focus a frame");
     }
   },
 
@@ -31,8 +27,6 @@ var Toolbar = React.createClass({
     var clickedFrame = myStore.getClickedFrame();
     if(clickedFrame){
       myStore.changeParentToContainerAndAddToParent(clickedFrame.title , clickedFrame.id);
-    }else{
-      alert("Please focus a frame");
     }
   },
 
@@ -40,8 +34,6 @@ var Toolbar = React.createClass({
     var clickedFrame = myStore.getClickedFrame();
     if(clickedFrame){
       myStore.makeParentAndAddSiblingsToChildren(clickedFrame.title, clickedFrame.id);
-    }else{
-      alert("Please focus a frame");
     }
   },
 
@@ -51,8 +43,6 @@ var Toolbar = React.createClass({
       myStore.createNewFrame(clickedFrame.title , clickedFrame.id);
       var newFrame = myStore.getNewFrame();
       myStore.changeParentToContainerAndAddToParent(newFrame.title , newFrame.id);
-    }else{
-      alert("Please focus a frame");
     }
   },
 

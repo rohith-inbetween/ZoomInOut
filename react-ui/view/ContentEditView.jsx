@@ -118,6 +118,16 @@ var ContentEditView = React.createClass({
     myStore.setObjectData(sStringData, fId, sElementRef);
   },
 
+  compressUncompress: function(oEvent){
+
+    var oDom = this.getDOMNode().childNodes[1];
+    if(_.includes(oDom.classList, 'compress')){
+      oDom.classList.remove('compress');
+    }else{
+      oDom.classList.add('compress');
+    }
+  },
+
   render : function(){
     var oFrameData = this.props.frameData;
     var aContainerContents = [];
@@ -148,8 +158,7 @@ var ContentEditView = React.createClass({
       }
 
       var oDangerousHTML = {__html: sData};
-/*
-      aDataDivs.push(<TextField ref="Content"
+      /*aDataDivs.push(<TextField ref="Content"
           floatingLabelText="Content"
           defaultValue={sData}
           onBlur={this.onChangeHandle.bind(this,"content")}
@@ -158,8 +167,7 @@ var ContentEditView = React.createClass({
           underlineStyle={{'border-bottom':'solid 1px #7B7B7B'}}
           floatingLabelStyle={{color:'#E4E4C3'}}
           inputStyle={{color:'white'}}/>
-      );
-*/
+      );*/
 
       aDataDivs.push(<div className="text-editor" onClick = {this.handleOnClick}
           dangerouslySetInnerHTML={oDangerousHTML}>
@@ -174,8 +182,9 @@ var ContentEditView = React.createClass({
     }
     var fOnClick;
     if(isFrameExpanded){
-      //sClasses += " expanded";
       fOnClick = function(oEvent){
+        //sClasses += " expanded";
+        //sClasses += " compress";
         oEvent.stopPropagation();
       };
     }
@@ -187,7 +196,7 @@ var ContentEditView = React.createClass({
           <div id={oFrameData.id}
           className="content-element-title"
           data-uuid={oFrameData.id}>
-              <div ref="material-text-field" onBlur={this.onChangeHandle.bind(this,"title")} onClick={fOnClick}>{this.props.frameData.title}</div>
+              <div ref="material-text-field" onBlur={this.onChangeHandle.bind(this,"title")} onClick = {this.compressUncompress}>{this.props.frameData.title}</div>
           </div>
           <div className="content-element-data">
             {aDataDivs}
@@ -196,7 +205,7 @@ var ContentEditView = React.createClass({
               {aContainerContents}
           </ReactCSSTransitionGroup>
         </div>
-    ); //onClick={this.handleOnClick}
+    ); //onClick={this.handleOnClick}        /*onClick={fOnClick}*/
 
   }
 
