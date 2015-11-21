@@ -140,14 +140,14 @@ var ContentEditView = React.createClass({
 
     var aDataDivs = _.map(oFrameData.attributes, function(sAttributeValue, sAttributeName){
       return (<TextField ref={sAttributeName}
-        floatingLabelText={sAttributeName}
+        floatingLabelText={sAttributeName.capitalizeFirstLetter()}
         defaultValue={sAttributeValue}
         onBlur={ this.onChangeHandle.bind(this,sAttributeName)}
         onClick={function(oEvent){oEvent.stopPropagation()}}
-        style={{display:'block',width:'100%',height:'40px'}}
-        underlineStyle={{'border-bottom':'solid 1px #7B7B7B',bottom: '2px'}}
-        floatingLabelStyle={{color:'#E4E4C3',top: '19px','font-size':'12px'}}
-        inputStyle={{color:'white','margin-top': '7px'}}/>
+        style={{width:'100%', height: '65px'}}
+        underlineStyle={{'border-color':'#7B7B7B', bottom: '10px'}}
+        floatingLabelStyle={{color:'#E4E4C3', 'font-size':'.9rem', top: '29px'}}
+        inputStyle={{color:'white', 'margin-top': '7px'}}/>
       );
     }.bind(this));
 
@@ -162,9 +162,9 @@ var ContentEditView = React.createClass({
           defaultValue={sData}
           onBlur={this.onChangeHandle.bind(this,"content")}
           onClick={function(oEvent){oEvent.stopPropagation()}}
-          style={{display:'block',width:'100%'}}
-          underlineStyle={{'border-bottom':'solid 1px #7B7B7B'}}
-          floatingLabelStyle={{color:'#E4E4C3'}}
+          style={{width:'100%'}}
+          underlineStyle={{'border-color':'#7B7B7B'}}
+          floatingLabelStyle={{color:'#E4E4C3', 'font-size': '.9rem'}}
           inputStyle={{color:'white'}}
           multiLine={true}/>
       );
@@ -215,5 +215,8 @@ var ContentEditView = React.createClass({
 
 });
 
+String.prototype.capitalizeFirstLetter = function() {
+  return this.charAt(0).toUpperCase() + this.slice(1);
+}
 
 module.exports = ContentEditView;

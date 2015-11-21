@@ -95,15 +95,13 @@ var MultiSelectSearchView = React.createClass({
       if(this.props.onNodeClick){
         this.props.onNodeClick(this,oModel);
       }
-      var divInput = this.refs.multiSearchInputBox.getDOMNode();
-      //divInput.focus();
     }
   },
 
   handleInputBoxClicked: function (oEvent) {
     var oSelection = window.getSelection();
-    var divInput = this.refs.multiSearchInputBox.getDOMNode();
-    var inputContainer = this.refs.searchBarContainer.getDOMNode();
+    var divInput = this.refs.multiSearchInputBox;
+    var inputContainer = this.refs.searchBarContainer;
     if(this.state.model.getIsDisabled()
         || this.store.isDropDownVisible()
         || (oSelection.type=="Range" &&
@@ -150,13 +148,13 @@ var MultiSelectSearchView = React.createClass({
     }.bind(this));
 
     if (bActiveStatus == false) {
-      var divInput = this.refs.multiSearchInputBox.getDOMNode();
+      var divInput = this.refs.multiSearchInputBox;
       divInput.value = null;
       divInput.style.display = "none";
     }
     var aSelectedItems = this.state.model.getSelectedListModel();
     if(aSelectedItems.length){
-      var divInput = this.refs.multiSearchInputBox.getDOMNode();
+      var divInput = this.refs.multiSearchInputBox;
       divInput.value = aSelectedItems[0].getName();
       var oSelectionRange = this.store.getLastSelectionRange();
       if(oSelectionRange){

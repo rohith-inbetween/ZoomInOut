@@ -1,17 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="node_modules/froala-editor/css/froala_editor.css">
-    <link rel="stylesheet" href="node_modules/froala-editor/css/froala_style.css">
-    <link rel="stylesheet" href="node_modules/froala-editor/css/plugins/colors.css">
-    <link rel="stylesheet" href="node_modules/froala-editor/css/plugins/emoticons.css">
-    <link rel="stylesheet" href="node_modules/froala-editor/css/plugins/image.css">
-
-    <link rel="stylesheet" href="libraries/libraryStyles.css">
-    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-
+    <meta charset="UTF-8">
+    <title></title>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="mock_relationships.js"></script>
     <script src="scripts.js"></script>
@@ -22,10 +13,9 @@
     <link rel="stylesheet" href="css/materialize.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="browserStyles.css">
-
 </head>
-<body>
 
+<body>
 
 <div class="header">
     <div class="logo"></div>
@@ -44,8 +34,7 @@
 </div>
 
 <div class="mainContainer">
-
-<div class="paper nonShielded paper1">
+<div class="paper paper1">
     <div class="basic1">
         <div class="basicName fh">
             <div class="input-field col s6">
@@ -84,6 +73,19 @@
                 </div>
             </div>
         </div>
+
+        <!--<div class="basicType">
+            <div class="input-field col s12">
+                <select>
+                    <option value="1">Footwear</option>
+                    <option value="2">Clothing</option>
+                    <option value="3">Grocery</option>
+                    <option value="4">Electronics</option>
+                </select>
+                <label>Type</label>
+            </div>
+        </div>-->
+
     </div>
     <div class="basic2">
         <div class="carouselControl">
@@ -99,9 +101,31 @@
         </div>
     </div>
 </div>
-
-<div class="paper nonShielded paper2">
+<div class="paper paper2">
     <div class="basic3">
+        <!--<div class="basicClass">
+            <div class="input-field col s12">
+                <select multiple>
+                    <option value="1">Footwear</option>
+                    <option value="2">Clothing</option>
+                    <option value="3">Grocery</option>
+                    <option value="4">Electronics</option>
+                </select>
+                <label>Classes</label>
+            </div>
+        </div>-->
+        <!--   <div class="basicClass">
+               <div class="input-field col s12">
+                   <select multiple>
+                       <option value="1">Target 1</option>
+                       <option value="2">Target 2</option>
+                       <option value="3">Target 3</option>
+                       <option value="4">Target 4</option>
+                   </select>
+                   <label>Targets</label>
+               </div>
+           </div>-->
+
         <div class="dropDownView nothingSelected">
             <div class="dropDownViewLabel">Classes</div>
             <div class="customIp">
@@ -198,10 +222,21 @@
                 </div>
             </div>
         </div>
+
+        <!-- <div class="basicClass">
+             <div class="input-field col s12">
+                 <select multiple>
+                     <option value="1">Image</option>
+                     <option value="2">Audio</option>
+                     <option value="3">Video</option>
+                     <option value="4">Other</option>
+                 </select>
+                 <label>Media Types</label>
+             </div>
+         </div>-->
     </div>
 </div>
-
-<div class="paper nonShielded paper3">
+<div class="paper paper3">
 <div class="basic3">
 <div class="dropDownView nothingSelected halfer">
     <div class="dropDownViewLabel">Owner</div>
@@ -354,10 +389,70 @@
     </div>
 </div>
 
+<!-- <div class="basicClass halfer">
+     <div class="input-field col s12">
+         <select multiple>
+             <option value="1">Owner 1</option>
+             <option value="2">Owner 2</option>
+         </select>
+         <label>Owner</label>
+     </div>
+ </div>-->
+<!--       <div class="basicClass halfer">
+           <div class="input-field col s12">
+               <select multiple>
+                   <option value="1">CR 1</option>
+                   <option value="2">CR 2</option>
+                   <option value="3">CR 3</option>
+                   <option value="3">CR 4</option>
+                   <option value="4">CR 5</option>
+               </select>
+               <label>Content Responsible</label>
+           </div>
+       </div>
+       <div class="basicClass halfer">
+           <div class="input-field col s12">
+               <select multiple>
+                   <option value="1">MR 1</option>
+                   <option value="2">MR 2</option>
+                   <option value="3">MR 3</option>
+                   <option value="4">MR 4</option>
+               </select>
+               <label>Media Responsible</label>
+           </div>
+       </div>
+       <div class="basicClass halfer">
+           <div class="input-field col s12">
+               <select multiple>
+                   <option value="1">Participant 1</option>
+                   <option value="2">Participant 2</option>
+                   <option value="3">Participant 3</option>
+                   <option value="4">Participant 4</option>
+                   <option value="5">Participant 5</option>
+                   <option value="6">Participant 6</option>
+               </select>
+               <label>Participants</label>
+           </div>
+       </div>
+       <div class="basicClass">
+           <div class="input-field col s12">
+               <select multiple>
+                   <option value="1">Viewer 1</option>
+                   <option value="2">Viewer 2</option>
+                   <option value="3">Viewer 3</option>
+                   <option value="4">Viewer 4</option>
+                   <option value="5">Viewer 5</option>
+                   <option value="6">Viewer 6</option>
+                   <option value="7">Viewer 7</option>
+                   <option value="8">Viewer 8</option>
+               </select>
+               <label>Viewers</label>
+           </div>
+       </div>-->
 </div>
 </div>
-
-<div class="paper nonShielded paper4">
+<div class="paper paper4">
+    <!--<div class="paperHeader">Attributes</div>-->
     <div class="paperBody">
         <div class="basicClass noPad">
             <div class="input-field col s12">
@@ -440,17 +535,10 @@
         </div>
     </div>
 </div>
-
-<div class="paper nonShielded paper5">
+<div class="paper paper5">
+    <!--<div class="paperHeader">Relationships</div>-->
     <div class="paperBody">
         <div class="relationships">
-        </div>
-    </div>
-</div>
-
-<div class="paper paper6">
-    <div class="paperBody">
-        <div id="rohith">
         </div>
     </div>
 </div>
@@ -458,6 +546,20 @@
 <div class="footer"></div>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 
-<script type="text/javascript" src="./built.js"></script>
 </body>
 </html>
+
+
+<!--
+<div class="basicRequestor">
+    <div class="input-field col s6">
+        <input placeholder="Admin" id="requestor" type="text" class="validate">
+        <label for="requestor">Requestor</label>
+    </div>
+</div>
+<div class="basicOwner">
+    <div class="input-field col s6">
+        <input placeholder="Admin" id="owner" type="text" class="validate">
+        <label for="owner">Owner</label>
+    </div>
+</div>-->

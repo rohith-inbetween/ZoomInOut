@@ -1,0 +1,770 @@
+html, body{
+    height: 100%;
+}
+
+.header{
+    height: 48px;
+    background-color: #1688CA;
+    box-shadow: 0px 0px 8px -2px #004065;
+    z-index: 2;
+    position: relative;
+    overflow: hidden;
+}
+
+.logo{
+    height: 44px;
+    width: 300px;
+    background-image: url("images/logo.PNG");
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-position: 3px 3px;
+}
+
+.menu{
+    height: 40px;
+    width: 350px;
+    background-image: url("images/menu.PNG");
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-position: 11px 8px;
+    float: right;
+}
+
+.footer{
+
+}
+
+.mainContainer{
+    height: calc(100% - 48px);
+    width: 100%;
+    padding-bottom: 20px;
+    overflow: auto;
+    float: right;
+}
+
+.paper{
+    width: calc(100% - 50px);
+    height: 570px;
+    margin: 25px 25px 0 25px;
+    padding-top: 20px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+    border-radius: 2px;
+}
+
+.paper1{
+    height: auto;
+}
+
+.paper2{
+    height: auto;
+    padding-bottom: 1px;
+}
+
+.paper3{
+    height: auto;
+    padding-bottom: 1px;
+}
+
+.paper4{
+    height: auto;
+    padding-bottom: 1px;
+}
+
+.paper5{
+    height: auto;
+    padding-top: 0px;
+}
+
+.paper6{
+    height: 600px;
+    padding-top: 0px;
+}
+
+.paper5 .paperBody, .paper6 .paperBody{
+    height: 100%;
+}
+
+#rohith{
+    height: 100%;
+}
+
+.basic1{
+
+}
+
+.basic2{
+    height: 260px;
+    position: relative;
+}
+
+.basic3{
+
+}
+
+.basicName{
+    width: calc(50% - 35px);
+    display: inline-block;
+    margin-left: 25px;
+    float: left;
+}
+
+.basicType{
+    width: calc(50% - 30px);
+    display: inline-block;
+    margin-left: 25px;
+}
+
+.carouselControl{
+    height: 250px;
+    position: absolute;
+    width: 100%;
+}
+
+.leftController{
+    height: 100%;
+    width: 50px;
+    position: absolute;
+    background-image: url("./images/Back-32.png");
+    background-position: 11px;
+    background-repeat: no-repeat;
+    background-size: 32px;
+    opacity: .5;
+}
+
+.rightController{
+    height: 100%;
+    width: 50px;
+    position: absolute;
+    right: 0;
+    background-image: url("./images/Forward-32.png");
+    background-position: 2px;
+    background-repeat: no-repeat;
+    background-size: 32px;
+    opacity: .5;
+}
+
+.imageWrapper{
+    text-align: center;
+    padding-top: 18px;
+    overflow: hidden;
+    height: 250px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+}
+
+.image{
+    height: 200px;
+    width: 200px;
+    background-size: 140px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    box-shadow: 0px 1px 3px 0px rgba(0,0,0,.16);
+    background-position: 30px;
+    margin: 10px;
+}
+
+#image1{
+    background-image: url("images/Alligator-100.png");
+}
+
+#image2{
+    background-image: url("images/Ant-100.png");
+}
+
+#image3{
+    background-image: url("images/Bear-100.png");
+}
+
+#image4{
+    background-image: url("images/Caterpillar-100.png");
+}
+
+#image5{
+    background-image: url("images/Dog-100.png");
+}
+
+.basicClass{
+    width: calc(100% - 40px);
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
+.basicRequestor{
+    display: inline-block;
+    width: calc(50% - 40px);
+    margin-left: 20px;
+}
+
+.basicOwner{
+    width: calc(50% - 40px);
+    display: inline-block;
+    margin-left: 25px;
+}
+
+.paperHeader{
+    height: 50px;
+    line-height: 50px;
+    padding-left: 20px;
+    font-size: 20px;
+}
+
+.paperBody{
+    height: calc(100% - 50px);
+    overflow: auto;
+    position: relative;
+}
+
+.fh{
+    margin-left: 20px;
+}
+
+.input-field label{
+    left: 0;
+}
+
+.rel{
+    box-shadow: 0px 0px 0px 1px #e2e5e7;
+    float: left;
+    margin-left: 20px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    width: calc(50% - 30px);
+    transition: width .2s;
+}
+
+.rel:last-child{
+    margin-bottom: 20px;
+}
+
+.rel1{
+
+}
+
+.rel2{
+
+}
+
+.rel3{
+
+}
+
+.rel4{
+
+}
+
+.relHeader{
+    font-size: .9rem;
+    padding: 8px 12px;
+}
+
+.relBody{
+    padding: 8px;
+}
+
+.contentWrapper{
+    display: inline-block;
+    /* margin: 0px 0px 10px 5px; */
+    height: 80px;
+    transition: all .1s;
+    width: 98%;
+    margin-left: 1%;
+    box-shadow: 0px 1px 0px 0px rgba(255,255,255,.2);
+    position: relative;
+}
+
+.contentWrapper:hover{
+    /*box-shadow: 0px 0px 1px 0px #1688CA;*/
+}
+
+.contentBody{
+    font-size: 12px;
+    text-align: center;
+    /* width: 100%; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    color: #fff;
+    height: 100%;
+    line-height: 84px;
+    padding: 0;
+    text-shadow: 0px 1px 1px #09557B;
+}
+
+.contentImage{
+    background-image: url("./images/Image File-100.png");
+    height: 60px;
+    width: 60px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 0px;
+    display: inline-block;
+    margin: 10px;
+}
+
+.availableContents{
+    position: absolute;
+    width: 320px;
+    height: calc(100% - 48px);
+    left: -320px;
+    transition: all .2s;
+    background: linear-gradient(45deg, #3496C7, #2291C8, #2291C8);
+    z-index: 1;
+    border-right: 1px solid #e2e5e7;
+}
+
+.availableSearch{
+    height: 32px;
+    background: rgba(0,0,0,.1);
+    font-size: 14px;
+    line-height: 32px;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    color: #F7F7F7;
+    text-shadow: 0px 1px 1px #0F6698;
+    transition: all .2s;
+    z-index: 1;
+}
+
+.availableClose{
+    position: absolute;
+    height: 28px;
+    width: 30px;
+    background-image: url("./images/Delete Filled-100.png");
+    background-size: 13px;
+    background-repeat: no-repeat;
+    top: 0;
+    right: 0;
+    background-position: 8px;
+    margin: 2px;
+    opacity: .7;
+}
+
+.contentRemove{
+    position: absolute;
+    height: 100%;
+    width: 30px;
+    background-image: url("./images/Delete Filled-100.png");
+    background-size: 13px;
+    background-repeat: no-repeat;
+    top: 0;
+    right: 0;
+    background-position: 8px;
+    margin: 2px;
+    opacity: .3;
+    transition: all .2s;
+}
+
+.contentRemove:hover{
+    opacity: 1;
+}
+
+.searchIcon{
+    height: 20px;
+    width: 20px;
+    background-image: url("./images/Search-50.png");
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: 1px;
+    position: absolute;
+    top: 6px;
+    left: 10px;
+}
+
+.searchInput{
+    line-height: normal;
+    background: none;
+    border: none;
+    font-size: 12px;
+    width: 77%;
+    outline: none;
+}
+
+.availableClose:hover{
+    opacity: 1;
+}
+
+.visible.availableContents{
+    left: 0;
+}
+
+.relationships{
+    height: 100%;
+    padding-top: 20px;
+    float: right;
+    overflow: auto;
+    transition: all .2s;
+    width: 100%;
+}
+
+.availableHeader{
+    text-align: center;
+    font-size: .9rem;
+    color: #444;
+    background: #eee;
+    height: 32px;
+    line-height: 32px;
+}
+
+.availableBody{
+    overflow: auto;
+    padding: 10px;
+    height: calc(100% - 64px);
+}
+
+.noPad{
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.half{
+    width: calc(100% - 320px);
+}
+
+.half .rel{
+    width: calc(100% - 40px);
+}
+
+.relSelected{
+    height: 580px;
+}
+
+.noPad:after {
+    content: '';
+    box-shadow: 0px 1px 0px 0px rgb(224, 224, 224);
+    width: calc(100% - 50px);
+    height: 1px;
+    position: absolute;
+    top: 48px;
+}
+
+.splitter{
+    padding: 3px 12px;
+    border-radius: 23px;
+    height: 15px;
+    width: 100%;
+    background: rgba(255,255,255,.2);
+    font-weight: bold;
+    color: #fff;
+    font-size: 10px;
+    line-height: 9px;
+    text-shadow: 0px 1px 1px #1873A0;
+}
+
+.noBottomBorder{
+    box-shadow: none;
+}
+
+/**************IP***********************/
+
+.dropDownView{
+    width: calc(100% - 40px);
+    margin-left: 20px;
+    margin-bottom: 15px;
+    position: relative;
+    margin-top: 15px;
+    display: inline-block;
+}
+
+.dropdown{
+    display: none;
+    position: absolute;
+    background: #fff;
+    width: 100%;
+    z-index: 1;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
+.dropItem{
+    height: 32px;
+    width: 100%;
+    padding: 8px;
+    font-size: 12px;
+    transition: all .2s;
+}
+
+.dropItem:hover{
+    background: #eee;
+}
+
+.selectedString{
+
+}
+
+.selectedString{
+    display: inline-block;
+    font-size: .9rem;
+}
+
+.removeSelected{
+    background-image: url("./images/Delete Filled-100.png");
+    height: 20px;
+    width: 20px;
+    background-repeat: no-repeat;
+    background-position: 7px 10px;
+    background-size: 10px;
+    display: inline-block;
+}
+
+.selectedItem{
+    display: inline-block;
+    border-bottom: 1px solid #DDD;
+    margin: 5px;
+}
+
+.selectedItems{
+    display: inline-block;
+}
+
+.dropdowninput{
+    display: inline-block !important;
+    border-bottom: 0 !important;
+    box-shadow: none !important;
+    height: 2rem !important;
+    width: auto !important;
+    margin: 0 !important;
+}
+
+.nonShielded input.dropdowninput{
+    display: none;
+    margin-top: 5px !important;
+}
+
+.customIp{
+    height: 36px;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+}
+
+.dropItemIcon{
+    display: inline-block;
+    height: 19px;
+    width: 14px;
+    background-image: url("./images/Checkmark-50.png");
+    background-size: 16px;
+    background-position: 0px 1px;
+    background-repeat: no-repeat;
+    margin-right: 10px;
+    position: relative;
+    transition: all .2s;
+}
+
+.dropItemIcon:after {
+    content: '';
+    height: 17px;
+    width: 17px;
+    background: #F9F9F9;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.dropItem.selected .dropItemIcon:after{
+    opacity: 0;
+}
+
+.dropItemText{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.dropDownViewLabel{
+    position: absolute;
+    font-size: .8rem;
+    color: #9e9e9e;
+    top: -15px;
+    left: 1px;
+}
+
+.nothingSelected .dropDownViewNoSelected{
+    display: block;
+}
+
+.dropDownViewNoSelected{
+    position: absolute;
+    font-size: .9rem;
+    color: rgba(0, 0, 0, 0.22);
+    top: 9px;
+    left: 1px;
+    display: none;
+}
+
+.relBody .contentWrapper {
+    box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, .07);
+}
+
+.relBody .contentWrapper:last-child {
+    box-shadow: none;
+}
+
+.relBody .contentBody {
+    color: #333;
+    text-shadow: none;
+    line-height: 25px;
+    width: calc(100% - 80px);
+}
+
+.relBody .contentImage{
+    float: left;
+}
+
+.contentHeader{
+    margin-top: 10px;
+    text-align: left;
+}
+
+.contentDescription{
+    font-size: 11px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: calc(100% - 40px);
+    text-align: left;
+}
+
+.searchActive{
+    background: #1f83b4;
+    z-index: 2;
+}
+
+.smallMenu{
+    height: 30px;
+    width: 30px;
+    background-image: url("./images/Menu Filled-50.png");
+    background-repeat: no-repeat;
+    background-position: 0;
+    background-size: 18px;
+    float: right;
+    display: none;
+    margin: 9px 5px;
+}
+
+.halfer{
+    width: calc(50% - 32px);
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+.typer{
+    margin-top: 18px;
+}
+
+.dropDownView.halfer{
+    margin-bottom: 15px;
+}
+
+/*****************OVERRIDDEN*******************/
+
+.dropdown-content li>a, .dropdown-content li>span {
+    font-size: 12px;
+    color: #26a69a;
+    display: block;
+    line-height: 12px;
+    padding: 9px 9px;
+}
+
+.dropdown-content li {
+    clear: both;
+    color: rgba(0,0,0,0.87);
+    cursor: pointer;
+    min-height: 28px;
+    line-height: 1rem;
+    width: 100%;
+    text-align: left;
+    text-transform: none;
+}
+
+.dropdown-content{
+    transform: translateY(40px);
+}
+
+.nonShielded .select-wrapper input.select-dropdown {
+    height: 2.5rem;
+    line-height: 3rem;
+    font-size: .9rem;
+    margin: 0 0 15px 0;
+    padding: 0;
+}
+
+.nonShielded input[type=text], .nonShielded input[type=password], .nonShielded input[type=email],
+.nonShielded input[type=url], .nonShielded input[type=time], .nonShielded input[type=date],
+.nonShielded input[type=datetime-local], .nonShielded input[type=tel], .nonShielded input[type=number],
+.nonShielded input[type=search], .nonShielded textarea.materialize-textarea {
+    height: 2.5rem;
+    font-size: .9rem;
+    margin: 0 0 15px 0;
+    padding: 0;
+    border-bottom: 1px solid rgb(224, 224, 224);
+}
+
+.nonShielded textarea.materialize-textarea {
+    height: 3rem;
+    font-size: .9rem;
+    margin: 15px 0 10px 0;
+    padding: 0;
+}
+
+[type="checkbox"]:checked+label:before {
+    top: 2px;
+    left: -2px;
+    width: 10px;
+    height: 16px;
+}
+
+[type="checkbox"]+label:before {
+    top: 3px;
+    left: 2px;
+    width: 14px;
+    height: 14px;
+}
+
+.select-wrapper input.select-dropdown {
+    border-bottom: 1px solid rgb(224,224,224);
+}
+
+html{
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+/********MEDIA*********/
+
+@media (max-width: 500px) {
+    .halfer{
+        width: calc(100% - 40px);
+    }
+
+    .basicName, .basicType{
+        width: calc(100% - 40px);
+        margin-left: 20px;
+    }
+}
+
+
+@media (max-width: 660px) {
+    .smallMenu{
+        display: inline-block;
+    }
+
+    .menu{
+        display: none;
+    }
+
+    .rel{
+        width: calc(100% - 40px);
+    }
+
+    .availableContents{
+        width: 220px;
+        box-shadow: 0px 0px 10px 0px #333;
+        border: none;
+    }
+
+    .mainContainer{
+        width: 100%;
+    }
+}
+

@@ -7,4 +7,4 @@ var ApplicationStore = require("./application-store");
 
 var aData = ApplicationStore.initialize();
 
-React.render(<AppController data={aData} />, document.querySelector('body'));
+React.render(<AppController data={aData} />, document.getElementById('rohith'));
