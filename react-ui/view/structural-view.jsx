@@ -40,8 +40,9 @@ var StructuralView = React.createClass({
     var aFrameData = this.props.frameData;
     var aFrameElements = [];
     for(var i = 0 ; i < aFrameData.length ; i++){
+      var oFrame = aFrameData[i];
       aFrameElements.push(
-          <EditablePaperElementView frameData={aFrameData[i]}/>
+          <EditablePaperElementView key={oFrame.id}  frameData={aFrameData[i]}/>
       );
     }
     return (

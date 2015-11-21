@@ -250,6 +250,7 @@ body *{
 }
 
 .content-edit-element .content-element-title{
+    height: 20px;
     text-shadow: 0px 1px 1px #09557B;
     margin: 10px;
 }
@@ -308,3 +309,27 @@ body *{
 .content-edit-element .text-editor .fr-separator.fr-vs{
     height: 30px;
 }*/
+
+
+/*
+.content-edit-element .content-element-data>div:not(.text-editor){
+    height: 40px !important;
+    width:100% !important;
+}
+
+.content-edit-element .content-element-data label{
+    top: 19px !important;
+}
+
+.content-edit-element .content-element-data input,
+.content-edit-element .content-element-data textarea{
+    margin-top: 7px !important;
+}
+
+.content-edit-element .content-element-data hr{
+    bottom: 2px !important;
+}*/
+
+.content-edit-element .content-element-data textarea{
+   color:white !important;
+}
