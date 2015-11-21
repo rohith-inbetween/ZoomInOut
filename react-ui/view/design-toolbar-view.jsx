@@ -21,9 +21,9 @@ var DesignToolBar = React.createClass({
   render: function(){
     return (
         <div className="toolbar-container">
-            <div className="collapseAll toolbar-content" onClick={this.handleCollapseAll}>collapseAll</div>
-            <div className="expandAll toolbar-content" onClick={this.handleExpandAll}>expandAll</div>
-            <div className="expandContents toolbar-content" onClick={this.handleExpandContents}>expandAll</div>
+            <div className="collapseAll toolbar-content" title="Collapse All" onClick={this.handleCollapseAll}></div>
+            <div className="expandAll toolbar-content" title="Expand All" onClick={this.handleExpandAll}></div>
+            <div className="expandContents toolbar-content" title="Expand Contents" onClick={this.handleExpandContents}></div>
         </div>
     );
   }

@@ -196,8 +196,11 @@ var ContentEditView = React.createClass({
         className={sClasses}>
           <div id={oFrameData.id}
           className="content-element-title"
-          data-uuid={oFrameData.id}>
-              <div ref="material-text-field" onBlur={this.onChangeHandle.bind(this,"title")} onClick = {this.compressUncompress}>{this.props.frameData.title}</div>
+          data-uuid={oFrameData.id}
+          onBlur={this.onChangeHandle.bind(this,"title")}
+          onClick = {this.compressUncompress}
+          ref="material-text-field">
+              {this.props.frameData.title}
           </div>
           <div className="content-element-data">
             {aDataDivs}

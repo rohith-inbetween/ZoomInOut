@@ -53,15 +53,8 @@ body *{
     padding: 10px;
     overflow: auto;
     background-color: #F0F3F5;
-}
-
-.structural-view-elements{
     height: calc(100% - 45px);
-}
 
-.design-view-elements{
-    background-color: #F0F3F5;
-    height: calc(100% - 20px);
 }
 
 .paper-element .container-children{
@@ -233,6 +226,18 @@ body *{
     background-image: url('images/Down%20Right-32%20(1).png');
 }
 
+.toolbar-content.collapseAll{
+    background-image: url('images/Collapse%20Arrow-32.png');
+}
+
+.toolbar-content.expandAll{
+    background-image: url('images/Expand%20Arrow-32.png');
+}
+
+.toolbar-content.expandContents{
+    background-image: url('images/Expand Arrow-32.png');
+}
+
 .disable-click{
     pointer-events: none ;
     color: transparent;
@@ -259,7 +264,7 @@ body *{
     /* padding: 10px; */
     color:white;
     box-shadow: 0 2px 5px 1px #B9D5E6;
-    margin-top: 5px;
+    /*margin-top: 5px;*/
 }
 
 .content-edit-element.level2{
