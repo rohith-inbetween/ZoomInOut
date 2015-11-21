@@ -119,7 +119,7 @@ var EditablePaperElementView =  React.createClass({
     var oMultisearchModel = new MultiSearchModel(aDropDownListModel, [new DropDownListModel("N/A",oFrameData.title,false,{})], true, 200, oFrameData.id, true, false);
     var oSelectedModel = [new DropDownListModel("N/A",oFrameData.title,false,{})];
     return(
-      <div className="paper-element" onClick = {this.handleClick} key={oFrameData.id}>
+      <div className="paper-element" onClick = {this.handleClick}>
         <MultiSearchView model={oMultisearchModel} selectedModel={oSelectedModel}
           onNodeClick={this.onClickNode}
           onChange={this.handleOnChange}
