@@ -399,6 +399,8 @@ var store = {
 
       if(aFrames[i].contents.length>0){
         this.traverseFrames(aFrames[i].contents, sSelect);
+      }else if(sSelect == "ExpandContent"){
+        this.handleExpandIterator(aFrames[i].id);
       }
     }
   },

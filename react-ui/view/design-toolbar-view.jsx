@@ -15,7 +15,8 @@ var DesignToolBar = React.createClass({
   },
 
   handleExpandContents: function(){
-
+    myStore.collapseExpandAll("ExpandContent");
+    myStore.triggerChange();
   },
 
   render: function(){
@@ -23,7 +24,7 @@ var DesignToolBar = React.createClass({
         <div className="toolbar-container">
             <div className="collapseAll toolbar-content" onClick={this.handleCollapseAll}>collapseAll</div>
             <div className="expandAll toolbar-content" onClick={this.handleExpandAll}>expandAll</div>
-            <div className="expandContents toolbar-content" onClick={this.handleExpandContents}>expandAll</div>
+            <div className="expandContents toolbar-content" onClick={this.handleExpandContents}>expandContents</div>
         </div>
     );
   }

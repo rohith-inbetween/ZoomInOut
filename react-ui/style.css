@@ -294,6 +294,27 @@ body *{
 }
 
 
+.toolbar-content2{
+    display: inline-block;
+    margin: 5px;
+    padding: inherit;
+    /*box-shadow: 0 2px 2px 1px #9CA7AD;*/
+    font-size: small;
+    color: rgba(122, 143, 198, 0.80);
+    cursor: pointer;
+}
+
+
+.toolbar-container2{
+    /* box-shadow: 0 1px 1px 1px #D2D7E2; */
+    width: 100%;
+    /* margin: 5px; */
+    background-color: #F0F3F5;
+    height: 25px;
+}
+
+
+
 /*
 .content-element-title{
     */
