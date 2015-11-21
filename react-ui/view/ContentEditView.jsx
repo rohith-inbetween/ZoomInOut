@@ -6,6 +6,7 @@ var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 var TextField = require('material-ui').TextField;
 var ThemeManager = require('material-ui/lib/styles/theme-manager');
 var Colors = require('material-ui/lib/styles/colors');
+var _ = require('lodash');
 
 var $ = require('jquery');
 window.jQuery = $;
@@ -107,6 +108,7 @@ var ContentEditView = React.createClass({
   },
 
   onChangeHandle: function(oEvent) {
+    debugger;
     var oDom = this.refs['material-text-field'];
     var sNewTitle = oDom.getValue();
     myStore.modifyTitle(this.props.frameData.id, sNewTitle);
@@ -115,25 +117,40 @@ var ContentEditView = React.createClass({
   render : function(){
     var oFrameData = this.props.frameData;
     var aContainerContents = [];
-
+    var iLevel = this.props.level;
+    if(!iLevel){
+      iLevel = 1;
+    }
     var sClasses = "content-edit-element";
-    var oDiv = null;
     var isFrameExpanded = myStore.isFrameExpanded(oFrameData.id);
+
+    var aDataDivs = _.map(oFrameData.attributes, function(sAttributeValue, sAttributeName){
+      return (<TextField ref={sAttributeName}
+        floatingLabelText={sAttributeName}
+        defaultValue={sAttributeValue}
+        onBlur={this.onChangeHandle}
+        onClick={function(oEvent){oEvent.stopPropagation()}}
+        style={{display:'block',width:'100%'}}
+        underlineStyle={{'border-bottom':'solid 1px #7B7B7B'}}
+        floatingLabelStyle={{color:'#E4E4C3'}}
+        inputStyle={{color:'white'}}/>
+      );
+    });
+
     if(!oFrameData.contents.length){
       var sData = oFrameData.data;
       if(sData == "" && !isFrameExpanded){
         sData = '<p class="content-edit-empty-placeholder">Type Something</p>';
       }
       var oDangerousHTML = {__html: sData};
-      oDiv =
-          (<div className="text-editor"
+      aDataDivs.push(<div className="text-editor"
           dangerouslySetInnerHTML={oDangerousHTML}>
           </div>);
     }
     for(var i = 0 ; i < oFrameData.contents.length ; i++){
       var oChildFrameData = oFrameData.contents[i];
       aContainerContents.push(
-          <ContentEditView frameData={oChildFrameData}/>
+          <ContentEditView level={iLevel + 1} frameData={oChildFrameData}/>
       );
     }
     var fOnClick;
@@ -143,6 +160,7 @@ var ContentEditView = React.createClass({
         oEvent.stopPropagation();
       };
     }
+    sClasses += " level" + iLevel;
 
     return (
         <div key={oFrameData.id}
@@ -153,7 +171,9 @@ var ContentEditView = React.createClass({
           data-uuid={oFrameData.id}>
               <div ref="material-text-field" onBlur={this.onChangeHandle} onClick={fOnClick}>{this.props.frameData.title}</div>
           </div>
-          {oDiv}
+          <div className="content-element-data">
+            {aDataDivs}
+          </div>
           <ReactCSSTransitionGroup component="div" className="container-children" transitionName="design-element-anim" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
               {aContainerContents}
           </ReactCSSTransitionGroup>
