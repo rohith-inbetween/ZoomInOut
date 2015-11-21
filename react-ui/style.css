@@ -235,6 +235,7 @@ body *{
     /* padding: 10px; */
     color:white;
     box-shadow: 0 2px 5px 1px #B9D5E6;
+    margin-top: 5px;
 }
 
 .content-edit-element.level2{

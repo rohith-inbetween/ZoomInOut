@@ -153,11 +153,10 @@ var ContentEditView = React.createClass({
 
     if(!oFrameData.contents.length){
       var sData = oFrameData.data;
-      if(sData == "" && !isFrameExpanded){
+      /*if(sData == "" && !isFrameExpanded){
         sData = '<p class="content-edit-empty-placeholder">Type Something</p>';
-      }
+      }*/
       var oDangerousHTML = {__html: sData};
-/*
       aDataDivs.push(<TextField ref="Content"
           floatingLabelText="Content"
           defaultValue={sData}
@@ -166,14 +165,14 @@ var ContentEditView = React.createClass({
           style={{display:'block',width:'100%'}}
           underlineStyle={{'border-bottom':'solid 1px #7B7B7B'}}
           floatingLabelStyle={{color:'#E4E4C3'}}
-          inputStyle={{color:'white'}}/>
+          inputStyle={{color:'white'}}
+          multiLine={true}/>
       );
-*/
 
 
-      aDataDivs.push(<div className="text-editor" onClick = {this.handleOnClick}
+      /*aDataDivs.push(<div className="text-editor" onClick = {this.handleOnClick}
           dangerouslySetInnerHTML={oDangerousHTML}>
-          </div>);
+          </div>);*/
 
     }
     for(var i = 0 ; i < oFrameData.contents.length ; i++){
