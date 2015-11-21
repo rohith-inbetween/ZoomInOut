@@ -153,11 +153,9 @@ var ContentEditView = React.createClass({
 
     if(!oFrameData.contents.length){
       var sData = oFrameData.data;
-      /*if(sData == "" && !isFrameExpanded){
-        sData = '<p class="content-edit-empty-placeholder">Type Something</p>';
+      if(sData == "" && !isFrameExpanded){
         sData = '<p class="content-edit-empty-placeholder">Type Something</p>';
       }
-*/
       var oDangerousHTML = {__html: sData};
 /*
       aDataDivs.push(<TextField ref="Content"
