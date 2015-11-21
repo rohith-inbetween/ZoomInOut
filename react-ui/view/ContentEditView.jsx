@@ -62,7 +62,7 @@ var ContentEditView = React.createClass({
 
 
     //Set expanded height according to container height
-    if (myStore.expandedFrames.frame == oFrame.id) {
+    /*if (myStore.expandedFrames.frame == oFrame.id) {
       var iContainerHeight = document.getElementById('design-view-element-container').offsetHeight;
       var iFrameHeight = (95 / 100 * iContainerHeight);
       $(oDOM).css('height', iFrameHeight);
@@ -70,7 +70,7 @@ var ContentEditView = React.createClass({
     } else {
       $(oDOM).css('height','auto');
       $(oDOM).css('min-height','');
-    }
+    }*/
 
     //Initialize/Destroy froala
     if(!oFrame.contents.length){
@@ -107,11 +107,15 @@ var ContentEditView = React.createClass({
     }
   },
 
-  onChangeHandle: function(oEvent) {
-    debugger;
-    var oDom = this.refs['material-text-field'];
-    var sNewTitle = oDom.getValue();
-    myStore.modifyTitle(this.props.frameData.id, sNewTitle);
+  onChangeHandle: function(sElementRef, oEvent) {
+
+    //var oDom = this.refs['material-text-field'];
+    //var sNewTitle = oDom.getValue();
+    //myStore.modifyTitle(this.props.frameData.id, sNewTitle);
+
+    var fId = this.props.frameData.id;
+    var sStringData = oEvent.target.value;
+    myStore.setObjectData(sStringData, fId, sElementRef);
   },
 
   render : function(){
@@ -128,24 +132,39 @@ var ContentEditView = React.createClass({
       return (<TextField ref={sAttributeName}
         floatingLabelText={sAttributeName}
         defaultValue={sAttributeValue}
-        onBlur={this.onChangeHandle}
+        onBlur={ this.onChangeHandle.bind(this,sAttributeName)}
         onClick={function(oEvent){oEvent.stopPropagation()}}
         style={{display:'block',width:'100%'}}
         underlineStyle={{'border-bottom':'solid 1px #7B7B7B'}}
         floatingLabelStyle={{color:'#E4E4C3'}}
         inputStyle={{color:'white'}}/>
       );
-    });
+    }.bind(this));
 
     if(!oFrameData.contents.length){
       var sData = oFrameData.data;
       if(sData == "" && !isFrameExpanded){
         sData = '<p class="content-edit-empty-placeholder">Type Something</p>';
       }
+
       var oDangerousHTML = {__html: sData};
-      aDataDivs.push(<div className="text-editor"
+/*
+      aDataDivs.push(<TextField ref="Content"
+          floatingLabelText="Content"
+          defaultValue={sData}
+          onBlur={this.onChangeHandle.bind(this,"content")}
+          onClick={function(oEvent){oEvent.stopPropagation()}}
+          style={{display:'block',width:'100%'}}
+          underlineStyle={{'border-bottom':'solid 1px #7B7B7B'}}
+          floatingLabelStyle={{color:'#E4E4C3'}}
+          inputStyle={{color:'white'}}/>
+      );
+*/
+
+      aDataDivs.push(<div className="text-editor" onClick = {this.handleOnClick}
           dangerouslySetInnerHTML={oDangerousHTML}>
           </div>);
+
     }
     for(var i = 0 ; i < oFrameData.contents.length ; i++){
       var oChildFrameData = oFrameData.contents[i];
@@ -155,7 +174,7 @@ var ContentEditView = React.createClass({
     }
     var fOnClick;
     if(isFrameExpanded){
-      sClasses += " expanded";
+      //sClasses += " expanded";
       fOnClick = function(oEvent){
         oEvent.stopPropagation();
       };
@@ -164,12 +183,11 @@ var ContentEditView = React.createClass({
 
     return (
         <div key={oFrameData.id}
-        className={sClasses}
-        onClick={this.handleOnClick}>
+        className={sClasses}>
           <div id={oFrameData.id}
           className="content-element-title"
           data-uuid={oFrameData.id}>
-              <div ref="material-text-field" onBlur={this.onChangeHandle} onClick={fOnClick}>{this.props.frameData.title}</div>
+              <div ref="material-text-field" onBlur={this.onChangeHandle.bind(this,"title")} onClick={fOnClick}>{this.props.frameData.title}</div>
           </div>
           <div className="content-element-data">
             {aDataDivs}
@@ -178,7 +196,7 @@ var ContentEditView = React.createClass({
               {aContainerContents}
           </ReactCSSTransitionGroup>
         </div>
-    );
+    ); //onClick={this.handleOnClick}
 
   }
 

@@ -24,7 +24,6 @@ var DesignerView = React.createClass({
       aFrameElements.push(
           <ContentEditDesignView frameData ={frame} />
       );
-      // <EditableDeignView frameData ={aFrameData[i]} />
     }
     return (
         <div className="designer-view ">

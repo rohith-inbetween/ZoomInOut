@@ -357,7 +357,31 @@ var store = {
     oFrame.title = textContent;
 
     this.triggerChange();
+  },
+
+  setObjectData: function(sData, iId, sElementRef){
+    var aData = this.data;
+
+    var oFrame = this.findIntheData(iId, aData);
+    oFrame[sElementRef] = sData;
+    this.triggerChange();
+  },
+
+  findIntheData: function(iId, aData){
+
+    for(var i=0; i < aData.length; i++){
+      if(aData[i].contents.length>0){
+        this.findIntheData(iId, aData[i].contents);
+      }
+      else{
+        if(iId == aData[i].id){
+          return aData[i];
+        }
+      }
+
+    }
   }
+
 
 };
 

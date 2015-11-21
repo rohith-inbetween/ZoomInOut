@@ -4,8 +4,6 @@ var StructuralView = require("./view/structural-view.jsx");
 var DesignerView = require("./view/designer-view.jsx");
 var myStore = require("./application-store");
 
-var ContentEditDesignView = require('./view/ContentEditView.jsx');
-
 var ApplicationController = React.createClass({
 
   //@UnBind: store with state
@@ -34,6 +32,6 @@ var ApplicationController = React.createClass({
         </div>
     )
   }
-});     // <ContentEditDesignView frameData={aFrames} />
+});
 
 module.exports = ApplicationController;
