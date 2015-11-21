@@ -1,14 +1,14 @@
 var myStore = require("./../application-store");
 var React = require('react');
 
-var MultiSearchView = require('./libraries/multiselectsearchview/multiselect-search-view.jsx').view;
-var DropDownListView = require('./libraries/dropdownlistview/drop-down-list-view.jsx').view;
+var MultiSearchView = require('../libraries/multiselectsearchview/multiselect-search-view.jsx').view;
+var DropDownListView = require('../libraries/dropdownlistview/drop-down-list-view.jsx').view;
 
-var DropDownListModel = require('./libraries/dropdownlistview/model/drop-down-list-model.js');
-var MultiSearchModel = require('./libraries/multiselectsearchview/model/multiselect-search-view-model.js');
+var DropDownListModel = require('../libraries/dropdownlistview/model/drop-down-list-model.js');
+var MultiSearchModel = require('../libraries/multiselectsearchview/model/multiselect-search-view-model.js');
 
 var _ = require('lodash');
-var oTemplates = require("./mockData").templates;
+var oTemplates = require("../mockData").templates;
 
 
 var EditablePaperElementView =  React.createClass({

@@ -3,6 +3,8 @@
  */
 var React = require('react');
 var AppController = require('./application-controller.jsx');
-var mockData = require("./mockData").visualAttr;
+var ApplicationStore = require("./application-store");
 
-React.render(<AppController data={mockData} />, document.querySelector('body'));
+var aData = ApplicationStore.initialize();
+
+React.render(<AppController data={aData} />, document.querySelector('body'));

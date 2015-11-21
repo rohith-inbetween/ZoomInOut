@@ -20,7 +20,7 @@ require('froala-editor/js/plugins/inline_style.min.js');
 
 
 
-var ContentEdit = React.createClass({
+var ContentEditView = React.createClass({
 
 
 
@@ -114,19 +114,30 @@ var ContentEdit = React.createClass({
 
   render : function(){
     var oFrameData = this.props.frameData;
+    var aContainerContents = [];
 
     var sClasses = "content-edit-element";
     var oDiv = null;
+    var isFrameExpanded = myStore.isFrameExpanded(oFrameData.id);
     if(!oFrameData.contents.length){
-      var oDangerousHTML = {__html: oFrameData.data};
+      var sData = oFrameData.data;
+      if(sData == "" && !isFrameExpanded){
+        sData = '<p class="content-edit-empty-placeholder">Type Something</p>';
+      }
+      var oDangerousHTML = {__html: sData};
       oDiv =
           (<div className="text-editor"
           dangerouslySetInnerHTML={oDangerousHTML}>
           </div>);
     }
-
+    for(var i = 0 ; i < oFrameData.contents.length ; i++){
+      var oChildFrameData = oFrameData.contents[i];
+      aContainerContents.push(
+          <ContentEditView frameData={oChildFrameData}/>
+      );
+    }
     var fOnClick;
-    if(myStore.isFrameExpanded(oFrameData.id)){
+    if(isFrameExpanded){
       sClasses += " expanded";
       fOnClick = function(oEvent){
         oEvent.stopPropagation();
@@ -143,6 +154,9 @@ var ContentEdit = React.createClass({
               <div ref="material-text-field" onBlur={this.onChangeHandle} onClick={fOnClick}>{this.props.frameData.title}</div>
           </div>
           {oDiv}
+          <ReactCSSTransitionGroup component="div" className="container-children" transitionName="design-element-anim" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+              {aContainerContents}
+          </ReactCSSTransitionGroup>
         </div>
     );
 
@@ -151,4 +165,4 @@ var ContentEdit = React.createClass({
 });
 
 
-module.exports = ContentEdit;
+module.exports = ContentEditView;

@@ -1,12 +1,12 @@
 var uuid = require("./uuid");
-var mockData = require("./mockData").visualAttr;
+//var mockData = require("./mockData").visualAttr;
 var MicroEvent = require("./microEvent/MicroEvent");
 var _ = require('lodash');
 
 
 var store = {
 
-  data: mockData,
+  data: [],
 
   flatStructure: {},
 
@@ -182,6 +182,10 @@ var store = {
       "id" : uuid.generateUUID(),
       "type" : "textFrame",
       "title": "",
+      "attributes":{
+        "briefing":"",
+        "tags":""
+      },
       "data":"",
       "contents" : [],
       "parentId": parentId
@@ -335,7 +339,9 @@ var store = {
   },
 
   initialize: function(){
+    this.data.push(this.createTextFrame());
     this.initializeFlatStructure(this.data)
+    return this.data;
   },
 
   initializeFlatStructure: function(aParentArray){

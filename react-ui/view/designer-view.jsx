@@ -17,25 +17,15 @@ var DesignerView = React.createClass({
   },
 
   render: function () {
-   /* var aFrameElements = [];
-    var aFrameData = this.props.frameData;
-
-    for ( var i = 0 ; i < aFrameData.length; i++){*/
-
     var aFrameElements = [];
     var aFrameData = this.props.frameData;
-    //this.setFrame()
-
-    var propStore = this.props.store;
-    var oFlatStructure = propStore.getFlatStructure();
-    var keyList = Object.keys(oFlatStructure);
-    for ( var i = 0 ; i < keyList.length; i++){
-      var frame = oFlatStructure[keyList[i]];
+    for ( var i = 0 ; i < aFrameData.length; i++){
+      var frame = aFrameData[i];
       aFrameElements.push(
           <ContentEditDesignView frameData ={frame} />
       );
-    } // <EditableDeignView frameData ={aFrameData[i]} />
-
+      // <EditableDeignView frameData ={aFrameData[i]} />
+    }
     return (
         <div className="designer-view ">
           <div className="editor-header">Designer</div>

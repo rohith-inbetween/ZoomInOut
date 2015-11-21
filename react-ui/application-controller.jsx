@@ -16,7 +16,6 @@ var ApplicationController = React.createClass({
   //@Bind: Store with state
   componentDidMount: function () {
     myStore.bind('change', this.storyStateChanged);
-    myStore.initialize();
   },
 
   storyStateChanged: function () {
@@ -27,8 +26,6 @@ var ApplicationController = React.createClass({
 
   render: function () {
     var aFrames = this.props.data;
-
-
     return (
         <div className="editor">
 

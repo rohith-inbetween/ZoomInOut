@@ -1,14 +1,5 @@
 var uuid = require('./uuid');
 
-var visualAttr = [
-  {
-    "id": uuid.generateUUID(),
-    "type": "textFrame",
-    "title": "",
-    "data": "",
-    "contents": []
-  }];
-
 var oTemplates = {
   1: {
     "id": uuid.generateUUID(),
@@ -112,6 +103,5 @@ var oTemplates = {
 
 
 module.exports = {
-  visualAttr: visualAttr,
   templates: oTemplates
 };
