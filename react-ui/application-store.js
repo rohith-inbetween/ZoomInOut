@@ -384,7 +384,45 @@ var store = {
       }
 
     }
+  },
+
+  traverseFrames: function(aFrames, sSelect){
+    for(var i=0; i < aFrames.length; i++){
+
+      if(sSelect=="Collapse"){
+        this.handleCompressIterator(aFrames[i].id);
+      }
+      else if(sSelect=="Expand"){
+        this.handleExpandIterator(aFrames[i].id);
+      }
+
+
+      if(aFrames[i].contents.length>0){
+        this.traverseFrames(aFrames[i].contents, sSelect);
+      }
+    }
+  },
+
+  collapseExpandAll: function(sSelect){
+    var aFrames = this.data;
+    this.traverseFrames(aFrames, sSelect);
+  },
+
+  handleCompressIterator: function(fID){
+    var oDom = document.getElementById(fID).parentNode.childNodes[1];
+    if(!(_.includes(oDom.classList, 'compress'))){
+      oDom.classList.add('compress');
+    }
+  },
+
+  handleExpandIterator: function(fID){
+    var oDom = document.getElementById(fID).parentNode.childNodes[1];
+    if((_.includes(oDom.classList, 'compress'))){
+      oDom.classList.remove('compress');
+    }
   }
+
+
 
 
 };
