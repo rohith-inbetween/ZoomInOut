@@ -103,7 +103,7 @@ var ContentEditView = React.createClass({
     var containerDOM = document.getElementById("design-view-element-container");
     var oCurrentDom = this.getDOMNode();
     $(containerDOM).animate(
-        {scrollTop: oCurrentDom.offsetTop - containerDOM.offsetTop - 20},
+        {scrollTop: oCurrentDom.offsetTop - containerDOM.offsetTop},
         100
     );
   },

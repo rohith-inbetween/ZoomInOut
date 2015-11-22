@@ -100,16 +100,7 @@ body *{
     z-index: 1;
     transition: transform 0.2s;
     display: inline-block;
-}
-
-.paper-element-class-icon.icon1{
-    background-image: url('images/Dice-32.png');
     right: 5px;
-}
-
-.paper-element-class-icon.icon2{
-    background-image: url('images/Alligator-100.png');
-    right: 32px;
 }
 
 .paper-element .toggle-button.collapsed{
@@ -507,4 +498,14 @@ body *{
 
 .content-element-data:empty, .content-data:empty{
     margin: 0;
+}
+
+.paper-element.selected-paper-element>.searchBarView .searchBarContainer>.multiSearchInputBox {
+    color: #08356F !important;
+    text-shadow: none !important;
+}
+
+.searchBarView:hover .searchBarContainer>.multiSearchInputBox {
+    color: #687a90 !important;
+    text-shadow: none !important;
 }
