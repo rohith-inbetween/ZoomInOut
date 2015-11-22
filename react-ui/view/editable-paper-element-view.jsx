@@ -130,7 +130,7 @@ var EditablePaperElementView =  React.createClass({
     var sClass = "paper-element level" + iFrameLevel;
     var sContainerChildrenClasses = "container-children " + oFrameData.visibilityState;
     var sExpandCollapseElementButtonClass = "toggle-button " + oFrameData.visibilityState;
-    if(oFrameData.id == myStore.getClickedFrame.id){
+    if(myStore.getClickedFrame() && oFrameData.id == myStore.getClickedFrame().id){
       sClass += " selected-paper-element"
     }
     return(
