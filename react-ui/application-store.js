@@ -35,7 +35,6 @@ var store = {
 
   aClickedFrames:[],
 
-
   setCaretPositionObjtoNull: function(){
     this.oCaretPosition.focusId = '';
     this.oCaretPosition.indexToFocus = 99;
@@ -311,7 +310,6 @@ var store = {
     }
   },
 
-
   removeFrame: function(param, isArray) {
     var sFrameId;
     if (isArray) {
@@ -388,15 +386,12 @@ var store = {
 
   traverseFrames: function(aFrames, sSelect){
     for(var i=0; i < aFrames.length; i++){
-
       if(sSelect=="Collapse"){
         this.handleCompressIterator(aFrames[i].id);
       }
       else if(sSelect=="Expand"){
         this.handleExpandIterator(aFrames[i].id);
       }
-
-
       if(aFrames[i].contents.length>0){
         this.traverseFrames(aFrames[i].contents, sSelect);
       }else if(sSelect == "ExpandContent"){
@@ -411,21 +406,24 @@ var store = {
   },
 
   handleCompressIterator: function(fID){
-    var oDom = document.getElementById(fID).parentNode.childNodes[1];
+    var oDom = document.getElementById(fID).parentNode.childNodes[1];   //VIOLATION!!
     if(!(_.includes(oDom.classList, 'compress'))){
       oDom.classList.add('compress');
     }
   },
 
   handleExpandIterator: function(fID){
-    var oDom = document.getElementById(fID).parentNode.childNodes[1];
+    var oDom = document.getElementById(fID).parentNode.childNodes[1];   //VIOLATION!!
     if((_.includes(oDom.classList, 'compress'))){
       oDom.classList.remove('compress');
     }
+  },
+
+  expandCollapseAllTreeView: function(sState){
+    _.each(this.data, function(oFrame){
+      oFrame.visibilityState = sState;
+    });
   }
-
-
-
 
 };
 

@@ -64,7 +64,7 @@ var EditableDeignView = React.createClass({
     var oFrame = this.props.frameData;
     var oDOM = this.getDOMNode();
     //Set expanded height according to container height
-    if (myStore.expandedFrames.frame == oFrame.id) {
+    if (myStore.expandedFrames.frame == oFrame.id) {    //VIOLATION!!
       var iContainerHeight = document.getElementById('design-view-element-container').offsetHeight;
       var iFrameHeight = (95 / 100 * iContainerHeight);
       $(oDOM).css('height', iFrameHeight);
@@ -76,7 +76,7 @@ var EditableDeignView = React.createClass({
     //Initialize/Destroy froala
     if(!oFrame.contents.length){
       var $dom =$(oDOM).find('.text-editor:first');
-      if (myStore.expandedFrames.frame == oFrame.id) {
+      if (myStore.expandedFrames.frame == oFrame.id) {    //VIOLATION!!
         if(!$dom.data('froala.editor')){
           this.initializeFroalaEditor($dom, oFrame);
         }
@@ -100,7 +100,7 @@ var EditableDeignView = React.createClass({
 
   handleScroll : function(){
     var fID = this.props.frameData.id;
-    if(myStore.expandedFrames.frame == fID ){
+    if(myStore.expandedFrames.frame == fID ){   //VIOLATION!!
       //alert("handleScroll");
       var containerDOM = document.getElementById("design-view-element-container");
       var oCurrentDom = this.getDOMNode();
@@ -138,13 +138,13 @@ var EditableDeignView = React.createClass({
     }
     var fOnClick;
     var bDisabled = true;
-    if(myStore.isFrameExpanded(oFrameData.id)){
+    if(myStore.isFrameExpanded(oFrameData.id)){   //VIOLATION!!
       sClasses += " expanded";
       fOnClick = function(oEvent){
         oEvent.stopPropagation();
       };
       bDisabled = false;
-    } else if(myStore.isParentExpanded(oFrameData.id)){
+    } else if(myStore.isParentExpanded(oFrameData.id)){ //VIOLATION!!
       sClasses += " childExpanded";
     }
     return (

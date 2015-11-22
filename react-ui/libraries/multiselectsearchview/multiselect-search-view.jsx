@@ -47,6 +47,7 @@ var MultiSelectSearchView = React.createClass({
     }
     var sInputValue = oEvent.target.value;
     var sContextKey = this.state.model.getContext();
+    this.store.setDropDownVisible(true);
     //this.store.filterData(sInputValue);
     this.store.setSelectedModel([new DropDownListModel("Test1",sInputValue,true,{})]);
     this.triggerChange();
@@ -189,11 +190,11 @@ var MultiSelectSearchView = React.createClass({
         <div className="searchBarView">
           <div className={className} ref="searchBarContainer">
             <input ref="multiSearchInputBox"
-                   className= "multiSearchInputBox"
-                   onChange={this.handleInputValueChanged}
-                  onKeyDown={this.keyDown}
-            onClick={this.handleInputBoxClicked}
-                />
+              className= "multiSearchInputBox"
+              onChange={this.handleInputValueChanged}
+              onKeyDown={this.keyDown}
+              onClick={this.handleInputBoxClicked}
+            />
           </div>
           {aDropDownList}
         </div>

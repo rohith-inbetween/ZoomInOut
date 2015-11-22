@@ -46,6 +46,14 @@ var Toolbar = React.createClass({
     }
   },
 
+  expandAll: function(){
+    myStore.expandCollapseAllTreeView('expanded');
+  },
+
+  collapseAll: function(){
+    myStore.expandCollapseAllTreeView('collapsed');
+  },
+
   render:function(){
     var aClickedFrames = myStore.getClickedFrameArray();
     var createFrame = "createFrame toolbar-content";
@@ -53,16 +61,19 @@ var Toolbar = React.createClass({
     var indentRight = "indentRight toolbar-content";
     var indentLeft = "indentLeft toolbar-content";
     var makeChild = "makeChild toolbar-content";
+    var expandAll = "expandAll toolbar-content";
+    var collapseAll = "collapseAll toolbar-content";
 
     if(aClickedFrames && aClickedFrames.length>0){
       createFrame += ' disable-click';
       indentRight += ' disable-click';
       indentLeft += ' disable-click';
       makeChild += ' disable-click';
-
     }
     return (
         <div className="toolbar-container" >
+          <div className={expandAll} title="Expand All" onClick={this.expandAll} ></div>
+          <div className={collapseAll} title="Collapse All" onClick={this.collapseAll} ></div>
           <div className={createFrame} title="Create New" onClick={this.handleCreate} ></div>
           <div className={removeChild} title="Remove" onClick={this.handleRemoveChild}></div>
           <div className={makeChild} title="Create Child" onClick={this.handleMakeChild}></div>

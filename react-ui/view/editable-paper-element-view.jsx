@@ -118,6 +118,7 @@ var EditablePaperElementView =  React.createClass({
     });
     var oMultisearchModel = new MultiSearchModel(aDropDownListModel, [new DropDownListModel("N/A",oFrameData.title,false,{})], true, 200, oFrameData.id, true, false);
     var oSelectedModel = [new DropDownListModel("N/A",oFrameData.title,false,{})];
+    var sContainerChildrenClasses = "container-children " + oFrameData.visibilityState;
     return(
       <div className="paper-element" onClick = {this.handleClick}>
         <MultiSearchView model={oMultisearchModel} selectedModel={oSelectedModel}
@@ -126,7 +127,7 @@ var EditablePaperElementView =  React.createClass({
           onKeyDown={this.keyDown}
           onBlur={this.blur}
           ref="editableTitleDiv"/>
-        <div className="container-children">
+        <div className={sContainerChildrenClasses}>
           {aContainerContents}
         </div>
       </div>

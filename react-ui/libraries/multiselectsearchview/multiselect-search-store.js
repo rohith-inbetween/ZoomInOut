@@ -11,6 +11,8 @@ var MultiSelectStore = function(){
   var bIsSingleSelect = true;
   var bIsDisabled = false;
   var bIsDropDownVisible = false;
+  var bIsDropDownVisible = false;
+  var sContext = "";
 
   var lastSelectionRange = null;
 
@@ -21,6 +23,7 @@ var MultiSelectStore = function(){
     iDropDownMaxHeight = oModel.getDropDownMaxHeight();
     bIsSingleSelect = oModel.getIsSingleSelect();
     bIsDisabled = oModel.getIsDisabled();
+    sContext = oModel.getContext();
   };
 
   this.setSelectedModel = function(oSelectedModel){
@@ -33,10 +36,10 @@ var MultiSelectStore = function(){
       sSelected = selectedModel[0].getName();
     }
     var aVisibleModels = _.filter(dropDownModels,function(oDropDownModel){
-      return oDropDownModel.getName().indexOf(sSelected) >= 0;
+      return oDropDownModel.getName().toUpperCase().indexOf(sSelected.toUpperCase()) >= 0;
     });
     return new MultiSelectSearchViewModel(aVisibleModels,
-        selectedModel, bIsActiveState, iDropDownMaxHeight, "ABCD" ,bIsSingleSelect, bIsDisabled);
+        selectedModel, bIsActiveState, iDropDownMaxHeight, sContext ,bIsSingleSelect, bIsDisabled);
   };
 
   this.isDropDownVisible = function(){
