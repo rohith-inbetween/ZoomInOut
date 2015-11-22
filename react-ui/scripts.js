@@ -3,6 +3,11 @@ var aContentList = ["Apple", "Bag", "Balloon", "Bed", "Beef", "Blanket", "Blouse
 $(document).ready(function() {
   $('select').material_select();
 
+  $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+  });
+
   $('body').on('click', '.rel', function(event){
 
     if($(event.target).hasClass('contentRemove')){

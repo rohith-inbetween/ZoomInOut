@@ -127,10 +127,11 @@ var EditablePaperElementView =  React.createClass({
     });
     var oMultisearchModel = new MultiSearchModel(aDropDownListModel, [new DropDownListModel("N/A",oFrameData.title,false,{})], true, 200, oFrameData.id, true, false);
     var oSelectedModel = [new DropDownListModel("N/A",oFrameData.title,false,{})];
+    var sClass = "paper-element level" + iFrameLevel;
     var sContainerChildrenClasses = "container-children " + oFrameData.visibilityState;
     var sExpandCollapseElementButtonClass = "toggle-button " + oFrameData.visibilityState;
     return(
-      <div className="paper-element" onClick = {this.handleClick}>
+      <div className={sClass} onClick = {this.handleClick}>
         <div className={sExpandCollapseElementButtonClass} onClick={this.toggleExpandCollapse}></div>
         <MultiSearchView model={oMultisearchModel} selectedModel={oSelectedModel}
           onNodeClick={this.onClickNode}

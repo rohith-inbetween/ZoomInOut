@@ -166,6 +166,7 @@ var ContentEditView = React.createClass({
           underlineStyle={{'border-color':'#7B7B7B'}}
           floatingLabelStyle={{color:'#E4E4C3', 'font-size': '.9rem'}}
           inputStyle={{color:'white'}}
+          textareaStyle={{color:'white'}}
           multiLine={true}/>
       );
 

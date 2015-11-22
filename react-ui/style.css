@@ -48,7 +48,7 @@ body *{
     padding: 10px;
     overflow: auto;
     background-color: #F0F3F5;
-    height: calc(100% - 60px);
+    height: calc(100% - 70px);
 }
 
 .paper-element .container-children{
@@ -284,25 +284,27 @@ body *{
     /* box-shadow: 0 2px 5px 1px #D0D0D0; */
     transition: min-height 0.3s, height 0.3s, width 0.3s, padding 0.3s, margin 0.3s;
     overflow: hidden;
-    background-color: #1c4355;
     font-size: 13px;
     /* padding: 10px; */
     color:white;
     box-shadow: 0 2px 5px 1px #B9D5E6;
     /*margin-top: 5px;*/
+    background-color: rgba(255,255,255,.1);
 }
 
-.content-edit-element.level2{
-    background-color: #1f5a6d;
+.content-edit-element.level1{
+    background-color: #04A0D8;
 }
+/*
 
 .content-edit-element.level3{
-    background-color: #1f657f;
+    background-color: #rgba(255,255,255,.1);
 }
 
 .content-edit-element.level4{
-    background-color: #248fae;
+    background-color: #rgba(255,255,255,.1);
 }
+*/
 
 .content-edit-element .content-element-title{
     text-shadow: 0px 1px 1px #09557B;
@@ -344,7 +346,50 @@ body *{
     height: 25px;
 }
 
+.paper6 label{
+    font-family: 'Open Sans';
+    color: #fff !important;
+    font-size: 12px !important;
+    text-shadow: 0px 1px 1px #09557B;
+}
 
+.paper6 hr{
+    border-color: #fff !important;
+}
+
+.searchBarContainer input{
+    font-size: 13px !important;
+    color: #fff !important;
+    text-shadow: 0px 1px 1px #09557B !important;
+}
+
+.searchBarView{
+    background: #04A0D8;
+}
+
+.paper-element.level2 .searchBarView{
+    background: #1DA9DC;
+}
+
+.paper-element.level3 .searchBarView{
+    background: #33B1E0;
+}
+
+.paper-element.level4 .searchBarView{
+    background: #47B9E3;
+}
+
+.paper-element.level5 .searchBarView{
+    background: #59C0E6;
+}
+
+.paper-element.level6 .searchBarView{
+    background: #69C6E9;
+}
+
+.paper-element.level7 .searchBarView{
+    background: #78CCEB;
+}
 
 /*
 .content-element-title{
@@ -423,3 +468,7 @@ body *{
    color:white !important;
 }
 */
+
+.content-edit-element .content-element-data textarea{
+    color: #fff !important;
+}

@@ -101,6 +101,10 @@ var oTemplates = {
   }
 };
 
+var editorData = {
+
+};
+
 
 module.exports = {
   templates: oTemplates
