@@ -313,7 +313,7 @@ body *{
     font-size: 13px;
     /* padding: 10px; */
     color:white;
-    box-shadow: 0 2px 5px 1px #B9D5E6;
+    box-shadow: 0px 8px 8px -9px #333 inset;
     /*margin-top: 5px;*/
     background-color: rgba(255,255,255,.1);
 }
@@ -334,9 +334,10 @@ body *{
 
 .content-edit-element .content-element-title{
     text-shadow: 0px 1px 1px #09557B;
-    margin: 10px;
     cursor: pointer;
-    height: 17px;
+    height: 36px;
+    padding: 10px;
+    background: rgba(0,0,0,.1);
 }
 
 .content-edit-element .content-element-data, .content-edit-element .content-data{
@@ -348,7 +349,6 @@ body *{
 }
 
 .design-toolbar-container{
-
     margin: 2px;
 }
 
@@ -497,4 +497,14 @@ body *{
 
 .content-edit-element .content-element-data textarea{
     color: #fff !important;
+}
+
+.content-edit-element .content-element-data input,
+.content-edit-element .content-element-data textarea{
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 13px !important;
+}
+
+.content-element-data:empty, .content-data:empty{
+    margin: 0;
 }

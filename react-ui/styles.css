@@ -102,7 +102,7 @@ html, body{
 }
 
 .basicName{
-    width: calc(50% - 35px);
+    width: calc(50% - 32px);
     display: inline-block;
     margin-left: 25px;
     float: left;

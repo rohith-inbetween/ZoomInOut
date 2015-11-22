@@ -147,6 +147,7 @@ var ContentEditView = React.createClass({
     var isFrameExpanded = myStore.isFrameExpanded(oFrameData.id);
 
     var aDataDivs = _.map(oFrameData.attributes, function(sAttributeValue, sAttributeName){
+      var bMultiLine = sAttributeName.toLocaleLowerCase() == "briefing";
       return (<TextField ref={sAttributeName}
         floatingLabelText={sAttributeName.capitalizeFirstLetter()}
         defaultValue={sAttributeValue}
@@ -155,7 +156,8 @@ var ContentEditView = React.createClass({
         style={{width:'100%', height: '65px'}}
         underlineStyle={{'border-color':'#7B7B7B', bottom: '10px'}}
         floatingLabelStyle={{color:'#E4E4C3', 'font-size':'.9rem', top: '29px'}}
-        inputStyle={{color:'white', 'margin-top': '7px'}}/>
+        inputStyle={{color:'white', 'margin-top': '7px'}}
+        multiLine={bMultiLine}/>
       );
     }.bind(this));
     var oContentDataDiv = null;

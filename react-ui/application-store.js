@@ -1,5 +1,5 @@
 var uuid = require("./uuid");
-//var mockData = require("./mockData").visualAttr;
+var mockData = require("./mockData");
 var MicroEvent = require("./microEvent/MicroEvent");
 var _ = require('lodash');
 
@@ -349,14 +349,14 @@ var store = {
   },
 
   initialize: function(){
-    this.data.push(this.createTextFrame());
-    this.initializeFlatStructure(this.data)
+    this.data = mockData.editorData;
+    this.initializeFlatStructure(this.data);
     return this.data;
   },
 
   initializeFlatStructure: function(aParentArray){
     for(var i = 0 ; i < aParentArray.length ; i++){
-      var oFrame = this.data[i];
+      var oFrame = aParentArray[i];
       this.setFlatStructure(oFrame);
       this.initializeFlatStructure(oFrame.contents);
     }
