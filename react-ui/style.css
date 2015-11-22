@@ -292,15 +292,17 @@ body *{
 .content-edit-element{
     height: auto;
     min-height: 10px;
-    /* box-shadow: 0 2px 5px 1px #D0D0D0; */
     transition: min-height 0.3s, height 0.3s, width 0.3s, padding 0.3s, margin 0.3s;
     overflow: hidden;
     font-size: 13px;
-    /* padding: 10px; */
     color:white;
     box-shadow: 0px 8px 8px -9px #333 inset;
-    /*margin-top: 5px;*/
     background-color: rgba(255,255,255,.1);
+    width: 100%;
+}
+
+.content-edit-element .container-children{
+    width: 100%;
 }
 
 .content-edit-element.level1{
@@ -327,6 +329,7 @@ body *{
 
 .content-edit-element .content-element-data, .content-edit-element .content-data{
     margin: 10px
+    width: 100%;
 }
 
 .compress{
@@ -502,4 +505,25 @@ body *{
 .searchBarView:hover .searchBarContainer>.multiSearchInputBox {
     color: #687a90 !important;
     text-shadow: none !important;
+}
+
+.insert-image-button{
+    height: 20px;
+    width: 20px;
+    background-image: url("images/Plus-32%20(1).png");
+    background-size: 100% 100%;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+.addImageOption{
+    margin: 0 44%;
+}
+
+.insert-image-label{
+    font-size: 11px;
+}
+
+.image-frame-data{
+    width: 100%;
 }

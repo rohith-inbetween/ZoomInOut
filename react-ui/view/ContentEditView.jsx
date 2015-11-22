@@ -59,8 +59,6 @@ var ContentEditView = React.createClass({
   componentDidUpdate: function() {
     var oFrame = this.props.frameData;
     var oDOM = this.getDOMNode();
-
-
     //Set expanded height according to container height
     /*if (myStore.expandedFrames.frame == oFrame.id) {
       var iContainerHeight = document.getElementById('design-view-element-container').offsetHeight;
@@ -73,7 +71,7 @@ var ContentEditView = React.createClass({
     }*/
 
     //Initialize/Destroy froala
-    if(!oFrame.contents.length){
+    /*if(!oFrame.contents.length){
       var $dom =$(oDOM).find('.text-editor:first');
       if (myStore.expandedFrames.frame == oFrame.id) {
         if(!$dom.data('froala.editor')){
@@ -84,7 +82,7 @@ var ContentEditView = React.createClass({
         $dom.off('froalaEditor.contentChanged');
         $dom.froalaEditor('destroy');
       }
-    }
+    }*/
     if(oFrame.id == myStore.getClickedFrame().id && !myStore.isScrollComplete()){
       this.scrollIntoView();
       myStore.setScrollComplete();
@@ -92,11 +90,22 @@ var ContentEditView = React.createClass({
   },
 
   componentDidMount: function(){
-    this.getDOMNode().addEventListener("transitionend", this.handleScroll.bind(this));
+    //this.getDOMNode().addEventListener("transitionend", this.handleScroll.bind(this));
   },
 
   componentWillUnmount: function(){
-    this.getDOMNode().removeEventListener("transitionend", this.handleScroll.bind(this));
+    //this.getDOMNode().removeEventListener("transitionend", this.handleScroll.bind(this));
+  },
+
+  handleClickUploadPlus: function(){
+    var oDOM = this.getDOMNode();
+    $(oDOM).find('.fileUpload').click();
+  },
+
+  uploadImage: function(oEvent){
+    var oFrame = this.props.frameData;
+    var oImageFiles = oEvent.target.files;
+    myStore.setImage(oFrame.id, oImageFiles);
   },
 
   scrollIntoView: function () {
@@ -108,19 +117,14 @@ var ContentEditView = React.createClass({
     );
   },
 
-  handleScroll : function(){
+  /*handleScroll : function(){
     var fID = this.props.frameData.id;
     if(myStore.expandedFrames.frame == fID ){
       this.scrollIntoView();
     }
-  },
+  },*/
 
   onChangeHandle: function(sElementRef, oEvent) {
-
-    //var oDom = this.refs['material-text-field'];
-    //var sNewTitle = oDom.getValue();
-    //myStore.modifyTitle(this.props.frameData.id, sNewTitle);
-
     var fId = this.props.frameData.id;
     var sStringData = oEvent.target.value;
     myStore.setObjectData(sStringData, fId, sElementRef);
@@ -145,7 +149,6 @@ var ContentEditView = React.createClass({
     }
     var sClasses = "content-edit-element";
     var isFrameExpanded = myStore.isFrameExpanded(oFrameData.id);
-
     var aDataDivs = _.map(oFrameData.attributes, function(sAttributeValue, sAttributeName){
       var bMultiLine = sAttributeName.toLocaleLowerCase() == "briefing";
       return (<TextField ref={sAttributeName}
@@ -160,30 +163,45 @@ var ContentEditView = React.createClass({
         multiLine={bMultiLine}/>
       );
     }.bind(this));
+
     var oContentDataDiv = null;
     if(!oFrameData.contents.length){
-      var sData = oFrameData.data;
-      /*if(sData == "" && !isFrameExpanded){
-        sData = '<p class="content-edit-empty-placeholder">Type Something</p>';
-      }*/
-      //var oDangerousHTML = {__html: sData};
-      oContentDataDiv = (<TextField ref="Content"
-          floatingLabelText="Content"
-          defaultValue={sData}
-          onBlur={this.onChangeHandle.bind(this,"content")}
-          onClick={function(oEvent){oEvent.stopPropagation()}}
-          style={{width:'100%'}}
-          underlineStyle={{'border-color':'#7B7B7B'}}
-          floatingLabelStyle={{color:'#E4E4C3', 'font-size': '.9rem'}}
-          inputStyle={{color:'white'}}
-          multiLine={true}/>
-      );
-
-
-      /*aDataDivs.push(<div className="text-editor" onClick = {this.handleOnClick}
-          dangerouslySetInnerHTML={oDangerousHTML}>
-          </div>);*/
-
+      if(oFrameData.type=='textFrame'){
+        var sData = oFrameData.data;
+        oContentDataDiv = (<TextField ref="Content"
+        floatingLabelText="Content"
+        defaultValue={sData}
+        onBlur={this.onChangeHandle.bind(this,"content")}
+        onClick={function(oEvent){oEvent.stopPropagation()}}
+        style={{width:'100%'}}
+        underlineStyle={{'border-color':'#7B7B7B'}}
+        floatingLabelStyle={{color:'#E4E4C3', 'font-size': '.9rem'}}
+        inputStyle={{color:'white'}}
+        multiLine={true}/>
+        );
+      }
+      else if(oFrameData.type == 'HTML'){
+        /*oContentDataDiv = (<div className="text-editor" onClick = {this.handleOnClick}
+         dangerouslySetInnerHTML={oDangerousHTML}>
+         </div>);*/
+      }
+      else if(oFrameData.type == 'imageFrame'){
+        var oImageData = null;
+        if(oFrameData.data==""){
+          oContentDataDiv = (<div className="addImageOption">
+            <input className="fileUpload"
+              type="file"
+              accept="image/*"
+              style={{display: "none"}}
+              onChange={this.uploadImage}/>
+            <div className="insert-image-button" onClick={this.handleClickUploadPlus} title="Add Image"></div>
+            <div className="insert-image-label">Click to add image</div>
+          </div>);
+        }
+        else {
+          oContentDataDiv = (<img className="image-frame-data" src={oFrameData.data} />);
+        }
+      }
     }
     for(var i = 0 ; i < oFrameData.contents.length ; i++){
       var oChildFrameData = oFrameData.contents[i];

@@ -462,6 +462,21 @@ var store = {
   toggleExpandCollapseFrameTreeView: function(sFrameId, sState){
     var oFrame = this.getFrameObject(sFrameId);
     oFrame.visibilityState = sState;
+  },
+
+  setImage: function(sFrameId, oImageFiles){
+    var oFrame = this.getFrameObject(sFrameId);
+    var oImageFile = oImageFiles[0];
+    var oFileReader = new FileReader();
+    oFileReader.onload = (function (file) {
+      return function (e) {
+        if (file.type.indexOf('image') != -1) {
+          oFrame.data = e.target.result;
+          this.triggerChange();
+        }
+      }
+    })(oImageFile);
+    oFileReader.readAsDataURL(oImageFile);
   }
 
 };
