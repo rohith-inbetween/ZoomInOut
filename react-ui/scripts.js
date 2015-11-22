@@ -13,6 +13,8 @@ $(document).ready(function() {
     if($(event.target).hasClass('contentRemove')){
       return;
     }
+    $('.contentHeaderName').addClass('headerHalf');
+    $('.topMenu').addClass('topMenuShifted');
 
     var $availableContents = $('.availableContents');
     var $relationshipsCont = $('.relationships');
@@ -42,7 +44,7 @@ $(document).ready(function() {
       $mainCont.animate({scrollTop: scrollTop + 10}, 200);
     }, 200);
 
-    $('.topMenu').animate({'padding-left': 320}, 200);
+    //$('.topMenu').animate({'padding-left': 320}, 200);
   });
 
   $('.availableClose').on('click', function(){
@@ -51,7 +53,9 @@ $(document).ready(function() {
     $availableContents.removeClass('visible');
     $mainCont.removeClass('half');
     $('.rel').removeClass('relSelected');
-    $('.topMenu').animate({'padding-left': 0}, 200);
+    //$('.topMenu').animate({'padding-left': 0}, 200);
+    $('.contentHeaderName').removeClass('headerHalf');
+    $('.topMenu').removeClass('topMenuShifted');
 
   });
 
