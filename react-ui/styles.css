@@ -13,11 +13,12 @@ html, body{
 
 .logo{
     height: 44px;
-    width: 300px;
-    background-image: url("images/logo.PNG");
+    width: 180px;
+    background-image: url("images/allianz-logo-white.png");
     background-repeat: no-repeat;
     display: inline-block;
-    background-position: 3px 3px;
+    background-position: -2px -2px;
+    background-size: 170px;
 }
 
 .menu{
@@ -35,7 +36,7 @@ html, body{
 }
 
 .mainContainer{
-    height: calc(100% - 48px);
+    height: calc(100% - 80px);
     width: 100%;
     padding-bottom: 20px;
     overflow: auto;
@@ -314,6 +315,7 @@ html, body{
     background: linear-gradient(45deg, #3496C7, #2291C8, #2291C8);
     z-index: 1;
     border-right: 1px solid #e2e5e7;
+    top: 48px;
 }
 
 .availableSearch{
@@ -433,14 +435,14 @@ html, body{
     height: 580px;
 }
 
-.noPad:after {
+/*.noPad:after {
     content: '';
     box-shadow: 0px 1px 0px 0px rgb(224, 224, 224);
     width: calc(100% - 50px);
     height: 1px;
     position: absolute;
     top: 48px;
-}
+}*/
 
 .splitter{
     padding: 3px 12px;
@@ -723,6 +725,11 @@ html, body{
 
 .select-wrapper input.select-dropdown {
     border-bottom: 1px solid rgb(224,224,224);
+}
+
+.topMenu{
+    height: 32px;
+    background: #eee;
 }
 
 html{
