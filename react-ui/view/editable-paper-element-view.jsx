@@ -119,7 +119,7 @@ var EditablePaperElementView =  React.createClass({
     for(var i = 0 ; i < oFrameData.contents.length ; i++){
       var oChildFrameData = oFrameData.contents[i];
       aContainerContents.push(
-          <EditablePaperElementView frameData={oChildFrameData} level={iFrameLevel + 1}/>
+          <EditablePaperElementView frameData={oChildFrameData} level={iFrameLevel + 1} key={oChildFrameData.id}/>
       );
     }
     var  aDropDownListModel = _.map(oTemplates, function(oItem){
@@ -133,6 +133,10 @@ var EditablePaperElementView =  React.createClass({
     if(myStore.getClickedFrame() && oFrameData.id == myStore.getClickedFrame().id){
       sClass += " selected-paper-element"
     }
+    var oIconDiv = null;
+    if(oFrameData.icon){
+      oIconDiv = <img className="paper-element-class-icon" src={"images/" + oFrameData.icon}></img>;
+    }
     return(
       <div className={sClass} onClick = {this.handleClick}>
         <div className={sExpandCollapseElementButtonClass} onClick={this.toggleExpandCollapse}></div>
@@ -142,8 +146,7 @@ var EditablePaperElementView =  React.createClass({
           onKeyDown={this.keyDown}
           onBlur={this.blur}
           ref="editableTitleDiv"/>
-      {/*<div className="paper-element-class-icon icon1"></div>
-        <div className="paper-element-class-icon icon2"></div>*/}
+        {oIconDiv}
         <div className={sContainerChildrenClasses}>
           {aContainerContents}
         </div>

@@ -103,7 +103,7 @@ var ContentEditView = React.createClass({
     var containerDOM = document.getElementById("design-view-element-container");
     var oCurrentDom = this.getDOMNode();
     $(containerDOM).animate(
-        {scrollTop: oCurrentDom.offsetTop - containerDOM.offsetTop - 20},
+        {scrollTop: oCurrentDom.offsetTop - containerDOM.offsetTop},
         100
     );
   },
@@ -188,7 +188,7 @@ var ContentEditView = React.createClass({
     for(var i = 0 ; i < oFrameData.contents.length ; i++){
       var oChildFrameData = oFrameData.contents[i];
       aContainerContents.push(
-          <ContentEditView level={iLevel + 1} frameData={oChildFrameData}/>
+          <ContentEditView level={iLevel + 1} frameData={oChildFrameData} key={oChildFrameData.id}/>
       );
     }
     var fOnClick;
