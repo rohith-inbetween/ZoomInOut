@@ -454,7 +454,7 @@ var store = {
   },
 
   expandCollapseAllTreeView: function(sState){
-    _.each(this.data, function(oFrame){
+    _.each(this.flatStructure, function(oFrame){
       oFrame.visibilityState = sState;
     });
   },
