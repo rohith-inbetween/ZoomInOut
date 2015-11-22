@@ -72,8 +72,8 @@ var Toolbar = React.createClass({
     }
     return (
         <div className="toolbar-container" >
-          <div className={expandAll} title="Expand All" onClick={this.expandAll} ></div>
           <div className={collapseAll} title="Collapse All" onClick={this.collapseAll} ></div>
+          <div className={expandAll} title="Expand All" onClick={this.expandAll} ></div>
           <div className={createFrame} title="Create New" onClick={this.handleCreate} ></div>
           <div className={removeChild} title="Remove" onClick={this.handleRemoveChild}></div>
           <div className={makeChild} title="Create Child" onClick={this.handleMakeChild}></div>

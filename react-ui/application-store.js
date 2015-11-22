@@ -185,6 +185,7 @@ var store = {
         "briefing":"",
         "tags":""
       },
+      "visibilityState":"expanded",
       "data":"",
       "contents" : [],
       "parentId": parentId
@@ -423,6 +424,11 @@ var store = {
     _.each(this.data, function(oFrame){
       oFrame.visibilityState = sState;
     });
+  },
+
+  toggleExpandCollapseFrameTreeView: function(sFrameId, sState){
+    var oFrame = this.getFrameObject(sFrameId);
+    oFrame.visibilityState = sState;
   }
 
 };
