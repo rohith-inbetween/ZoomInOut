@@ -188,7 +188,7 @@ var ContentEditView = React.createClass({
     for(var i = 0 ; i < oFrameData.contents.length ; i++){
       var oChildFrameData = oFrameData.contents[i];
       aContainerContents.push(
-          <ContentEditView level={iLevel + 1} frameData={oChildFrameData}/>
+          <ContentEditView level={iLevel + 1} frameData={oChildFrameData} key={oChildFrameData.id}/>
       );
     }
     var fOnClick;

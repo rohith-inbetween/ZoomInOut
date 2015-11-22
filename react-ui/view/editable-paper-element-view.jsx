@@ -119,7 +119,7 @@ var EditablePaperElementView =  React.createClass({
     for(var i = 0 ; i < oFrameData.contents.length ; i++){
       var oChildFrameData = oFrameData.contents[i];
       aContainerContents.push(
-          <EditablePaperElementView frameData={oChildFrameData} level={iFrameLevel + 1}/>
+          <EditablePaperElementView frameData={oChildFrameData} level={iFrameLevel + 1} key={oChildFrameData.id}/>
       );
     }
     var  aDropDownListModel = _.map(oTemplates, function(oItem){
