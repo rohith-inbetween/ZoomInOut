@@ -1,6 +1,5 @@
 var React = require('react');
 
-
 var myStore = require('./../application-store');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 var TextField = require('material-ui').TextField;
@@ -8,22 +7,7 @@ var ThemeManager = require('material-ui/lib/styles/theme-manager');
 var Colors = require('material-ui/lib/styles/colors');
 var _ = require('lodash');
 
-//var $ = require('jquery');
-//window.jQuery = $;
-//var jQuery = $;
-require('froala-editor/js/froala_editor.min.js')();
-//require('froala-editor/js/plugins/align.min.js');
-//require('froala-editor/js/plugins/colors.min.js');
-//require('froala-editor/js/plugins/emoticons.min.js');
-//require('froala-editor/js/plugins/image.min.js');
-//require('froala-editor/js/plugins/inline_style.min.js');
-
-
-
-
 var ContentEditView = React.createClass({
-
-
 
   childContextTypes: {
     muiTheme: React.PropTypes.object
@@ -39,21 +23,31 @@ var ContentEditView = React.createClass({
     oEvent.stopPropagation();
   },
 
-  initializeFroalaEditor: function ($dom, oFrame) {
-    $dom.hide();
-    $dom.froalaEditor({
-      toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'fontFamily', 'fontSize',
-        '|', 'color', 'emoticons', 'inlineStyle', 'paragraphStyle',
-        '|', 'paragraphFormat', 'align', 'insertImage']
-    });
-    $dom.show();
-    $dom.on('click', function (oEvent) {
-      oEvent.stopPropagation()
-    });
-    $dom.on('froalaEditor.contentChanged', function (e, editor) {
-      var oInnerHTML = $(this).froalaEditor('html.get', true);
-      myStore.setHtmlEditorData(oFrame.id, oInnerHTML);
-    });
+  initializeFroalaEditor: function () {
+    var oFrame = this.props.frameData;
+    var oDOM = this.getDOMNode();
+    if (!oFrame.contents.length) {
+      var $dom = $(oDOM).find('.text-editor:first');
+      if ($dom.length && !$dom.data('froala.editor')) {
+        $dom.hide();
+        $dom.froalaEditor({
+          toolbarButtons: ['bold', 'italic', 'underline',
+            'strikeThrough', 'subscript', 'superscript', '-', 'paragraphFormat',
+            'align', 'formatOL', 'formatUL', 'indent', 'outdent', '-', 'insertImage',
+            'insertLink', 'insertFile', 'insertVideo', 'undo', 'redo'],
+          toolbarInline: true
+        });
+        $dom.show();
+        $dom.on('click', function (oEvent) {
+          oEvent.stopPropagation()
+        });
+        $dom.froalaEditor('html.set', oFrame.data);
+        $dom.on('froalaEditor.contentChanged', function (e, editor) {
+          var oInnerHTML = $(this).froalaEditor('html.get', true);
+          myStore.setHtmlEditorData(oFrame.id, oInnerHTML);
+        });
+      }
+    }
   },
 
   componentDidUpdate: function() {
@@ -69,20 +63,8 @@ var ContentEditView = React.createClass({
       $(oDOM).css('height','auto');
       $(oDOM).css('min-height','');
     }*/
-
     //Initialize/Destroy froala
-    /*if(!oFrame.contents.length){
-      var $dom =$(oDOM).find('.text-editor:first');
-      if (myStore.expandedFrames.frame == oFrame.id) {
-        if(!$dom.data('froala.editor')){
-          this.initializeFroalaEditor($dom, oFrame);
-        }
-      } else {
-        $dom.off('click');
-        $dom.off('froalaEditor.contentChanged');
-        $dom.froalaEditor('destroy');
-      }
-    }*/
+    this.initializeFroalaEditor();
     if(oFrame.id == myStore.getClickedFrame().id && !myStore.isScrollComplete()){
       this.scrollIntoView();
       myStore.setScrollComplete();
@@ -90,6 +72,7 @@ var ContentEditView = React.createClass({
   },
 
   componentDidMount: function(){
+    this.initializeFroalaEditor();
     //this.getDOMNode().addEventListener("transitionend", this.handleScroll.bind(this));
   },
 
@@ -166,8 +149,8 @@ var ContentEditView = React.createClass({
 
     var oContentDataDiv = null;
     if(!oFrameData.contents.length){
+      var sData = oFrameData.data;
       if(oFrameData.type=='textFrame'){
-        var sData = oFrameData.data;
         oContentDataDiv = (<TextField ref="Content"
         floatingLabelText="Content"
         defaultValue={sData}
@@ -181,9 +164,9 @@ var ContentEditView = React.createClass({
         );
       }
       else if(oFrameData.type == 'HTML'){
-        /*oContentDataDiv = (<div className="text-editor" onClick = {this.handleOnClick}
-         dangerouslySetInnerHTML={oDangerousHTML}>
-         </div>);*/
+        var oDangerousHTML = {__html:sData};
+        oContentDataDiv = (<div className="text-editor" onClick = {this.handleOnClick}>
+         </div>);
       }
       else if(oFrameData.type == 'imageFrame'){
         var oImageData = null;
@@ -199,7 +182,7 @@ var ContentEditView = React.createClass({
           </div>);
         }
         else {
-          oContentDataDiv = (<img className="image-frame-data" src={oFrameData.data} />);
+          oContentDataDiv = (<img className="image-frame-data" src={sData} />);
         }
       }
     }
@@ -208,14 +191,6 @@ var ContentEditView = React.createClass({
       aContainerContents.push(
           <ContentEditView level={iLevel + 1} frameData={oChildFrameData} key={oChildFrameData.id}/>
       );
-    }
-    var fOnClick;
-    if(isFrameExpanded){
-      fOnClick = function(oEvent){
-        //sClasses += " expanded";
-        //sClasses += " compress";
-        oEvent.stopPropagation();
-      };
     }
     sClasses += " level" + iLevel;
 
@@ -240,7 +215,7 @@ var ContentEditView = React.createClass({
               {aContainerContents}
           </ReactCSSTransitionGroup>
         </div>
-    ); //onClick={this.handleOnClick}        /*onClick={fOnClick}*/
+    );
 
   }
 

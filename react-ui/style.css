@@ -527,3 +527,7 @@ body *{
 .image-frame-data{
     width: 100%;
 }
+
+.text-editor{
+    background-color: white;
+}

@@ -12,11 +12,11 @@ var DesignerView = React.createClass({
     for ( var i = 0 ; i < aFrameData.length; i++){
       var frame = aFrameData[i];
       aFrameElements.push(
-          <ContentEditDesignView frameData ={frame} />
+          <ContentEditDesignView frameData ={frame} key={frame.id}/>
       );
     }
     return (
-        <div className="designer-view ">
+        <div className="designer-view">
           <div className="editor-header">Designer</div>
           <DesignToolBar frameData={this.props.frameData}/>
           <div id="design-view-element-container" className="design-view-elements">

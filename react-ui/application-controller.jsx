@@ -26,7 +26,6 @@ var ApplicationController = React.createClass({
     var aFrames = this.props.data;
     return (
         <div className="editor">
-
           <StructuralView frameData={aFrames}/>
           <DesignerView frameData={aFrames} store={myStore}/>
         </div>
