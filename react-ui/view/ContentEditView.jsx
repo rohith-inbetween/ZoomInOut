@@ -85,6 +85,10 @@ var ContentEditView = React.createClass({
         $dom.froalaEditor('destroy');
       }
     }
+    if(oFrame.id == myStore.getClickedFrame().id && !myStore.isScrollComplete()){
+      this.scrollIntoView();
+      myStore.setScrollComplete();
+    }
   },
 
   componentDidMount: function(){
@@ -95,15 +99,19 @@ var ContentEditView = React.createClass({
     this.getDOMNode().removeEventListener("transitionend", this.handleScroll.bind(this));
   },
 
+  scrollIntoView: function () {
+    var containerDOM = document.getElementById("design-view-element-container");
+    var oCurrentDom = this.getDOMNode();
+    $(containerDOM).animate(
+        {scrollTop: oCurrentDom.offsetTop - containerDOM.offsetTop - 20},
+        100
+    );
+  },
+
   handleScroll : function(){
     var fID = this.props.frameData.id;
     if(myStore.expandedFrames.frame == fID ){
-      var containerDOM = document.getElementById("design-view-element-container");
-      var oCurrentDom = this.getDOMNode();
-      $(containerDOM).animate(
-          {scrollTop: oCurrentDom.offsetTop - containerDOM.offsetTop - 20},
-          100
-      );
+      this.scrollIntoView();
     }
   },
 

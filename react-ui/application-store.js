@@ -20,6 +20,8 @@ var store = {
 
   newFrame: null,
 
+  hasScrolled: true,
+
   expandedFrames : {
     frame :null,
     parentFrames :{}
@@ -46,6 +48,16 @@ var store = {
 
   setClickedFrame: function(frame){
     this.clickedFrame = frame;
+    this.hasScrolled = false;
+    this.triggerChange();
+  },
+
+  setScrollComplete: function(){
+    this.hasScrolled = true;
+  },
+
+  isScrollComplete: function(){
+    return this.hasScrolled;
   },
 
   getClickedFrame: function(){
@@ -161,7 +173,6 @@ var store = {
   getNewFrame: function(){
     return this.newFrame;
   },
-
 
   setHtmlEditorData: function(fID, data){
     var oFrame = this.getFrameObject(fID);

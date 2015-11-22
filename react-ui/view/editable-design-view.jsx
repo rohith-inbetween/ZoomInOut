@@ -98,17 +98,21 @@ var EditableDeignView = React.createClass({
     this.getDOMNode().removeEventListener("transitionend", this.handleScroll.bind(this));
   },
 
+  scrollFrameToFocus: function () {
+//alert("handleScroll");
+    var containerDOM = document.getElementById("design-view-element-container");
+    var oCurrentDom = this.getDOMNode();
+    //containerDOM.scrollTop = oCurrentDom.offsetTop - containerDOM.offsetTop;
+    $(containerDOM).animate(
+        {scrollTop: oCurrentDom.offsetTop - containerDOM.offsetTop - 20},
+        100
+    );
+  },
+
   handleScroll : function(){
     var fID = this.props.frameData.id;
     if(myStore.expandedFrames.frame == fID ){   //VIOLATION!!
-      //alert("handleScroll");
-      var containerDOM = document.getElementById("design-view-element-container");
-      var oCurrentDom = this.getDOMNode();
-      //containerDOM.scrollTop = oCurrentDom.offsetTop - containerDOM.offsetTop;
-      $(containerDOM).animate(
-          {scrollTop: oCurrentDom.offsetTop - containerDOM.offsetTop - 20},
-          100
-      );
+      componentD
     }
   },
 
