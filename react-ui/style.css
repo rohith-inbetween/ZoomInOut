@@ -495,7 +495,7 @@ body *{
 }
 */
 
-.content-edit-element .content-element-data textarea{
+.content-edit-element .content-element-data textarea,{
     color: #fff !important;
 }
 

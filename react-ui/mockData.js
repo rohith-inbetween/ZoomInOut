@@ -143,7 +143,47 @@ var editorData = [
                 "visibilityState": "expanded",
                 "data": "",
                 "contents": [
+                  {
+                    "id": "1_1_1_1_1",
+                    "type": "textFrame",
+                    "title": "Titel",
+                    "attributes": {
+                      "briefing": ""
+                    },
+                    "visibilityState": "expanded",
+                    "data": "",
+                    "contents": [
 
+                    ],
+                    "parentId": "1_1_1_1"
+                  },
+                  {
+                    "id": "1_1_1_1_2",
+                    "type": "textFrame",
+                    "title": "Argument",
+                    "attributes": {
+                      "briefing": ""
+                    },
+                    "visibilityState": "expanded",
+                    "data": "",
+                    "contents": [
+
+                    ],
+                    "parentId": "1_1_1_1"
+                  },{
+                    "id": "1_1_1_1_3",
+                    "type": "textFrame",
+                    "title": "Zusammenfassung",
+                    "attributes": {
+                      "briefing": ""
+                    },
+                    "visibilityState": "expanded",
+                    "data": "",
+                    "contents": [
+
+                    ],
+                    "parentId": "1_1_1_1"
+                  }
                 ],
                 "parentId": "1_1_1"
               },
@@ -157,7 +197,61 @@ var editorData = [
                 "visibilityState": "expanded",
                 "data": "",
                 "contents": [
+                  {
+                    "id": "1_1_1_2_1",
+                    "type": "textFrame",
+                    "title": "Titel",
+                    "attributes": {
+                      "briefing": ""
+                    },
+                    "visibilityState": "expanded",
+                    "data": "",
+                    "contents": [
 
+                    ],
+                    "parentId": "1_1_1_2"
+                  },
+                  {
+                    "id": "1_1_1_2_2",
+                    "type": "textFrame",
+                    "title": "Kurztext",
+                    "attributes": {
+                      "briefing": ""
+                    },
+                    "visibilityState": "expanded",
+                    "data": "",
+                    "contents": [
+
+                    ],
+                    "parentId": "1_1_1_2"
+                  },{
+                    "id": "1_1_1_2_3",
+                    "type": "textFrame",
+                    "title": "Detail",
+                    "attributes": {
+                      "briefing": ""
+                    },
+                    "visibilityState": "expanded",
+                    "data": "",
+                    "contents": [
+
+                    ],
+                    "parentId": "1_1_1_2"
+                  },
+                  {
+                    "id": "1_1_1_2_4",
+                    "type": "textFrame",
+                    "title": "Überleitung",
+                    "attributes": {
+                      "briefing": ""
+                    },
+                    "visibilityState": "expanded",
+                    "data": "",
+                    "contents": [
+
+                    ],
+                    "parentId": "1_1_1_2"
+                  }
                 ],
                 "parentId": "1_1_1"
               },
@@ -171,7 +265,47 @@ var editorData = [
                 "visibilityState": "expanded",
                 "data": "",
                 "contents": [
+                  {
+                    "id": "1_1_1_3_1",
+                    "type": "textFrame",
+                    "title": "Titel",
+                    "attributes": {
+                      "briefing": ""
+                    },
+                    "visibilityState": "expanded",
+                    "data": "",
+                    "contents": [
 
+                    ],
+                    "parentId": "1_1_1_3"
+                  },
+                  {
+                    "id": "1_1_1_3_2",
+                    "type": "textFrame",
+                    "title": "Details",
+                    "attributes": {
+                      "briefing": ""
+                    },
+                    "visibilityState": "expanded",
+                    "data": "",
+                    "contents": [
+
+                    ],
+                    "parentId": "1_1_1_3"
+                  },{
+                    "id": "1_1_1_3_3",
+                    "type": "textFrame",
+                    "title": "Fazit",
+                    "attributes": {
+                      "briefing": ""
+                    },
+                    "visibilityState": "expanded",
+                    "data": "",
+                    "contents": [
+
+                    ],
+                    "parentId": "1_1_1_3"
+                  }
                 ],
                 "parentId": "1_1_1"
               },
@@ -185,7 +319,34 @@ var editorData = [
                 "visibilityState": "expanded",
                 "data": "",
                 "contents": [
+                  {
+                    "id": "1_1_1_4_1",
+                    "type": "textFrame",
+                    "title": "Titel",
+                    "attributes": {
+                      "briefing": ""
+                    },
+                    "visibilityState": "expanded",
+                    "data": "",
+                    "contents": [
 
+                    ],
+                    "parentId": "1_1_1_4"
+                  },
+                  {
+                    "id": "1_1_1_4_2",
+                    "type": "textFrame",
+                    "title": "Detail",
+                    "attributes": {
+                      "briefing": ""
+                    },
+                    "visibilityState": "expanded",
+                    "data": "",
+                    "contents": [
+
+                    ],
+                    "parentId": "1_1_1_4"
+                  }
                 ],
                 "parentId": "1_1_1_4"
               },
@@ -199,7 +360,34 @@ var editorData = [
                 "visibilityState": "expanded",
                 "data": "",
                 "contents": [
+                  {
+                    "id": "1_1_1_5_1",
+                    "type": "textFrame",
+                    "title": "Titel",
+                    "attributes": {
+                      "briefing": ""
+                    },
+                    "visibilityState": "expanded",
+                    "data": "",
+                    "contents": [
 
+                    ],
+                    "parentId": "1_1_1_5"
+                  },
+                  {
+                    "id": "1_1_1_5_2",
+                    "type": "textFrame",
+                    "title": "Detail",
+                    "attributes": {
+                      "briefing": ""
+                    },
+                    "visibilityState": "expanded",
+                    "data": "",
+                    "contents": [
+
+                    ],
+                    "parentId": "1_1_1_5"
+                  }
                 ],
                 "parentId": "1_1_1"
               }
