@@ -8,15 +8,15 @@ var ThemeManager = require('material-ui/lib/styles/theme-manager');
 var Colors = require('material-ui/lib/styles/colors');
 var _ = require('lodash');
 
-var $ = require('jquery');
-window.jQuery = $;
+//var $ = require('jquery');
+//window.jQuery = $;
 //var jQuery = $;
 require('froala-editor/js/froala_editor.min.js')();
-require('froala-editor/js/plugins/align.min.js');
-require('froala-editor/js/plugins/colors.min.js');
-require('froala-editor/js/plugins/emoticons.min.js');
-require('froala-editor/js/plugins/image.min.js');
-require('froala-editor/js/plugins/inline_style.min.js');
+//require('froala-editor/js/plugins/align.min.js');
+//require('froala-editor/js/plugins/colors.min.js');
+//require('froala-editor/js/plugins/emoticons.min.js');
+//require('froala-editor/js/plugins/image.min.js');
+//require('froala-editor/js/plugins/inline_style.min.js');
 
 
 

@@ -34,12 +34,12 @@ $(document).ready(function() {
 
     //$relationshipsCont.animate({scrollTop: iScrollTop}, 200);
     var scrollTop = $(this).offset().top - $(".paper1").offset().top;
-    $('.mainContainer').animate({scrollTop: scrollTop + 10}, 200);
+    $mainCont.animate({scrollTop: scrollTop + 10}, 200);
 
     var $this = $(this);
     setTimeout(function(){
       var scrollTop = $this.offset().top - $(".paper1").offset().top;
-      $('.mainContainer').animate({scrollTop: scrollTop + 10}, 200);
+      $mainCont.animate({scrollTop: scrollTop + 10}, 200);
     }, 200);
   });
 
@@ -193,6 +193,15 @@ $(document).ready(function() {
   $('.searchInput').on('click', function(event){
     event.stopPropagation();
     $(this).parents('.availableSearch').addClass('searchActive');
+  });
+
+  $('.toolIcon').on('click', function(event){
+    var $mainCont = $('.mainContainer');
+    var iId = $(this).attr('data-id');
+    var $paper = $('.paper'+iId);
+    var iOffsetTop = $paper.offset().top;
+    $mainCont.animate({'scrollTop': iOffsetTop}, 200);
+
   });
 });
 
