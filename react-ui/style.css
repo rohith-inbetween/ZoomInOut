@@ -339,7 +339,7 @@ body *{
     height: 17px;
 }
 
-.content-edit-element .content-element-data{
+.content-edit-element .content-element-data, .content-edit-element .content-data{
     margin: 10px
 }
 

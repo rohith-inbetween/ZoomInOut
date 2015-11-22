@@ -139,6 +139,8 @@ var EditablePaperElementView =  React.createClass({
           onKeyDown={this.keyDown}
           onBlur={this.blur}
           ref="editableTitleDiv"/>
+      {/*<div className="paper-element-class-icon icon1"></div>
+        <div className="paper-element-class-icon icon2"></div>*/}
         <div className={sContainerChildrenClasses}>
           {aContainerContents}
         </div>

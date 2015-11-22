@@ -387,7 +387,7 @@ var store = {
 
   traverseFrames: function(aFrames, sSelect){
     for(var i=0; i < aFrames.length; i++){
-      if(sSelect=="Collapse"){
+      if(sSelect=="Collapse"  || sSelect=="ExpandContent"){
         this.handleCompressIterator(aFrames[i].id);
       }
       else if(sSelect=="Expand"){
@@ -396,7 +396,7 @@ var store = {
       if(aFrames[i].contents.length>0){
         this.traverseFrames(aFrames[i].contents, sSelect);
       }else if(sSelect == "ExpandContent"){
-        this.handleExpandIterator(aFrames[i].id);
+        this.handleExpandContentDataIterator(aFrames[i].id);
       }
     }
   },
@@ -407,16 +407,38 @@ var store = {
   },
 
   handleCompressIterator: function(fID){
-    var oDom = document.getElementById(fID).parentNode.childNodes[1];   //VIOLATION!!
-    if(!(_.includes(oDom.classList, 'compress'))){
-      oDom.classList.add('compress');
+    var aDoms = document.getElementById(fID).parentNode.childNodes;   //VIOLATION!!
+    var oAttributesDom = aDoms[1];
+    var oContentDom = aDoms[2];
+    if(!(_.includes(oAttributesDom.classList, 'compress'))){
+      oAttributesDom.classList.add('compress');
+    }
+    if(!(_.includes(oContentDom.classList, 'compress'))){
+      oContentDom.classList.add('compress');
     }
   },
 
   handleExpandIterator: function(fID){
-    var oDom = document.getElementById(fID).parentNode.childNodes[1];   //VIOLATION!!
-    if((_.includes(oDom.classList, 'compress'))){
-      oDom.classList.remove('compress');
+    var aDoms = document.getElementById(fID).parentNode.childNodes;   //VIOLATION!!
+    var oAttributesDom = aDoms[1];
+    var oContentDom = aDoms[2];
+    if((_.includes(oAttributesDom.classList, 'compress'))){
+      oAttributesDom.classList.remove('compress');
+    }
+    if((_.includes(oContentDom.classList, 'compress'))){
+      oContentDom.classList.remove('compress');
+    }
+  },
+
+  handleExpandContentDataIterator: function(fID){
+    var aDoms = document.getElementById(fID).parentNode.childNodes;   //VIOLATION!!
+    var oAttributesDom = aDoms[1];
+    var oContentDom = aDoms[2];
+    if(!(_.includes(oAttributesDom.classList, 'compress'))){
+      oAttributesDom.classList.add('compress');
+    }
+    if((_.includes(oContentDom.classList, 'compress'))){
+      oContentDom.classList.remove('compress');
     }
   },
 

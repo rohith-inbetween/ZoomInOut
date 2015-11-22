@@ -150,14 +150,14 @@ var ContentEditView = React.createClass({
         inputStyle={{color:'white', 'margin-top': '7px'}}/>
       );
     }.bind(this));
-
+    var oContentDataDiv = null;
     if(!oFrameData.contents.length){
       var sData = oFrameData.data;
       /*if(sData == "" && !isFrameExpanded){
         sData = '<p class="content-edit-empty-placeholder">Type Something</p>';
       }*/
-      var oDangerousHTML = {__html: sData};
-      aDataDivs.push(<TextField ref="Content"
+      //var oDangerousHTML = {__html: sData};
+      oContentDataDiv = (<TextField ref="Content"
           floatingLabelText="Content"
           defaultValue={sData}
           onBlur={this.onChangeHandle.bind(this,"content")}
@@ -205,6 +205,9 @@ var ContentEditView = React.createClass({
           </div>
           <div className="content-element-data">
             {aDataDivs}
+          </div>
+          <div className="content-data">
+            {oContentDataDiv}
           </div>
           <ReactCSSTransitionGroup component="div" className="container-children" transitionName="design-element-anim" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
               {aContainerContents}
