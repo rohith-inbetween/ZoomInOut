@@ -53,13 +53,13 @@ body *{
 
 .paper-element .container-children{
     margin-left: 30px;
-    max-height: 1000px;
-    transition: max-height 0.2s;
-    overflow: hidden;
+    /*max-height: 1000px;*/
+    /*transition: max-height 0.2s;*/
+    /*overflow: hidden;*/
 }
 
 .paper-element .container-children.collapsed{
-    max-height: 0px;
+    display: none;
 }
 
 .paper-element{
@@ -84,6 +84,32 @@ body *{
     z-index: 1;
     background-image: url('images/Expand%20Arrow-32.png');
     transition: transform 0.2s;
+}
+
+.paper-element-class-icon{
+    font-size: small;
+    color: rgba(122, 143, 198, 0.80);
+    cursor: pointer;
+    height: 23px;
+    width: 34px;
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: 4px;
+    position: absolute;
+    top: 6px;
+    z-index: 1;
+    transition: transform 0.2s;
+    display: inline-block;
+}
+
+.paper-element-class-icon.icon1{
+    background-image: url('images/Dice-32.png');
+    right: 5px;
+}
+
+.paper-element-class-icon.icon2{
+    background-image: url('images/Alligator-100.png');
+    right: 32px;
 }
 
 .paper-element .toggle-button.collapsed{
