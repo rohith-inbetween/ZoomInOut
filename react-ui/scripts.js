@@ -41,6 +41,8 @@ $(document).ready(function() {
       var scrollTop = $this.offset().top - $(".paper1").offset().top;
       $mainCont.animate({scrollTop: scrollTop + 10}, 200);
     }, 200);
+
+    $('.topMenu').animate({'padding-left': 320}, 200);
   });
 
   $('.availableClose').on('click', function(){
@@ -49,6 +51,8 @@ $(document).ready(function() {
     $availableContents.removeClass('visible');
     $mainCont.removeClass('half');
     $('.rel').removeClass('relSelected');
+    $('.topMenu').animate({'padding-left': 0}, 200);
+
   });
 
   var $availableBody = $('.availableBody');
@@ -200,7 +204,8 @@ $(document).ready(function() {
     var iId = $(this).attr('data-id');
     var $paper = $('.paper'+iId);
     var iOffsetTop = $paper.offset().top;
-    $mainCont.animate({'scrollTop': iOffsetTop}, 200);
+    var scrollTop = iOffsetTop - $(".paper1").offset().top;
+    $mainCont.animate({'scrollTop': scrollTop + 3}, 500, 'easeOutCubic');
 
   });
 });

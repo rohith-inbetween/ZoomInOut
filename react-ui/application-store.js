@@ -476,6 +476,11 @@ var store = {
         }
       }
     })(oImageFile);
+
+    oFileReader.onloadend = function(){
+      this.triggerChange();
+    }.bind(this);
+
     oFileReader.readAsDataURL(oImageFile);
   }
 
