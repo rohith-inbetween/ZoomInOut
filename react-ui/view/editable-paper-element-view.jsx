@@ -133,6 +133,10 @@ var EditablePaperElementView =  React.createClass({
     if(myStore.getClickedFrame() && oFrameData.id == myStore.getClickedFrame().id){
       sClass += " selected-paper-element"
     }
+    var oIconDiv = null;
+    if(oFrameData.icon){
+      oIconDiv = <img className="paper-element-class-icon" src={"images/" + oFrameData.icon}></img>;
+    }
     return(
       <div className={sClass} onClick = {this.handleClick}>
         <div className={sExpandCollapseElementButtonClass} onClick={this.toggleExpandCollapse}></div>
@@ -142,7 +146,7 @@ var EditablePaperElementView =  React.createClass({
           onKeyDown={this.keyDown}
           onBlur={this.blur}
           ref="editableTitleDiv"/>
-        <div className="paper-element-class-icon"></div>
+        {oIconDiv}
         <div className={sContainerChildrenClasses}>
           {aContainerContents}
         </div>

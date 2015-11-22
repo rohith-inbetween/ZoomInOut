@@ -137,6 +137,7 @@ var editorData = [
                 "id": "1_1_1_1",
                 "type": "textFrame",
                 "title": "Intro",
+                "icon": "Enter-32.png",
                 "attributes": {
                   "briefing": ""
                 },
@@ -191,6 +192,7 @@ var editorData = [
                 "id": "1_1_1_2",
                 "type": "textFrame",
                 "title": "Details",
+                "icon": "View%20Details-32.png",
                 "attributes": {
                   "briefing": ""
                 },
@@ -259,6 +261,7 @@ var editorData = [
                 "id": "1_1_1_3",
                 "type": "textFrame",
                 "title": "Zusatzinfo",
+                "icon": "Info-32.png",
                 "attributes": {
                   "briefing": ""
                 },
@@ -313,6 +316,7 @@ var editorData = [
                 "id": "1_1_1_4",
                 "type": "textFrame",
                 "title": "Verkaufschart",
+                "icon": "Bar Chart-32.png",
                 "attributes": {
                   "briefing": ""
                 },
@@ -354,6 +358,7 @@ var editorData = [
                 "id": "1_1_1_5",
                 "type": "textFrame",
                 "title": "Spezialisteninfo",
+                "icon": "specialist.png",
                 "attributes": {
                   "briefing": ""
                 },
