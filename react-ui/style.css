@@ -45,10 +45,14 @@ body *{
 }
 
 .structural-view-elements, .design-view-elements{
-    padding: 10px;
     overflow: auto;
     background-color: #F0F3F5;
-    height: calc(100% - 70px);
+    height: calc(100% - 32px);
+    padding: 0px 10px 10px 10px;
+}
+
+.design-view-elements{
+    padding: 3px 10px 10px 10px;
 }
 
 .paper-element .container-children{
@@ -95,6 +99,7 @@ body *{
     right: 8px;
     border: none;
     outline: none;
+    -webkit-filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.3));
 }
 
 .paper-element .toggle-button.collapsed{
@@ -108,6 +113,7 @@ body *{
 .editor-header{
     font-size: .9rem;
     padding: 8px 12px;
+    display: none;
 }
 
 .design-element{
@@ -512,6 +518,7 @@ body *{
 .searchBarView:hover .searchBarContainer>.multiSearchInputBox {
     color: #687a90 !important;
     text-shadow: none !important;
+    width: calc(100% - 25px);
 }
 
 .insert-image-button{
@@ -536,8 +543,17 @@ body *{
 }
 
 .text-editor{
-    background-color: white;
+    background-color: rgba(255,255,255,.8);;
     padding: 5px;
     border-radius: 3px;
     box-shadow: 0px 1px 4px 0px rgba(0,0,0,.2);
+}
+
+p{
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+}
+
+.searchBarView .searchBarContainer .multiSearchInputBox {
+    width: calc(100% - 25px);
 }
