@@ -32,7 +32,7 @@ var ContentEditView = React.createClass({
         $dom.hide();
         $dom.froalaEditor({
           toolbarButtons: ['bold', 'italic', 'underline',
-            'strikeThrough', 'subscript', 'superscript', '-', 'paragraphFormat',
+            'strikeThrough', 'subscript', 'superscript', 'color', '-', 'paragraphFormat',
             'align', 'formatOL', 'formatUL', 'indent', 'outdent', '-', 'insertImage',
             'insertLink', 'insertFile', 'insertVideo', 'undo', 'redo'],
           toolbarInline: true
@@ -123,6 +123,25 @@ var ContentEditView = React.createClass({
     }
   },
 
+  createImageSelectorDiv: function (sData) {
+    var oContentDataDiv = null;
+    if (sData == "") {
+      oContentDataDiv = (<div className="addImageOption">
+        <input className="fileUpload"
+        type="file"
+        accept="image/*"
+        style={{display: "none"}}
+        onChange={this.uploadImage}/>
+        <div className="insert-image-button" onClick={this.handleClickUploadPlus} title="Add Image"></div>
+        <div className="insert-image-label">Click to add image</div>
+      </div>);
+    }
+    else {
+      oContentDataDiv = (<img className="image-frame-data" src={sData} />);
+    }
+    return oContentDataDiv;
+  },
+
   render : function(){
     var oFrameData = this.props.frameData;
     var aContainerContents = [];
@@ -133,8 +152,11 @@ var ContentEditView = React.createClass({
     var sClasses = "content-edit-element";
     var isFrameExpanded = myStore.isFrameExpanded(oFrameData.id);
     var aDataDivs = _.map(oFrameData.attributes, function(sAttributeValue, sAttributeName){
-      var bMultiLine = sAttributeName.toLocaleLowerCase() == "briefing";
-      return (<TextField ref={sAttributeName}
+      if(sAttributeName == 'image'){
+        return this.createImageSelectorDiv(sAttributeValue);
+      } else {
+        var bMultiLine = sAttributeName.toLocaleLowerCase() == "briefing";
+        return (<TextField ref={sAttributeName}
         floatingLabelText={sAttributeName.capitalizeFirstLetter()}
         defaultValue={sAttributeValue}
         onBlur={ this.onChangeHandle.bind(this,sAttributeName)}
@@ -144,7 +166,8 @@ var ContentEditView = React.createClass({
         floatingLabelStyle={{color:'#E4E4C3', 'font-size':'.9rem', top: '29px'}}
         inputStyle={{color:'white', 'margin-top': '7px'}}
         multiLine={bMultiLine}/>
-      );
+        );
+      }
     }.bind(this));
 
     var oContentDataDiv = null;
@@ -169,21 +192,7 @@ var ContentEditView = React.createClass({
          </div>);
       }
       else if(oFrameData.type == 'imageFrame'){
-        var oImageData = null;
-        if(oFrameData.data==""){
-          oContentDataDiv = (<div className="addImageOption">
-            <input className="fileUpload"
-              type="file"
-              accept="image/*"
-              style={{display: "none"}}
-              onChange={this.uploadImage}/>
-            <div className="insert-image-button" onClick={this.handleClickUploadPlus} title="Add Image"></div>
-            <div className="insert-image-label">Click to add image</div>
-          </div>);
-        }
-        else {
-          oContentDataDiv = (<img className="image-frame-data" src={sData} />);
-        }
+        oContentDataDiv = this.createImageSelectorDiv(sData);
       }
     }
     for(var i = 0 ; i < oFrameData.contents.length ; i++){

@@ -65,7 +65,8 @@ var editorData = [
             "attributes": {
               "briefing": "",
               "kernaussage": "",
-              "keyVisual": ""
+              //"keyVisual": ""
+              "image": ""
             },
             "visibilityState": "expanded",
             "data": "",

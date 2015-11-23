@@ -455,7 +455,11 @@ var store = {
     oFileReader.onload = (function (file) {
       return function (e) {
         if (file.type.indexOf('image') != -1) {
-          oFrame.data = e.target.result;
+          if(oFrame.type != 'imageFrame'){
+            oFrame.attributes.image = e.target.result;
+          } else {
+            oFrame.data = e.target.result;
+          }
           this.triggerChange();
         }
       }
