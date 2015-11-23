@@ -88,11 +88,11 @@ body *{
 
 .paper-element-class-icon{
     font-size: small;
-    height: 21px;
+    height: 18px;
     position: absolute;
-    top: 6px;
+    top: 8px;
     z-index: 1;
-    right: 10px;
+    right: 8px;
     border: none;
     outline: none;
 }
@@ -328,8 +328,8 @@ body *{
 }
 
 .content-edit-element .content-element-data, .content-edit-element .content-data{
-    margin: 10px
-    width: 100%;
+    margin: 10px;
+    width: calc(100% - 20px);
 }
 
 .compress{
@@ -487,10 +487,17 @@ body *{
     color: #fff !important;
 }
 
+.content-edit-element .content-data textarea{
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 13px !important;
+    color: #fff !important;
+}
+
 .content-edit-element .content-element-data input,
 .content-edit-element .content-element-data textarea{
     font-family: 'Open Sans', sans-serif !important;
     font-size: 13px !important;
+    color: #fff !important;
 }
 
 .content-element-data:empty, .content-data:empty{
@@ -530,4 +537,7 @@ body *{
 
 .text-editor{
     background-color: white;
+    padding: 5px;
+    border-radius: 3px;
+    box-shadow: 0px 1px 4px 0px rgba(0,0,0,.2);
 }
