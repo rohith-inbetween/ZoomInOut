@@ -82,7 +82,7 @@ var ContentEditView = React.createClass({
 
   handleClickUploadPlus: function(){
     var oDOM = this.getDOMNode();
-    $(oDOM).find('.fileUpload').click();
+    $(oDOM).find('.fileUpload').eq(0).click();
   },
 
   uploadImage: function(oEvent){
