@@ -881,3 +881,42 @@ html{
 .input-field label{
     color: #838181;
 }
+
+.tooltipster-arrow-left .tooltipster-arrow-border {
+    border-top: 8px solid transparent !important;
+    border-bottom: 8px solid transparent !important;
+    border-left: 10px solid;
+    margin-top: -7px;
+}
+
+.tooltipster-arrow-left span, .tooltipster-arrow-left .tooltipster-arrow-border {
+    border-top: 8px solid transparent !important;
+    border-bottom: 8px solid transparent !important;
+    border-left: 8px solid;
+    top: 50%;
+    margin-top: -7px;
+    right: -7px;
+    border-color: #fff !important;
+}
+
+.tooltipster-content{
+    border-radius: 5px;
+    border: 1px solid #000 !important;
+    background: #FFFFFF !important;
+    color: #333 !important;
+}
+
+.tooltipster-default {
+    border-radius: 5px;
+    border: 0px solid #000 !important;
+    background: #4c4c4c;
+    color: #fff !important;
+}
+
+.tooltipster-arrow-border{
+    display: none !important;
+}
+
+.tooltipster-arrow span{
+    display: none; !important;
+}

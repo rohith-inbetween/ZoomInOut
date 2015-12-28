@@ -7,4 +7,6 @@ var ApplicationStore = require("./application-store");
 
 var aData = ApplicationStore.initialize();
 
+ThemeLoader.loadTheme();
+
 React.render(<AppController data={aData} />, document.getElementById('rohith'));

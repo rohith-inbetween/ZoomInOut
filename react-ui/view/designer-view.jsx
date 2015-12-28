@@ -12,7 +12,7 @@ var DesignerView = React.createClass({
     for ( var i = 0 ; i < aFrameData.length; i++){
       var frame = aFrameData[i];
       aFrameElements.push(
-          <ContentEditDesignView frameData ={frame} key={frame.id}/>
+          <ContentEditDesignView frameData ={frame} label={i+1} key={frame.id}/>
       );
     }
     return (

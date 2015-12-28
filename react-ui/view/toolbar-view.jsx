@@ -56,7 +56,7 @@ var Toolbar = React.createClass({
 
   render:function(){
     var aClickedFrames = myStore.getClickedFrameArray();
-    var createFrame = "createFrame toolbar-content";
+    var createFrame = "createFrame toolbar-content my-context-menu";
     var removeChild = "removeChild toolbar-content";
     var indentRight = "indentRight toolbar-content";
     var indentLeft = "indentLeft toolbar-content";
@@ -74,7 +74,7 @@ var Toolbar = React.createClass({
         <div className="toolbar-container" >
           <div className={collapseAll} title="Collapse All" onClick={this.collapseAll} ></div>
           <div className={expandAll} title="Expand All" onClick={this.expandAll} ></div>
-          <div className={createFrame} title="Create New" onClick={this.handleCreate} ></div>
+          <div className={createFrame} title="Create New"></div>
           <div className={removeChild} title="Remove" onClick={this.handleRemoveChild}></div>
           <div className={makeChild} title="Create Child" onClick={this.handleMakeChild}></div>
           <div className={indentRight} title="Indent Right" onClick={this.handleIndentRight}></div>

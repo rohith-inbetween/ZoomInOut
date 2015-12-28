@@ -1,6 +1,6 @@
 .dropDownListView {
     position: absolute;
-    width: calc(100% - 2px);
+    width: calc(100% - 25px);
     color: #333;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -30,15 +30,13 @@
 }
 
 .searchBarView {
-    width: 100%;
-    height: 34px;
-    /* border-radius: 5px; */
+    width: 70%;
+    height: 32px;
     position: relative;
-    box-shadow: 0 1px 1px 0 #D0D0D0;
-    padding: 5px;
+    padding: 0px 0;
+    line-height: 30px;
     color: #9CA7AD;
     display: inline-block;
-    padding-left: 20px;
 }
 
 .searchBarView .searchBarContainer .selectedItems, .searchBarView .searchBarContainer .singleSelectedItem {
@@ -105,11 +103,11 @@
     outline: none;
     font-size: 12px;
     overflow: visible;
-    color: #555;
+    color: #333;
     padding: 0 5px;
     font-weight: normal;
-    height: 19px;
-    margin: 4px 1px;
+    height: 28px;
+    margin: 0px 1px;
 }
 
 .searchBarView .searchBarContainer .crossIcon {

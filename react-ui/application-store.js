@@ -188,6 +188,45 @@ var store = {
   },
 
   createTextFrame: function(parentId){
+    /*var newTextFrame = {
+      "id" : uuid.generateUUID(),
+      "type" : "textFrame",
+      "title": "",
+      "attributes":{
+        "briefing":"",
+        "tags":""
+      },
+      "visibilityState":"expanded",
+      "data":"",
+      "contents" : [],
+      "parentId": parentId
+    };*/
+    var newTextFrame = _.cloneDeep(mockData.templates[1]);
+    newTextFrame.parentId = parentId
+    newTextFrame.id = uuid.generateUUID();
+    this.setFlatStructure(newTextFrame);
+    return newTextFrame;
+  },
+
+  createSectionFrame: function(parentId){
+    var newTextFrame = {
+      "id" : uuid.generateUUID(),
+      "type" : "textFrame",
+      "title": "",
+      "attributes":{
+        "briefing":"",
+        "tags":""
+      },
+      "visibilityState":"expanded",
+      "data":"",
+      "contents" : [],
+      "parentId": parentId
+    };
+    this.setFlatStructure(newTextFrame);
+    return newTextFrame;
+  },
+
+  createImageFrame: function(parentId){
     var newTextFrame = {
       "id" : uuid.generateUUID(),
       "type" : "textFrame",
@@ -354,11 +393,12 @@ var store = {
     return this.data;
   },
 
-  initializeFlatStructure: function(aParentArray){
+  initializeFlatStructure: function(aParentArray, iParentId){
     for(var i = 0 ; i < aParentArray.length ; i++){
       var oFrame = aParentArray[i];
+      oFrame.parentId = iParentId;
       this.setFlatStructure(oFrame);
-      this.initializeFlatStructure(oFrame.contents);
+      this.initializeFlatStructure(oFrame.contents, oFrame.id);
     }
   },
 
@@ -367,6 +407,28 @@ var store = {
     oFrame.title = textContent;
 
     this.triggerChange();
+  },
+
+  replaceType: function(frameId, textContent){
+    var oFrame = this.getFrameObject(frameId);
+    //delete this.flatStructure[oFrame.id];
+    var oTemplateModel = _.cloneDeep(_.findWhere(mockData.templates, {title:textContent}));
+    oTemplateModel.id = oFrame.id;
+    this.generateUUIDsForChildren(oTemplateModel);
+    //this.flatStructure[oFrame.id] = oFrame;
+    _.assign(oFrame, oTemplateModel);
+
+    this.triggerChange();
+  },
+
+  generateUUIDsForChildren: function(oTemplateModel){
+    for(var i = 0 ; i < oTemplateModel.contents.length ; i++){
+      var oChild = oTemplateModel.contents[i];
+      oChild.id = uuid.generateUUID();
+      oChild.parentId = oTemplateModel.id;
+      this.flatStructure[oChild.id] = oChild;
+      this.generateUUIDsForChildren(oChild);
+    }
   },
 
   setObjectData: function(sData, iId, sElementRef){
@@ -473,6 +535,8 @@ var store = {
   }
 
 };
+
+window.myCustomStore = store;
 
 MicroEvent.mixin(store);
 

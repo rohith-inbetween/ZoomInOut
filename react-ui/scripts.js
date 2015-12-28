@@ -1,11 +1,51 @@
 var aContentList = ["Apple", "Bag", "Balloon", "Bed", "Beef", "Blanket", "Blouse", "Book", "Bookmark", "Bottle", "Bread", "Brocolli", "Button", "Camera", "Candle", "Candy Wrapper", "Car", "Carrots", "Cd", "Chalk", "Clay Pot", "Clock", "Coasters", "Conditioner", "Controller", "Cookie Jar", "Couch", "Deodorant", "Desk", "Doll", "Door", "Drawer", "Drill Press", "Face Wash", "Fake Flowers", "Floor", "Glass", "Grid Paper", "Hair Brush", "Hanger", "House", "Ipod", "Keyboard", "Lamp", "Lamp Shade", "Lotion", "Milk", "Mirror", "Model Car", "Money", "Mop", "Mouse Pad", "Mp3 Player", "Nail Clippers", "Needle", "Outlet", "Packing Peanuts", "Paint Brush", "Pants", "Paper", "Perfume", "Photo Album", "Plastic Fork", "Playing Card", "Purse", "Ring", "Rubber Duck", "Rug", "Rusty Nail", "Sand Paper", "Sandal", "Seat Belt", "Sharpie", "Shirt", "Shovel", "Sidewalk", "Soap", "Soda Can", "Sofa", "Speakers", "Sponge", "Spoon", "Stockings", "Stop Sign", "Sun Glasses", "Teddies", "Thermometer", "Tire Swing", "Tissue Box", "Toe Ring", "Tomato", "Toothpaste", "Twezzers", "Twister", "Vase", "Wagon", "Wallet", "Watch", "White Out", "Window"];
 
 $(document).ready(function() {
-  $('select').material_select();
+  $('select').not('.mySel, .dumSelect').material_select();
 
   $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 15 // Creates a dropdown of 15 years to control year
+  });
+
+
+  $.contextMenu({
+    selector: '.my-context-menu',
+    items: {
+      section: {
+        name: "Section",
+        callback: function(key, opt){
+          var myStore = window.myCustomStore;
+
+          var clickedFrame = myStore.getClickedFrame();
+          if(clickedFrame){
+            myStore.createNewFrame(clickedFrame.title , clickedFrame.id);
+            var newFrame = myStore.getNewFrame();
+            myStore.changeParentToContainerAndAddToParent(newFrame.title , newFrame.id);
+          }else{
+            alert('No frame selected!');
+          }
+        }
+      },
+      text: {
+        name: "Text",
+        callback: function(key, opt){
+          alert("Clicked on " + key);
+        }
+      },
+      image: {
+        name: "Image",
+        callback: function(key, opt){
+          alert("Clicked on " + key);
+        }
+      },
+      infobit: {
+        name: "Infobit",
+        callback: function(key, opt){
+          alert("Clicked on " + key);
+        }
+      }
+    }
   });
 
   $('body').on('click', '.rel', function(event){

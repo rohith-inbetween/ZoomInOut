@@ -1,12 +1,16 @@
 {
   "dependencies": {
+    "cooltip": "^1.0.3",
     "font-awesome": "^4.4.0",
     "froala-editor": "^2.0.1",
     "jquery": "^2.1.4",
     "lodash": "*",
     "material-ui": "^0.13.2",
+    "pui-react-overlay-trigger": "^3.0.0-alpha.1",
+    "pui-react-tooltip": "^3.0.0-alpha.1",
     "react": "*",
     "react-addons-css-transition-group": "*",
+    "react-simple-tooltip": "^1.0.5",
     "reactify": "*"
   },
   "browserify": {

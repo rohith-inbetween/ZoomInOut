@@ -12,7 +12,7 @@ body *{
 }
 
 .searchBarView{
-    background-color: white;
+    /*background-color: white;*/
 }
 
 .structural-view{
@@ -46,13 +46,12 @@ body *{
 
 .structural-view-elements, .design-view-elements{
     overflow: auto;
-    background-color: #F0F3F5;
     height: calc(100% - 32px);
     padding: 0px 10px 10px 10px;
 }
 
 .design-view-elements{
-    padding: 3px 10px 10px 10px;
+    padding: 1px 10px 10px 10px;
 }
 
 .paper-element .container-children{
@@ -67,27 +66,23 @@ body *{
 }
 
 .paper-element{
-    margin-top: 3px;
-    background-color: #F0F3F5;
+    margin-top: 1px;
     position: relative;
 }
 
 .paper-element .toggle-button{
-    display: inline-block;
     font-size: small;
     color: rgba(122, 143, 198, 0.80);
     cursor: pointer;
-    height: 23px;
-    width: 20px;
+    height: 32px;
+    width: 25px;
     background-size: 12px;
     background-repeat: no-repeat;
-    background-position: 4px;
-    position: absolute;
-    top: 6px;
-    left: 5px;
+    background-position: 7.5px 10px;
     z-index: 1;
     background-image: url('images/Expand%20Arrow-32.png');
     transition: transform 0.2s;
+    float: left;
 }
 
 .paper-element-class-icon{
@@ -296,15 +291,16 @@ body *{
 }
 
 .content-edit-element{
+    color: #a6a6a6;
     height: auto;
     min-height: 10px;
     transition: min-height 0.3s, height 0.3s, width 0.3s, padding 0.3s, margin 0.3s;
     overflow: hidden;
     font-size: 13px;
-    color:white;
-    box-shadow: 0px 8px 8px -9px #333 inset;
+    /* box-shadow: 0px 8px 8px -9px #333 inset; */
     background-color: rgba(255,255,255,.1);
     width: 100%;
+    background: #FFF;
 }
 
 .content-edit-element .container-children{
@@ -312,7 +308,7 @@ body *{
 }
 
 .content-edit-element.level1{
-    background-color: #04A0D8;
+    /*background-color: #04A0D8;*/
 }
 /*
 
@@ -326,16 +322,19 @@ body *{
 */
 
 .content-edit-element .content-element-title{
-    text-shadow: 0px 1px 1px #09557B;
+    /*text-shadow: 0px 1px 1px #09557B;*/
     cursor: pointer;
-    height: 36px;
-    padding: 10px;
-    background: rgba(0,0,0,.1);
+    height: 33px;
+    padding: 0 10px;
+    /*background: rgba(0,0,0,.1);*/
+    line-height: 34px;
+    position: relative;
 }
 
 .content-edit-element .content-element-data, .content-edit-element .content-data{
     margin: 10px;
     width: calc(100% - 20px);
+    padding-left: 56px;
 }
 
 .compress{
@@ -377,38 +376,32 @@ body *{
     border-color: #fff !important;
 }
 
-.searchBarContainer input{
-    font-size: 13px !important;
-    color: #fff !important;
-    text-shadow: 0px 1px 1px #09557B !important;
-}
-
 .searchBarView{
-    background: #04A0D8;
+    /*background: #04A0D8;*/
 }
 
 .paper-element.level2 .searchBarView{
-    background: #1DA9DC;
+    /*background: #1DA9DC;*/
 }
 
 .paper-element.level3 .searchBarView{
-    background: #33B1E0;
+    /*background: #33B1E0;*/
 }
 
 .paper-element.level4 .searchBarView{
-    background: #47B9E3;
+    /*background: #47B9E3;*/
 }
 
 .paper-element.level5 .searchBarView{
-    background: #59C0E6;
+    /*background: #59C0E6;*/
 }
 
 .paper-element.level6 .searchBarView{
-    background: #69C6E9;
+    /*background: #69C6E9;*/
 }
 
 .paper-element.level7 .searchBarView{
-    background: #78CCEB;
+    /*background: #78CCEB;*/
 }
 
 /*
@@ -546,7 +539,7 @@ body *{
     background-color: rgba(255,255,255,.8);;
     padding: 5px;
     border-radius: 3px;
-    box-shadow: 0px 1px 4px 0px rgba(0,0,0,.2);
+    /*box-shadow: 0px 1px 4px 0px rgba(0,0,0,.2);*/
 }
 
 p{
@@ -556,4 +549,29 @@ p{
 
 .searchBarView .searchBarContainer .multiSearchInputBox {
     width: calc(100% - 25px);
+}
+
+.briefingIcon{
+    height: 20px !important;
+    width: 20px !important;
+    background-image: url("./images/About-32.png");
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: 0;
+    display: inline-block;
+    float: right;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    text-shadow: none;
+    color: transparent;
+}
+
+.briefingHidden{
+    display: none !important;
+}
+
+.fr-counter{
+    float: right;
+    margin-top: 5px;
 }

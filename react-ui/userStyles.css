@@ -1,0 +1,62 @@
+body.view1 .paper-element.level4,
+body.view4 .paper-element.level4,
+body.view5 .paper-element.level4{
+    display: none;
+}
+
+body.view1 .content-edit-element.level2 .rightPlusIcon,
+body.view2 .content-edit-element.level2 .rightPlusIcon{
+    display: block;
+}
+
+body.view1 .content-edit-element.level3 {
+    display: none;
+}
+
+body.view2 .dummyNode,
+body.view4 .dummyNode,
+body.view5 .dummyNode{
+    display: none;
+}
+
+body.view2 .plusIcon,
+body.view4 .plusIcon,
+body.view5 .plusIcon,
+body.view2 .paper-element.level2 .plusIcon,
+body.view4 .paper-element.level2 .plusIcon,
+body.view5 .paper-element.level2 .plusIcon{
+    display: none;
+}
+
+body.view3 .dummyNodeFroala p{
+    color: #a6a6a6;
+}
+
+body.view4 .dummyNode,
+body.view5 .dummyNode{
+    color: #a6a6a6;
+}
+
+body.view4 .dummyCoreMsg,
+body.view5 .dummyCoreMsg{
+    display: block;
+    margin-left: 60px;
+    box-shadow: none;
+    color: #333;
+}
+
+body.view1 .paper-element.level3 .nodeRightIcon,
+body.view2 .paper-element.level3 .nodeRightIcon,
+body.view3 .paper-element.level3 .nodeRightIcon{
+    display: none;
+}
+
+body.view5 .content-edit-element.level5 .content-element-title{
+    display: none;
+}
+
+body.view5 .content-edit-element.level5:first-child .content-data,
+body.view4 .content-edit-element.level5:first-child .content-data{
+    font-weight: bold;
+}
+

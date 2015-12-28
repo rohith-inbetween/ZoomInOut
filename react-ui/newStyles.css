@@ -1,0 +1,245 @@
+.idText{
+    display: inline-block;
+    margin: 0;
+    font-size: 14px;
+    float: left;
+    height: 32px;
+    line-height: 32px;
+}
+
+.MultiSrchWrapper{
+    background-color: #aaa;
+    overflow: hidden;
+}
+
+.paper-element.level1 .MultiSrchWrapper{
+    background: #a6a6a6;
+}
+
+.paper-element.level2 .MultiSrchWrapper{
+    background: #bfbfbf;
+}
+
+.paper-element.level3 .MultiSrchWrapper{
+    background: #f2f2f2;
+}
+
+.searchBarView .searchBarContainer .multiSearchInputBox{
+    font-size: 14px;
+}
+
+.paper-element.level1 .searchBarView .searchBarContainer .multiSearchInputBox,
+.content-edit-element.level1 .content-element-title span{
+    font-size: 15px;
+}
+
+.paper-element.level2 .searchBarView .searchBarContainer .multiSearchInputBox,
+.content-edit-element.level2 .content-element-title span{
+    font-size: 14px;
+}
+
+.paper-element.level3 .searchBarView .searchBarContainer .multiSearchInputBox,
+.content-edit-element.level3 .content-element-title span{
+    font-size: 12px;
+}
+
+.paper-element.level3 .idText{
+    display: none;
+}
+
+.iconAb{
+    width: 20px;
+    height: 32px;
+    display: none;
+    background-image: url("./images/Bar Chart-32.png");
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: 3px 9px;
+    margin-top: 0;
+    float: left;
+}
+
+.rightTreeIcon{
+    width: 20px;
+    height: 24px;
+    display: none;
+    background-image: url("./images/Bar Chart-32.png");
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: 3px 9px;
+    margin-top: 0;
+    margin-right: 10px;
+}
+
+.paper-element.level3 .iconAb, .content-edit-element.level3 .rightTreeIcon{
+    display: inline-block;
+}
+
+.content-edit-element.level3 .rightTreeLabel,
+.content-edit-element.level4 .rightTreeLabel{
+    visibility: hidden;
+    width: 20px;
+}
+
+.rightTreeLabel{
+    display: inline-block;
+    margin: 0px 10px 0 0;
+    width: 50px;
+}
+
+.plusIcon{
+    height: 32px;
+    width: 25px;
+    background-image: url("./images/Plus Math-26.png");
+    background-repeat: no-repeat;
+    background-position: 4px;
+    float: right;
+    background-size: 15px;
+    opacity: .6;
+    transition: all .2s;
+    display: none;
+}
+
+.rightPlusIcon{
+    height: 32px;
+    width: 25px;
+    background-image: url("./images/Plus Math-26.png");
+    background-repeat: no-repeat;
+    background-position: 4px;
+    background-size: 15px;
+    opacity: .6;
+    transition: all .2s;
+    display: none;
+    top: 0;
+    position: absolute;
+    right: 0;
+}
+
+.plusIcon:hover, .rightPlusIcon:hover{
+    opacity: .8;
+}
+
+.paper-element.level2 .plusIcon{
+    display: inline-block;
+}
+
+.paper-element.level3 .plusIcon, .paper-element.level4 .plusIcon{
+    display: none;
+}
+
+.content-edit-element.level4 .content-element-title, .content-edit-element.level3 .content-element-title{
+    box-shadow: 0px -1px 0px rgb(226, 226, 226) inset;
+}
+
+.viewChangeContainer{
+    float: right;
+    width: 144px;
+    font-size: 13px;
+}
+
+.mySel, .dumSelect{
+    display: inline-block;
+    width: 100px;
+    height: 26px;
+    margin-left: 10px;
+    margin-top: 3px;
+    /* line-height: 29px; */
+    padding: 2px;
+}
+
+.paper-element.level5{
+    display: none;
+}
+
+.content-edit-element.level5 .content-element-title{
+    box-shadow: none;
+}
+
+.content-edit-element.level5 .rightTreeIcon{
+    display: none;
+}
+
+.content-edit-element.level5 .content-element-title span{
+    margin-left: 30px;
+    font-style: italic;
+}
+
+.MultiSrchWrapper.selected, .content-element-title.selected, .content-edit-element.level3 .content-element-title.selected{
+    box-shadow: 0px 0px 0px 2px #f79646 inset;
+}
+
+.dummyNode{
+    margin-left: 70px;
+}
+
+.dumDumWrapper{
+    padding: 10px;
+    box-shadow: 0px 1px 3px 0px #aaa;
+    margin: 10px 10px 10px 0;
+    padding-bottom: 30px;
+}
+
+.dumDumWrapper:last-child{
+    padding-bottom: 10px;
+}
+
+.dumDumSplit{
+    width: 45%;
+    display: inline-block;
+}
+
+.dumDumSplit:last-child{
+    margin-left: 5%;
+}
+
+.dumDum {
+    margin-bottom: 10px;
+}
+
+.dumFieldWrapper{
+    padding: 2px;
+}
+
+.dumFieldKey{
+    display: inline-block;
+    width: 30%;
+    color: #333;
+}
+
+.dumFieldVal{
+    display: inline-block;
+    width: 40%;
+    padding: 1px 5px;
+    color: #333;
+}
+
+.dummyCoreMsg{
+    display: none;
+}
+
+.nodeRightIcon{
+    position: absolute;
+    right: 4px;
+}
+
+.paper-element.level3 .nodeRightIcon{
+    display: block;
+    background-image: url("./images/Ok-24.png");
+    background-repeat: no-repeat;
+    background-position: 0px 6px;
+    height: 30px;
+    width: 20px;
+    background-size: 20px;
+}
+
+.paper-element.level4 .nodeRightIcon{
+    display: none;
+}
+
+.dumSelect{
+    width: 40%;
+    margin: 0;
+    border: 1px solid #A9A9A9;
+    border-radius: 0;
+    color: #333;
+}
